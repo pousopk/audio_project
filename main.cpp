@@ -1,122 +1,248 @@
-#include <RtAudio.h>
 
-#include <atomic>
-#include <cmath>
-#include <csignal>
-#include <cstring>
-#include <iostream>
-#include <thread>
 
-struct MetronomeState {
-	double sampleRate = 48000.0;
-	std::atomic<double> bpm{120.0};
-	double volume = 0.7;
-	double phase = 0.0;
-	int samplesUntilBeat = 0;
-	int clickSamplesRemaining = 0;
-	int beatIndex = 0;
-	int beatsPerBar = 4;
-	double clickFreqStrong = 1760.0;
-	double clickFreqWeak = 1320.0;
-	double clickDurationSec = 0.03;
+#include <QApplication>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QSlider>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QComboBox>
+
+#include "Metronome.h"
+#include "ChordTrackWidget.h"
+
+#include "widgets/BeatVisualizerWidget.h"
+
+
+
+class BeatVisualizerWindow : public QWidget {
+    Q_OBJECT
+public:
+    BeatVisualizerWindow(QWidget *parent = nullptr) : QWidget(parent) {
+        QVBoxLayout *layout = new QVBoxLayout(this);
+        beatVisualizer = new BeatVisualizerWidget(this);
+        beatVisualizer->setMinimumHeight(120);
+        layout->addWidget(beatVisualizer);
+        setLayout(layout);
+        setWindowTitle("Beat Visualizer");
+        resize(500, 150);
+    }
+    void setBeatsPerBar(int beats) { beatVisualizer->setBeatsPerBar(beats); }
+    void setCurrentBeat(int beat) { beatVisualizer->setCurrentBeat(beat); }
+private:
+    BeatVisualizerWidget *beatVisualizer;
 };
 
-static std::atomic<bool> gRunning{true};
+class MetronomeWindow : public QWidget {
+    Q_OBJECT
+public:
+    MetronomeWindow(QWidget *parent = nullptr) : QWidget(parent) {
+        QVBoxLayout *layout = new QVBoxLayout(this);
 
-void handleSignal(int) { gRunning = false; }
+        // Create separate beat visualizer window
+        beatVisWindow = new BeatVisualizerWindow();
+        beatVisWindow->setBeatsPerBar(metronome.getBeatsPerBar());
+        beatVisWindow->show();
 
-int audioCallback(void* outputBuffer,
-									void* /*inputBuffer*/,
-									unsigned int nBufferFrames,
-									double /*streamTime*/,
-									RtAudioStreamStatus status,
-									void* userData) {
-	auto* state = static_cast<MetronomeState*>(userData);
-	auto* out = static_cast<float*>(outputBuffer);
+        // BPM controls
+        QHBoxLayout *bpmLayout = new QHBoxLayout();
+        QLabel *bpmLabel = new QLabel("BPM:", this);
+        bpmValue = new QLabel(QString::number(metronome.getBpm()), this);
+        slider = new QSlider(Qt::Horizontal, this);
+        slider->setRange(40, 240);
+        slider->setValue(metronome.getBpm());
+        connect(slider, &QSlider::valueChanged, this, &MetronomeWindow::onBPMChanged);
+        bpmLayout->addWidget(bpmLabel);
+        bpmLayout->addWidget(slider);
+        bpmLayout->addWidget(bpmValue);
+        layout->addLayout(bpmLayout);
 
-	if (status) {
-		std::cerr << "Stream under/overrun detected.\n";
-	}
+        // Time signature controls (numerator and denominator)
+        QHBoxLayout *beatsLayout = new QHBoxLayout();
+        QLabel *beatsLabel = new QLabel("Beats per bar:", this);
+        beatsValue = new QLabel(QString::number(metronome.getBeatsPerBar()), this);
+        beatsSlider = new QSlider(Qt::Horizontal, this);
+        beatsSlider->setRange(1, 12);
+        beatsSlider->setValue(metronome.getBeatsPerBar());
+        connect(beatsSlider, &QSlider::valueChanged, this, &MetronomeWindow::onBeatsChanged);
+        beatsLayout->addWidget(beatsLabel);
+        beatsLayout->addWidget(beatsSlider);
+        beatsLayout->addWidget(beatsValue);
 
-	const double twoPi = 6.28318530717958647692;
-	const int clickLenSamples = static_cast<int>(state->clickDurationSec * state->sampleRate);
+        QLabel *denomLabel = new QLabel("/", this);
+        denomCombo = new QComboBox(this);
+        denomCombo->addItem("2");
+        denomCombo->addItem("4");
+        denomCombo->addItem("8");
+        denomCombo->addItem("16");
+        denomCombo->setCurrentText("4");
+        connect(denomCombo, &QComboBox::currentTextChanged, this, &MetronomeWindow::onDenomChanged);
+        beatsLayout->addWidget(denomLabel);
+        beatsLayout->addWidget(denomCombo);
 
-	for (unsigned int i = 0; i < nBufferFrames; ++i) {
-		if (state->samplesUntilBeat <= 0) {
-			state->samplesUntilBeat = static_cast<int>((60.0 / state->bpm.load()) * state->sampleRate);
-			state->clickSamplesRemaining = clickLenSamples;
-			state->beatIndex = (state->beatIndex + 1) % state->beatsPerBar;
-		}
+        layout->addLayout(beatsLayout);
 
-		float sample = 0.0f;
-		if (state->clickSamplesRemaining > 0) {
-			const bool strongBeat = (state->beatIndex == 1);
-			const double freq = strongBeat ? state->clickFreqStrong : state->clickFreqWeak;
-			const double env = static_cast<double>(state->clickSamplesRemaining) / clickLenSamples;
-			sample = static_cast<float>(state->volume * env * std::sin(state->phase));
-			state->phase += twoPi * freq / state->sampleRate;
-			if (state->phase > twoPi) state->phase -= twoPi;
-			--state->clickSamplesRemaining;
-		}
+        // Subdivision controls
+        QHBoxLayout *subdivLayout = new QHBoxLayout();
+        QLabel *subdivLabel = new QLabel("Subdivisions per beat:", this);
+        subdivValue = new QLabel(QString::number(metronome.getSubdivisions()), this);
+        subdivSlider = new QSlider(Qt::Horizontal, this);
+        subdivSlider->setRange(1, 8);
+        subdivSlider->setValue(metronome.getSubdivisions());
+        connect(subdivSlider, &QSlider::valueChanged, this, &MetronomeWindow::onSubdivChanged);
+        subdivLayout->addWidget(subdivLabel);
+        subdivLayout->addWidget(subdivSlider);
+        subdivLayout->addWidget(subdivValue);
+        layout->addLayout(subdivLayout);
 
-		out[i] = sample;
-		--state->samplesUntilBeat;
-	}
+        // Volume controls
+        QHBoxLayout *volumeLayout = new QHBoxLayout();
+        QLabel *volumeLabel = new QLabel("Volume:", this);
+        volumeValue = new QLabel(QString::number(metronome.getVolume(), 'f', 2), this);
+        volumeSlider = new QSlider(Qt::Horizontal, this);
+        volumeSlider->setRange(0, 100);
+        volumeSlider->setValue(static_cast<int>(metronome.getVolume() * 100));
+        connect(volumeSlider, &QSlider::valueChanged, this, &MetronomeWindow::onVolumeChanged);
+        volumeLayout->addWidget(volumeLabel);
+        volumeLayout->addWidget(volumeSlider);
+        volumeLayout->addWidget(volumeValue);
+        layout->addLayout(volumeLayout);
 
-	return gRunning ? 0 : 1;
+
+        // Chord selection controls
+        QHBoxLayout *chordSelectLayout = new QHBoxLayout();
+        QLabel *rootLabel = new QLabel("Root:", this);
+        rootCombo = new QComboBox(this);
+        // All roots with sharps and flats
+        QStringList roots = {"C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"};
+        rootCombo->addItems(roots);
+        QLabel *typeLabel = new QLabel("Type:", this);
+        typeCombo = new QComboBox(this);
+        // Common chord types
+        QStringList types = {"", "m", "7", "maj7", "m7", "sus2", "sus4", "dim", "aug", "add9", "6"};
+        typeCombo->addItems(types);
+        chordSelectLayout->addWidget(rootLabel);
+        chordSelectLayout->addWidget(rootCombo);
+        chordSelectLayout->addWidget(typeLabel);
+        chordSelectLayout->addWidget(typeCombo);
+        layout->addLayout(chordSelectLayout);
+
+
+
+        // Chord progression/backing track module
+        QHBoxLayout *chordLayout = new QHBoxLayout();
+        chordWidget = new ChordTrackWidget(this);
+        chordWidget->setMetronome(&metronome);
+        chordLayout->addWidget(chordWidget);
+        layout->addLayout(chordLayout);
+
+        // Connect root/type combo changes to update chordSelector
+        connect(rootCombo, &QComboBox::currentTextChanged, this, &MetronomeWindow::onChordComboChanged);
+        connect(typeCombo, &QComboBox::currentTextChanged, this, &MetronomeWindow::onChordComboChanged);
+private slots:
+    void onChordComboChanged() {
+        QString chordName = rootCombo->currentText() + typeCombo->currentText();
+        chordWidget->setChordSelectorText(chordName);
+    }
+
+        setLayout(layout);
+
+        // Timer for beat visualization
+        beatTimer = new QTimer(this);
+        connect(beatTimer, &QTimer::timeout, this, &MetronomeWindow::onBeatTimer);
+        updateBeatInterval();
+        beatTimer->start(beatIntervalMs);
+    }
+        private slots:
+            void onBeatTimer() {
+                // Advance beat index
+                currentBeat = (currentBeat + 1) % metronome.getBeatsPerBar();
+                beatVisWindow->setCurrentBeat(currentBeat);
+            }
+            void onBPMChanged(int value) {
+                metronome.setBpm(value);
+                bpmValue->setText(QString::number(value));
+                updateBeatInterval();
+            }
+            void onBeatsChanged(int value) {
+                metronome.setBeatsPerBar(value);
+                beatsValue->setText(QString::number(value));
+                beatVisWindow->setBeatsPerBar(value);
+                updateBeatInterval();
+            }
+            void updateBeatInterval() {
+                // Calculate ms per beat
+                double noteLength = 4.0 / metronome.getTimeSignatureDenominator();
+                double msPerBeat = (60.0 / metronome.getBpm()) * noteLength * 1000.0;
+                beatIntervalMs = static_cast<int>(msPerBeat);
+                beatTimer->setInterval(beatIntervalMs);
+            }
+        setWindowTitle("Metronome & Backing Track");
+        resize(600, 400);
+        metronome.setBpm(slider->value());
+        metronome.setBeatsPerBar(beatsSlider->value());
+        metronome.setSubdivisions(subdivSlider->value());
+        metronome.setVolume(volumeSlider->value() / 100.0);
+        // metronome.start(); // Only start metronome when not using backing track
+    }
+private slots:
+    void onBPMChanged(int value) {
+        metronome.setBpm(value);
+        bpmValue->setText(QString::number(value));
+    }
+    void onBeatsChanged(int value) {
+        metronome.setBeatsPerBar(value);
+        beatsValue->setText(QString::number(value));
+    }
+    void onDenomChanged(const QString &text) {
+        timeSigDenominator = text.toInt();
+        metronome.setTimeSignatureDenominator(timeSigDenominator);
+    }
+    void onSubdivChanged(int value) {
+        metronome.setSubdivisions(value);
+        subdivValue->setText(QString::number(value));
+    }
+    void onVolumeChanged(int value) {
+        double vol = value / 100.0;
+        metronome.setVolume(vol);
+        volumeValue->setText(QString::number(vol, 'f', 2));
+    }
+private:
+    Metronome metronome;
+    QSlider *slider;
+    QLabel *bpmValue;
+    QSlider *beatsSlider;
+    QLabel *beatsValue;
+    QComboBox *denomCombo;
+    int timeSigDenominator = 4;
+    QSlider *subdivSlider;
+    QLabel *subdivValue;
+    QSlider *volumeSlider;
+    QLabel *volumeValue;
+    QComboBox *rootCombo;
+    QComboBox *typeCombo;
+    ChordTrackWidget *chordWidget;
+    QTimer *beatTimer;
+    int beatIntervalMs = 500;
+    int currentBeat = 0;
+
+public:
+    BeatVisualizerWindow *beatVisWindow = nullptr;
+};
+
+#include <QMetaObject>
+#include <QThread>
+#include <QTimer>
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+    MetronomeWindow window;
+    window.show();
+    // Create and show beat visualizer window as a top-level window
+    window.beatVisWindow = new BeatVisualizerWindow();
+    window.beatVisWindow->setBeatsPerBar(window.metronome.getBeatsPerBar());
+    window.beatVisWindow->show();
+    return app.exec();
 }
 
-int main(int argc, char** argv) {
-	MetronomeState state;
-
-	if (argc > 1) {
-		const double parsed = std::atof(argv[1]);
-		if (parsed > 20.0 && parsed < 400.0) {
-			state.bpm = parsed;
-		}
-	}
-
-	std::signal(SIGINT, handleSignal);
-
-	try {
-		RtAudio dac;
-		if (dac.getDeviceCount() < 1) {
-			std::cerr << "No audio output device found.\n";
-			return 1;
-		}
-
-		RtAudio::StreamParameters params;
-		params.deviceId = dac.getDefaultOutputDevice();
-		params.nChannels = 1;
-		params.firstChannel = 0;
-
-		unsigned int bufferFrames = 256;
-		unsigned int sampleRate = 48000;
-		state.sampleRate = static_cast<double>(sampleRate);
-		state.samplesUntilBeat = 0;
-
-		dac.openStream(&params,
-									 nullptr,
-									 RTAUDIO_FLOAT32,
-									 sampleRate,
-									 &bufferFrames,
-									 &audioCallback,
-									 &state);
-		dac.startStream();
-
-		std::cout << "Metronome running at " << state.bpm.load()
-							<< " BPM. Press Ctrl+C to stop.\n";
-
-		while (gRunning) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		}
-
-		if (dac.isStreamRunning()) dac.stopStream();
-		if (dac.isStreamOpen()) dac.closeStream();
-	}catch (const std::exception& e) {
-		std::cerr << "Error: " << e.what() << "\n";
-		return 1;
-	}
-
-	return 0;
-}
+#include "main.moc"
