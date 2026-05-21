@@ -1,0 +1,69 @@
+\hypertarget{classPhaser}{}\doxysection{Phaser Class Reference}
+\label{classPhaser}\index{Phaser@{Phaser}}
+
+
+\mbox{\hyperlink{classPhaser}{Phaser}} effect.  
+
+
+
+
+{\ttfamily \#include $<$Phaser.\+h$>$}
+
+
+
+Inheritance diagram for Phaser\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classPhaser__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Phaser\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classPhaser__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPhaser_a849a7f7cd7d1491c490e4ba8e9906af0}\label{classPhaser_a849a7f7cd7d1491c490e4ba8e9906af0}} 
+\mbox{\hyperlink{classPhaser_a849a7f7cd7d1491c490e4ba8e9906af0}{Phaser}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classPhaser}{Phaser}} effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhaser_ad9f06d84d4b8c854f9209604397b43e9}\label{classPhaser_ad9f06d84d4b8c854f9209604397b43e9}} 
+void \mbox{\hyperlink{classPhaser_ad9f06d84d4b8c854f9209604397b43e9}{set\+Sample\+Rate}} (float rate) override
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhaser_a0c529369400e26a9611f8c9f9424fbd8}\label{classPhaser_a0c529369400e26a9611f8c9f9424fbd8}} 
+float \mbox{\hyperlink{classPhaser_a0c529369400e26a9611f8c9f9424fbd8}{process}} (float input) override
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhaser_a86477d34891879389a4a3092db9f3b8c}\label{classPhaser_a86477d34891879389a4a3092db9f3b8c}} 
+std\+::string \mbox{\hyperlink{classPhaser_a86477d34891879389a4a3092db9f3b8c}{name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhaser_abcb75676a33da77de2d72fad840c3f13}\label{classPhaser_abcb75676a33da77de2d72fad840c3f13}} 
+void \mbox{\hyperlink{classPhaser_abcb75676a33da77de2d72fad840c3f13}{set\+Rate}} (float rate\+\_\+hz)
+\begin{DoxyCompactList}\small\item\em Set the LFO rate in Hz. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhaser_aa0dc018b9352ffecb8370f189dc6793a}\label{classPhaser_aa0dc018b9352ffecb8370f189dc6793a}} 
+void \mbox{\hyperlink{classPhaser_aa0dc018b9352ffecb8370f189dc6793a}{set\+Depth}} (float depth)
+\begin{DoxyCompactList}\small\item\em Set the modulation depth (0.\+0 to 1.\+0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhaser_a7b16fb7373cf38c24553cb0024690545}\label{classPhaser_a7b16fb7373cf38c24553cb0024690545}} 
+void \mbox{\hyperlink{classPhaser_a7b16fb7373cf38c24553cb0024690545}{set\+Feedback}} (float feedback)
+\begin{DoxyCompactList}\small\item\em Set the feedback amount (0.\+0 to $<$ 1.\+0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPhaser_a9da37fc7364f1204d8e6ecb84b8c3cfc}\label{classPhaser_a9da37fc7364f1204d8e6ecb84b8c3cfc}} 
+void \mbox{\hyperlink{classPhaser_a9da37fc7364f1204d8e6ecb84b8c3cfc}{set\+Mix}} (float mix)
+\begin{DoxyCompactList}\small\item\em Set the wet/dry mix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classPhaser}{Phaser}} effect. 
+
+Modulates the input signal with a series of all-\/pass filters for a sweeping phase effect. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/effects/Phaser.\+h\item 
+src/effects/Phaser.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,63 @@
+\hypertarget{classGate}{}\doxysection{Gate Class Reference}
+\label{classGate}\index{Gate@{Gate}}
+
+
+Noise gate effect.  
+
+
+
+
+{\ttfamily \#include $<$Gate.\+h$>$}
+
+
+
+Inheritance diagram for Gate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classGate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Gate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classGate__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGate_a4fc24ecebc0ca8252bf7ab96a705e58a}\label{classGate_a4fc24ecebc0ca8252bf7ab96a705e58a}} 
+\mbox{\hyperlink{classGate_a4fc24ecebc0ca8252bf7ab96a705e58a}{Gate}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classGate}{Gate}} effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGate_a131731bbe7c262ed97542d14d35dc8fd}\label{classGate_a131731bbe7c262ed97542d14d35dc8fd}} 
+void \mbox{\hyperlink{classGate_a131731bbe7c262ed97542d14d35dc8fd}{set\+Sample\+Rate}} (float rate) override
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGate_ac59d383ce84ea7269001936d028ace70}\label{classGate_ac59d383ce84ea7269001936d028ace70}} 
+float \mbox{\hyperlink{classGate_ac59d383ce84ea7269001936d028ace70}{process}} (float input) override
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGate_a84403f16d69e89dbd72af689c8adc995}\label{classGate_a84403f16d69e89dbd72af689c8adc995}} 
+std\+::string \mbox{\hyperlink{classGate_a84403f16d69e89dbd72af689c8adc995}{name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGate_a984d807af2b8c31c754ffec16ba8904f}\label{classGate_a984d807af2b8c31c754ffec16ba8904f}} 
+void \mbox{\hyperlink{classGate_a984d807af2b8c31c754ffec16ba8904f}{set\+Threshold}} (float threshold\+\_\+dB)
+\begin{DoxyCompactList}\small\item\em Set the threshold in dB (e.\+g., -\/60.\+0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGate_a4f143605000547f6f3a376a44dd579eb}\label{classGate_a4f143605000547f6f3a376a44dd579eb}} 
+void \mbox{\hyperlink{classGate_a4f143605000547f6f3a376a44dd579eb}{set\+Release}} (float release\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Set the release time in milliseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Noise gate effect. 
+
+Attenuates signals below a set threshold to reduce noise. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/effects/Gate.\+h\item 
+src/effects/Gate.\+cpp\end{DoxyCompactItemize}

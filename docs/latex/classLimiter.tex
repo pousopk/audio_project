@@ -1,0 +1,66 @@
+\hypertarget{classLimiter}{}\doxysection{Limiter Class Reference}
+\label{classLimiter}\index{Limiter@{Limiter}}
+
+
+Brickwall limiter effect.  
+
+
+
+
+{\ttfamily \#include $<$Limiter.\+h$>$}
+
+
+
+Inheritance diagram for Limiter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classLimiter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Limiter\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classLimiter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLimiter_aeb9287deaa87e9a6ad9658990cde09fe}\label{classLimiter_aeb9287deaa87e9a6ad9658990cde09fe}} 
+\mbox{\hyperlink{classLimiter_aeb9287deaa87e9a6ad9658990cde09fe}{Limiter}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classLimiter}{Limiter}} effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLimiter_a43e7019cc7df9792a9dc8089579abdd6}\label{classLimiter_a43e7019cc7df9792a9dc8089579abdd6}} 
+void \mbox{\hyperlink{classLimiter_a43e7019cc7df9792a9dc8089579abdd6}{set\+Sample\+Rate}} (float rate) override
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLimiter_a1a3583e5135d6823977a94607a6865f5}\label{classLimiter_a1a3583e5135d6823977a94607a6865f5}} 
+float \mbox{\hyperlink{classLimiter_a1a3583e5135d6823977a94607a6865f5}{process}} (float input) override
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLimiter_a82f20cd0b22865745bf57800a4da4fe9}\label{classLimiter_a82f20cd0b22865745bf57800a4da4fe9}} 
+std\+::string \mbox{\hyperlink{classLimiter_a82f20cd0b22865745bf57800a4da4fe9}{name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLimiter_a2723a721d1539395fed6355437e66531}\label{classLimiter_a2723a721d1539395fed6355437e66531}} 
+void \mbox{\hyperlink{classLimiter_a2723a721d1539395fed6355437e66531}{set\+Threshold}} (float threshold\+\_\+dB)
+\begin{DoxyCompactList}\small\item\em Set the threshold in dB (e.\+g., -\/0.\+1). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLimiter_a8a3851d4d6d586f3817cb6ead5c9aa26}\label{classLimiter_a8a3851d4d6d586f3817cb6ead5c9aa26}} 
+void \mbox{\hyperlink{classLimiter_a8a3851d4d6d586f3817cb6ead5c9aa26}{set\+Release}} (float release\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Set the release time in milliseconds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLimiter_a75bf2b529eb9f3b18a8fab39be62bf51}\label{classLimiter_a75bf2b529eb9f3b18a8fab39be62bf51}} 
+float \mbox{\hyperlink{classLimiter_a75bf2b529eb9f3b18a8fab39be62bf51}{get\+Gain\+Reduction\+DB}} () const
+\begin{DoxyCompactList}\small\item\em Get the current gain reduction in dB. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Brickwall limiter effect. 
+
+Prevents the signal from exceeding a set threshold. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/effects/Limiter.\+h\item 
+src/effects/Limiter.\+cpp\end{DoxyCompactItemize}

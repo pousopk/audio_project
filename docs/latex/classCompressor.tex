@@ -1,0 +1,72 @@
+\hypertarget{classCompressor}{}\doxysection{Compressor Class Reference}
+\label{classCompressor}\index{Compressor@{Compressor}}
+
+
+Dynamic range compressor effect.  
+
+
+
+
+{\ttfamily \#include $<$Compressor.\+h$>$}
+
+
+
+Inheritance diagram for Compressor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=155pt]{classCompressor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Compressor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=155pt]{classCompressor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCompressor_a8a728ed1544cc0f82e8390f4606026b0}\label{classCompressor_a8a728ed1544cc0f82e8390f4606026b0}} 
+\mbox{\hyperlink{classCompressor_a8a728ed1544cc0f82e8390f4606026b0}{Compressor}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classCompressor}{Compressor}} effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_add61adda4267d7aaf94fc961669020af}\label{classCompressor_add61adda4267d7aaf94fc961669020af}} 
+void \mbox{\hyperlink{classCompressor_add61adda4267d7aaf94fc961669020af}{set\+Sample\+Rate}} (float rate) override
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_a0df15295761c6ac6a62738fcf0ee2900}\label{classCompressor_a0df15295761c6ac6a62738fcf0ee2900}} 
+float \mbox{\hyperlink{classCompressor_a0df15295761c6ac6a62738fcf0ee2900}{process}} (float input) override
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_a1a5d30960246b640fa50bf499f84f5cb}\label{classCompressor_a1a5d30960246b640fa50bf499f84f5cb}} 
+std\+::string \mbox{\hyperlink{classCompressor_a1a5d30960246b640fa50bf499f84f5cb}{name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_ab81f16aac325ae7005ea7a7b983ff7fe}\label{classCompressor_ab81f16aac325ae7005ea7a7b983ff7fe}} 
+void \mbox{\hyperlink{classCompressor_ab81f16aac325ae7005ea7a7b983ff7fe}{set\+Threshold}} (float threshold\+\_\+dB)
+\begin{DoxyCompactList}\small\item\em Set the threshold in dB (e.\+g., -\/20.\+0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_ab2b6c840754aaece70599ca8adb0f061}\label{classCompressor_ab2b6c840754aaece70599ca8adb0f061}} 
+void \mbox{\hyperlink{classCompressor_ab2b6c840754aaece70599ca8adb0f061}{set\+Ratio}} (float ratio)
+\begin{DoxyCompactList}\small\item\em Set the compression ratio (e.\+g., 4.\+0 for 4\+:1). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_a01d95bc4515b7d80220a634a4d48f643}\label{classCompressor_a01d95bc4515b7d80220a634a4d48f643}} 
+void \mbox{\hyperlink{classCompressor_a01d95bc4515b7d80220a634a4d48f643}{set\+Attack}} (float attack\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Set the attack time in milliseconds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_a3b1024bfe470c2ee737daaf3b023552b}\label{classCompressor_a3b1024bfe470c2ee737daaf3b023552b}} 
+void \mbox{\hyperlink{classCompressor_a3b1024bfe470c2ee737daaf3b023552b}{set\+Release}} (float release\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Set the release time in milliseconds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCompressor_a41c2afd3e3bbdb38dab08f31ed8e6eec}\label{classCompressor_a41c2afd3e3bbdb38dab08f31ed8e6eec}} 
+float \mbox{\hyperlink{classCompressor_a41c2afd3e3bbdb38dab08f31ed8e6eec}{get\+Gain\+Reduction\+DB}} () const
+\begin{DoxyCompactList}\small\item\em Get the current gain reduction in dB. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Dynamic range compressor effect. 
+
+Reduces the dynamic range of the input signal above a threshold. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/effects/Compressor.\+h\item 
+src/effects/Compressor.\+cpp\end{DoxyCompactItemize}

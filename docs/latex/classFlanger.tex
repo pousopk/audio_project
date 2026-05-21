@@ -1,0 +1,69 @@
+\hypertarget{classFlanger}{}\doxysection{Flanger Class Reference}
+\label{classFlanger}\index{Flanger@{Flanger}}
+
+
+\mbox{\hyperlink{classFlanger}{Flanger}} effect.  
+
+
+
+
+{\ttfamily \#include $<$Flanger.\+h$>$}
+
+
+
+Inheritance diagram for Flanger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classFlanger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Flanger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classFlanger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFlanger_aa55fb900ce127e5bbe11c0712999f101}\label{classFlanger_aa55fb900ce127e5bbe11c0712999f101}} 
+\mbox{\hyperlink{classFlanger_aa55fb900ce127e5bbe11c0712999f101}{Flanger}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classFlanger}{Flanger}} effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFlanger_afc2e06be9868331762222cc77841b849}\label{classFlanger_afc2e06be9868331762222cc77841b849}} 
+void \mbox{\hyperlink{classFlanger_afc2e06be9868331762222cc77841b849}{set\+Sample\+Rate}} (float rate) override
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFlanger_a5f5a55e51bf63026d46104c18a21b5b3}\label{classFlanger_a5f5a55e51bf63026d46104c18a21b5b3}} 
+float \mbox{\hyperlink{classFlanger_a5f5a55e51bf63026d46104c18a21b5b3}{process}} (float input) override
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFlanger_aa127937a299c63c1e8302b86973881d5}\label{classFlanger_aa127937a299c63c1e8302b86973881d5}} 
+std\+::string \mbox{\hyperlink{classFlanger_aa127937a299c63c1e8302b86973881d5}{name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFlanger_ac51dbc2d184706a8a8b8521a0c46b1f4}\label{classFlanger_ac51dbc2d184706a8a8b8521a0c46b1f4}} 
+void \mbox{\hyperlink{classFlanger_ac51dbc2d184706a8a8b8521a0c46b1f4}{set\+Rate}} (float rate\+\_\+hz)
+\begin{DoxyCompactList}\small\item\em Set the LFO rate in Hz. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFlanger_aff264b4c63c86b9b50b26e992f9e2787}\label{classFlanger_aff264b4c63c86b9b50b26e992f9e2787}} 
+void \mbox{\hyperlink{classFlanger_aff264b4c63c86b9b50b26e992f9e2787}{set\+Depth}} (float depth\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Set the modulation depth in milliseconds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFlanger_ae472c3e8dc0dfee0ccf6d50097daa4c7}\label{classFlanger_ae472c3e8dc0dfee0ccf6d50097daa4c7}} 
+void \mbox{\hyperlink{classFlanger_ae472c3e8dc0dfee0ccf6d50097daa4c7}{set\+Feedback}} (float feedback)
+\begin{DoxyCompactList}\small\item\em Set the feedback amount (0.\+0 to $<$ 1.\+0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classFlanger_a286d9c001c5b62227cc150dcf642a80e}\label{classFlanger_a286d9c001c5b62227cc150dcf642a80e}} 
+void \mbox{\hyperlink{classFlanger_a286d9c001c5b62227cc150dcf642a80e}{set\+Mix}} (float mix)
+\begin{DoxyCompactList}\small\item\em Set the wet/dry mix (0.\+0 = dry, 1.\+0 = wet). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classFlanger}{Flanger}} effect. 
+
+Modulates the input signal with a short, variable delay for a sweeping effect. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/effects/Flanger.\+h\item 
+src/effects/Flanger.\+cpp\end{DoxyCompactItemize}

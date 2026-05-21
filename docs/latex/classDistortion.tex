@@ -1,0 +1,63 @@
+\hypertarget{classDistortion}{}\doxysection{Distortion Class Reference}
+\label{classDistortion}\index{Distortion@{Distortion}}
+
+
+Simple distortion effect.  
+
+
+
+
+{\ttfamily \#include $<$Distortion.\+h$>$}
+
+
+
+Inheritance diagram for Distortion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classDistortion__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Distortion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classDistortion__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDistortion_a97897e2edda638c81cce3e2fe70448bb}\label{classDistortion_a97897e2edda638c81cce3e2fe70448bb}} 
+\mbox{\hyperlink{classDistortion_a97897e2edda638c81cce3e2fe70448bb}{Distortion}} ()=default
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classDistortion}{Distortion}} effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDistortion_aa95d0fb2fcf3cf66abc82cbe696e8b8b}\label{classDistortion_aa95d0fb2fcf3cf66abc82cbe696e8b8b}} 
+void \mbox{\hyperlink{classDistortion_aa95d0fb2fcf3cf66abc82cbe696e8b8b}{set\+Sample\+Rate}} (float rate) override
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDistortion_a4e7a86e083e46b8cdf1726d6be21aad8}\label{classDistortion_a4e7a86e083e46b8cdf1726d6be21aad8}} 
+float \mbox{\hyperlink{classDistortion_a4e7a86e083e46b8cdf1726d6be21aad8}{process}} (float input) override
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDistortion_a49abba1ee74fe39eed27d4c7241552d2}\label{classDistortion_a49abba1ee74fe39eed27d4c7241552d2}} 
+std\+::string \mbox{\hyperlink{classDistortion_a49abba1ee74fe39eed27d4c7241552d2}{name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDistortion_aee628b2bee4639265e4a1cc61f9fa1bc}\label{classDistortion_aee628b2bee4639265e4a1cc61f9fa1bc}} 
+void \mbox{\hyperlink{classDistortion_aee628b2bee4639265e4a1cc61f9fa1bc}{set\+Drive}} (float drive)
+\begin{DoxyCompactList}\small\item\em Set the drive amount (0.\+0 to 1.\+0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDistortion_a1692efd5b1cada52f3953254965e8bd1}\label{classDistortion_a1692efd5b1cada52f3953254965e8bd1}} 
+void \mbox{\hyperlink{classDistortion_a1692efd5b1cada52f3953254965e8bd1}{set\+Mix}} (float mix)
+\begin{DoxyCompactList}\small\item\em Set the wet/dry mix (0.\+0 = dry, 1.\+0 = wet). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple distortion effect. 
+
+Applies soft clipping and gain to the input signal. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/effects/Distortion.\+h\item 
+src/effects/Distortion.\+cpp\end{DoxyCompactItemize}

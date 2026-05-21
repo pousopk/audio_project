@@ -1,0 +1,4 @@
+<map id="Delay" name="Delay">
+<area shape="rect" id="node1" title="Simple delay effect with feedback and mix control." alt="" coords="23,80,83,107"/>
+<area shape="rect" id="node2" href="$classAudioEffect.html" title=" " alt="" coords="5,5,101,32"/>
+</map>

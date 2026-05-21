@@ -92,6 +92,21 @@ else()
   message(FATAL_ERROR "RtAudio not found. Set RTAUDIO_INCLUDE_DIR and RTAUDIO_LIBRARY.")
 endif()
 
+# Doxygen documentation target for GitHub Pages
+find_package(Doxygen)
+if(DOXYGEN_FOUND)
+  set(DOXYGEN_IN ${CMAKE_SOURCE_DIR}/Doxyfile)
+  set(DOXYGEN_OUT ${CMAKE_BINARY_DIR}/Doxyfile.out)
+  add_custom_command(
+    OUTPUT ${CMAKE_SOURCE_DIR}/docs/index.html
+    COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_IN}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Generating API documentation with Doxygen"
+    VERBATIM
+  )
+  add_custom_target(doc_doxygen ALL DEPENDS ${CMAKE_SOURCE_DIR}/docs/index.html)
+endif()
+
 # Extra warnings
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_compile_options(audio_project PRIVATE -Wall -Wextra -pedantic)

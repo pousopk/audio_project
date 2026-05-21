@@ -1,0 +1,66 @@
+\hypertarget{classDelay}{}\doxysection{Delay Class Reference}
+\label{classDelay}\index{Delay@{Delay}}
+
+
+Simple delay effect with feedback and mix control.  
+
+
+
+
+{\ttfamily \#include $<$Delay.\+h$>$}
+
+
+
+Inheritance diagram for Delay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classDelay__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Delay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=152pt]{classDelay__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDelay_a6584fd4f8d46f71b09756b4156995e16}\label{classDelay_a6584fd4f8d46f71b09756b4156995e16}} 
+\mbox{\hyperlink{classDelay_a6584fd4f8d46f71b09756b4156995e16}{Delay}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classDelay}{Delay}} effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDelay_ad487181000afbd1b73c9896224329905}\label{classDelay_ad487181000afbd1b73c9896224329905}} 
+void \mbox{\hyperlink{classDelay_ad487181000afbd1b73c9896224329905}{set\+Sample\+Rate}} (float rate) override
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDelay_a7fbce02db6d5c1d52c7128bd2ee390e4}\label{classDelay_a7fbce02db6d5c1d52c7128bd2ee390e4}} 
+void \mbox{\hyperlink{classDelay_a7fbce02db6d5c1d52c7128bd2ee390e4}{set\+Delay\+Time}} (float time\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Set the delay time in milliseconds. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDelay_a373f202c52bf4bcb5d59b7fc3bd5ba2e}\label{classDelay_a373f202c52bf4bcb5d59b7fc3bd5ba2e}} 
+void \mbox{\hyperlink{classDelay_a373f202c52bf4bcb5d59b7fc3bd5ba2e}{set\+Feedback}} (float feedback)
+\begin{DoxyCompactList}\small\item\em Set the feedback amount (0.\+0 to $<$ 1.\+0). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDelay_a67d6a95e63c639bd9c81d0f8b801aa51}\label{classDelay_a67d6a95e63c639bd9c81d0f8b801aa51}} 
+void \mbox{\hyperlink{classDelay_a67d6a95e63c639bd9c81d0f8b801aa51}{set\+Mix}} (float mix)
+\begin{DoxyCompactList}\small\item\em Set the wet/dry mix (0.\+0 = dry, 1.\+0 = wet). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDelay_a9e7972906966ada5cd751eb1195c52f4}\label{classDelay_a9e7972906966ada5cd751eb1195c52f4}} 
+float \mbox{\hyperlink{classDelay_a9e7972906966ada5cd751eb1195c52f4}{process}} (float input) override
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDelay_afbcbea07d4a9be76de269c1475990a1c}\label{classDelay_afbcbea07d4a9be76de269c1475990a1c}} 
+std\+::string \mbox{\hyperlink{classDelay_afbcbea07d4a9be76de269c1475990a1c}{name}} () const override
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple delay effect with feedback and mix control. 
+
+Implements a basic delay line with adjustable delay time, feedback, and wet/dry mix. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/effects/Delay.\+h\item 
+src/effects/Delay.\+cpp\end{DoxyCompactItemize}
