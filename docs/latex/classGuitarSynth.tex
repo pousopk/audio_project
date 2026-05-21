@@ -1,23 +1,81 @@
 \hypertarget{classGuitarSynth}{}\doxysection{Guitar\+Synth Class Reference}
 \label{classGuitarSynth}\index{GuitarSynth@{GuitarSynth}}
+
+
+Physical modeling guitar synthesizer using Karplus-\/\+Strong algorithm.  
+
+
+
+
+{\ttfamily \#include $<$Guitar\+Synth.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classGuitarSynth_a800cadb1f29b580cf5be56fe743bc3f9}\label{classGuitarSynth_a800cadb1f29b580cf5be56fe743bc3f9}} 
-void {\bfseries set\+Sample\+Rate} (unsigned int rate)
-\item 
+\mbox{\Hypertarget{classGuitarSynth_addca6c1af1c78eff39ca1ae113b6a41a}\label{classGuitarSynth_addca6c1af1c78eff39ca1ae113b6a41a}} 
+\mbox{\hyperlink{classGuitarSynth_addca6c1af1c78eff39ca1ae113b6a41a}{Guitar\+Synth}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classGuitarSynth}{Guitar\+Synth}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGuitarSynth_a800cadb1f29b580cf5be56fe743bc3f9}{set\+Sample\+Rate}} (unsigned int rate)
+\begin{DoxyCompactList}\small\item\em Set the sample rate. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classGuitarSynth_a25f75d47f6b0b9e5ed9c6a2e99ea0bf6}\label{classGuitarSynth_a25f75d47f6b0b9e5ed9c6a2e99ea0bf6}} 
-void {\bfseries set\+Volume} (double volume)
-\item 
+void \mbox{\hyperlink{classGuitarSynth_a25f75d47f6b0b9e5ed9c6a2e99ea0bf6}{set\+Volume}} (double volume)
+\begin{DoxyCompactList}\small\item\em Set the output volume. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classGuitarSynth_a3983fe4414a9e1d16201b49e679134a1}\label{classGuitarSynth_a3983fe4414a9e1d16201b49e679134a1}} 
-void {\bfseries set\+Filter\+Coefficient} (double coeff)
-\item 
+void \mbox{\hyperlink{classGuitarSynth_a3983fe4414a9e1d16201b49e679134a1}{set\+Filter\+Coefficient}} (double coeff)
+\begin{DoxyCompactList}\small\item\em Set the filter coefficient (brightness). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classGuitarSynth_af63ae0b5e1018c41d4f88de8f1bb3ed1}\label{classGuitarSynth_af63ae0b5e1018c41d4f88de8f1bb3ed1}} 
-void {\bfseries set\+Decay\+Factor} (double factor)
-\item 
+void \mbox{\hyperlink{classGuitarSynth_af63ae0b5e1018c41d4f88de8f1bb3ed1}{set\+Decay\+Factor}} (double factor)
+\begin{DoxyCompactList}\small\item\em Set the decay factor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGuitarSynth_a9da9e18e23c5340a2be44d1b4abe0b10}{process}} (float $\ast$out, unsigned int n\+Frames, const std\+::vector$<$ int $>$ \&shape\+Frets, const \mbox{\hyperlink{structStrummingPattern}{Strumming\+Pattern}} \&strumming\+Pattern, int samples\+Per\+Measure, int measure\+Sample\+Counter, int beats\+Per\+Bar, int samples\+Per\+Beat)
+\begin{DoxyCompactList}\small\item\em Process a block of audio for a given chord shape and strumming pattern. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Physical modeling guitar synthesizer using Karplus-\/\+Strong algorithm. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classGuitarSynth_a9da9e18e23c5340a2be44d1b4abe0b10}\label{classGuitarSynth_a9da9e18e23c5340a2be44d1b4abe0b10}} 
-void {\bfseries process} (float $\ast$out, unsigned int n\+Frames, const std\+::vector$<$ int $>$ \&shape\+Frets, const \mbox{\hyperlink{structStrummingPattern}{Strumming\+Pattern}} \&strumming\+Pattern, int samples\+Per\+Measure, int measure\+Sample\+Counter, int beats\+Per\+Bar, int samples\+Per\+Beat)
-\end{DoxyCompactItemize}
+\index{GuitarSynth@{GuitarSynth}!process@{process}}
+\index{process@{process}!GuitarSynth@{GuitarSynth}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily void Guitar\+Synth\+::process (\begin{DoxyParamCaption}\item[{float $\ast$}]{out,  }\item[{unsigned int}]{n\+Frames,  }\item[{const std\+::vector$<$ int $>$ \&}]{shape\+Frets,  }\item[{const \mbox{\hyperlink{structStrummingPattern}{Strumming\+Pattern}} \&}]{strumming\+Pattern,  }\item[{int}]{samples\+Per\+Measure,  }\item[{int}]{measure\+Sample\+Counter,  }\item[{int}]{beats\+Per\+Bar,  }\item[{int}]{samples\+Per\+Beat }\end{DoxyParamCaption})}
+
+
+
+Process a block of audio for a given chord shape and strumming pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output buffer. \\
+\hline
+{\em n\+Frames} & Number of frames to process. \\
+\hline
+{\em shape\+Frets} & Fret positions for each string. \\
+\hline
+{\em strumming\+Pattern} & Strumming pattern to use. \\
+\hline
+{\em samples\+Per\+Measure} & Samples per measure. \\
+\hline
+{\em measure\+Sample\+Counter} & Current sample in measure. \\
+\hline
+{\em beats\+Per\+Bar} & Number of beats per bar. \\
+\hline
+{\em samples\+Per\+Beat} & Samples per beat. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGuitarSynth_a800cadb1f29b580cf5be56fe743bc3f9}\label{classGuitarSynth_a800cadb1f29b580cf5be56fe743bc3f9}} 
+\index{GuitarSynth@{GuitarSynth}!setSampleRate@{setSampleRate}}
+\index{setSampleRate@{setSampleRate}!GuitarSynth@{GuitarSynth}}
+\doxysubsubsection{\texorpdfstring{setSampleRate()}{setSampleRate()}}
+{\footnotesize\ttfamily void Guitar\+Synth\+::set\+Sample\+Rate (\begin{DoxyParamCaption}\item[{unsigned int}]{rate }\end{DoxyParamCaption})}
+
+
+
+Set the sample rate. 
+
+\hypertarget{classGuitarSynth_autotoc_md39}{}\doxysubsection{$\ast$ @file Guitar\+Synth.\+cpp}\label{classGuitarSynth_autotoc_md39}
+\hypertarget{classGuitarSynth_autotoc_md40}{}\doxysubsection{$\ast$ @brief Implements the Guitar\+Synth class for physical modeling synthesis of guitar sounds.}\label{classGuitarSynth_autotoc_md40}
+\hypertarget{GuitarSynth.cpp_autotoc_md41}{}\doxysubsection{autotoc\+\_\+md41}\label{GuitarSynth.cpp_autotoc_md41}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

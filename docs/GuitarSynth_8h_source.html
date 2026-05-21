@@ -76,45 +76,50 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../strumming/StrummingPattern.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classGuitarSynth.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGuitarSynth.html">GuitarSynth</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classGuitarSynth.html">GuitarSynth</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> setSampleRate(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rate);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> setVolume(<span class="keywordtype">double</span> volume);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> setFilterCoefficient(<span class="keywordtype">double</span> coeff);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> setDecayFactor(<span class="keywordtype">double</span> factor);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// Process a block of audio for a given chord shape and strumming pattern</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> process(<span class="keywordtype">float</span>* out,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nFrames,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                 <span class="keyword">const</span> std::vector&lt;int&gt;&amp; shapeFrets,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                 <span class="keyword">const</span> <a class="code" href="structStrummingPattern.html">StrummingPattern</a>&amp; strummingPattern,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                 <span class="keywordtype">int</span> samplesPerMeasure,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                 <span class="keywordtype">int</span> measureSampleCounter,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                 <span class="keywordtype">int</span> beatsPerBar,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                 <span class="keywordtype">int</span> samplesPerBeat);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> initialize();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sampleRate_ = 48000;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">double</span> volume_ = 1.0;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">double</span> filterCoefficient_ = 0.7; <span class="comment">// For brightness (0.0 = darkest, 1.0 = brightest), higher is brighter</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">double</span> decayFactor_ = 0.99;      <span class="comment">// For decay (0.0 = fastest, 1.0 = slowest)</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Synthesis state</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">bool</span> initialized_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::array&lt;double, 6&gt; detuneRatios_;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::array&lt;int, 6&gt; lastAttackSample_ = {0,0,0,0,0,0};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// Karplus-Strong state</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::array&lt;std::vector&lt;double&gt;, 6&gt; delayLines_;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::array&lt;int, 6&gt; writeIndices_ = {0,0,0,0,0,0};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::array&lt;double, 6&gt; filterState_ = {0,0,0,0,0,0}; <span class="comment">// State for the new filter</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
-<div class="ttc" id="aclassGuitarSynth_html"><div class="ttname"><a href="classGuitarSynth.html">GuitarSynth</a></div><div class="ttdef"><b>Definition:</b> GuitarSynth.h:8</div></div>
-<div class="ttc" id="astructStrummingPattern_html"><div class="ttname"><a href="structStrummingPattern.html">StrummingPattern</a></div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:20</div></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classGuitarSynth.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGuitarSynth.html">GuitarSynth</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classGuitarSynth.html#addca6c1af1c78eff39ca1ae113b6a41a">GuitarSynth</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGuitarSynth.html#a800cadb1f29b580cf5be56fe743bc3f9">setSampleRate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rate);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGuitarSynth.html#a25f75d47f6b0b9e5ed9c6a2e99ea0bf6">setVolume</a>(<span class="keywordtype">double</span> volume);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGuitarSynth.html#a3983fe4414a9e1d16201b49e679134a1">setFilterCoefficient</a>(<span class="keywordtype">double</span> coeff);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGuitarSynth.html#af63ae0b5e1018c41d4f88de8f1bb3ed1">setDecayFactor</a>(<span class="keywordtype">double</span> factor);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGuitarSynth.html#a9da9e18e23c5340a2be44d1b4abe0b10">process</a>(<span class="keywordtype">float</span>* out,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nFrames,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                 <span class="keyword">const</span> std::vector&lt;int&gt;&amp; shapeFrets,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                 <span class="keyword">const</span> <a class="code" href="structStrummingPattern.html">StrummingPattern</a>&amp; strummingPattern,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                 <span class="keywordtype">int</span> samplesPerMeasure,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                 <span class="keywordtype">int</span> measureSampleCounter,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                 <span class="keywordtype">int</span> beatsPerBar,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                 <span class="keywordtype">int</span> samplesPerBeat);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> initialize();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sampleRate_ = 48000; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">double</span> volume_ = 1.0; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">double</span> filterCoefficient_ = 0.7; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">double</span> decayFactor_ = 0.99; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Synthesis state</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">bool</span> initialized_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::array&lt;double, 6&gt; detuneRatios_;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::array&lt;int, 6&gt; lastAttackSample_ = {0,0,0,0,0,0};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Karplus-Strong state</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::array&lt;std::vector&lt;double&gt;, 6&gt; delayLines_;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::array&lt;int, 6&gt; writeIndices_ = {0,0,0,0,0,0};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::array&lt;double, 6&gt; filterState_ = {0,0,0,0,0,0}; <span class="comment">// State for the new filter</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="ttc" id="aclassGuitarSynth_html"><div class="ttname"><a href="classGuitarSynth.html">GuitarSynth</a></div><div class="ttdoc">Physical modeling guitar synthesizer using Karplus-Strong algorithm.</div><div class="ttdef"><b>Definition:</b> GuitarSynth.h:11</div></div>
+<div class="ttc" id="aclassGuitarSynth_html_a25f75d47f6b0b9e5ed9c6a2e99ea0bf6"><div class="ttname"><a href="classGuitarSynth.html#a25f75d47f6b0b9e5ed9c6a2e99ea0bf6">GuitarSynth::setVolume</a></div><div class="ttdeci">void setVolume(double volume)</div><div class="ttdoc">Set the output volume.</div><div class="ttdef"><b>Definition:</b> GuitarSynth.cpp:29</div></div>
+<div class="ttc" id="aclassGuitarSynth_html_a3983fe4414a9e1d16201b49e679134a1"><div class="ttname"><a href="classGuitarSynth.html#a3983fe4414a9e1d16201b49e679134a1">GuitarSynth::setFilterCoefficient</a></div><div class="ttdeci">void setFilterCoefficient(double coeff)</div><div class="ttdoc">Set the filter coefficient (brightness).</div><div class="ttdef"><b>Definition:</b> GuitarSynth.cpp:33</div></div>
+<div class="ttc" id="aclassGuitarSynth_html_a800cadb1f29b580cf5be56fe743bc3f9"><div class="ttname"><a href="classGuitarSynth.html#a800cadb1f29b580cf5be56fe743bc3f9">GuitarSynth::setSampleRate</a></div><div class="ttdeci">void setSampleRate(unsigned int rate)</div><div class="ttdoc">Set the sample rate.</div><div class="ttdef"><b>Definition:</b> GuitarSynth.cpp:25</div></div>
+<div class="ttc" id="aclassGuitarSynth_html_a9da9e18e23c5340a2be44d1b4abe0b10"><div class="ttname"><a href="classGuitarSynth.html#a9da9e18e23c5340a2be44d1b4abe0b10">GuitarSynth::process</a></div><div class="ttdeci">void process(float *out, unsigned int nFrames, const std::vector&lt; int &gt; &amp;shapeFrets, const StrummingPattern &amp;strummingPattern, int samplesPerMeasure, int measureSampleCounter, int beatsPerBar, int samplesPerBeat)</div><div class="ttdoc">Process a block of audio for a given chord shape and strumming pattern.</div><div class="ttdef"><b>Definition:</b> GuitarSynth.cpp:52</div></div>
+<div class="ttc" id="aclassGuitarSynth_html_addca6c1af1c78eff39ca1ae113b6a41a"><div class="ttname"><a href="classGuitarSynth.html#addca6c1af1c78eff39ca1ae113b6a41a">GuitarSynth::GuitarSynth</a></div><div class="ttdeci">GuitarSynth()</div><div class="ttdoc">Construct a GuitarSynth.</div><div class="ttdef"><b>Definition:</b> GuitarSynth.cpp:17</div></div>
+<div class="ttc" id="aclassGuitarSynth_html_af63ae0b5e1018c41d4f88de8f1bb3ed1"><div class="ttname"><a href="classGuitarSynth.html#af63ae0b5e1018c41d4f88de8f1bb3ed1">GuitarSynth::setDecayFactor</a></div><div class="ttdeci">void setDecayFactor(double factor)</div><div class="ttdoc">Set the decay factor.</div><div class="ttdef"><b>Definition:</b> GuitarSynth.cpp:37</div></div>
+<div class="ttc" id="astructStrummingPattern_html"><div class="ttname"><a href="structStrummingPattern.html">StrummingPattern</a></div><div class="ttdoc">Represents a strumming pattern for guitar.</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

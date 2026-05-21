@@ -1,3 +1,7 @@
+#/**
+# * @file Chorus.cpp
+# * @brief Implements the Chorus audio effect for thickening and modulating sound.
+# */
 #include "effects/Chorus.h"
 #include <cmath>
 

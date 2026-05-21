@@ -2,13 +2,20 @@
 #include <QWidget>
 #include <QColor>
 
+/**
+ * @brief Widget for visualizing beats in a measure.
+ */
 class BeatVisualizerWidget : public QWidget {
     Q_OBJECT
 public:
+    /** @brief Construct a BeatVisualizerWidget. */
     BeatVisualizerWidget(QWidget *parent = nullptr);
+    /** @brief Set the number of beats per bar. */
     void setBeatsPerBar(int beats);
+    /** @brief Set the current beat index. */
     void setCurrentBeat(int beatIdx);
 protected:
+    /** @brief Paint the beat visualization. */
     void paintEvent(QPaintEvent *event) override;
 private:
     int beatsPerBar = 4;

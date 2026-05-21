@@ -1,3 +1,8 @@
+#/**
+# * @file Delay.cpp
+# * @brief Implements the Delay audio effect for echo and time-based modulation.
+# */
+# 
 #include "effects/Delay.h"
 #include <algorithm>
 

@@ -1,38 +1,52 @@
 \hypertarget{classChordAudioEngine}{}\doxysection{Chord\+Audio\+Engine Class Reference}
 \label{classChordAudioEngine}\index{ChordAudioEngine@{ChordAudioEngine}}
+
+
+Handles audio synthesis and FX for chord progressions.  
+
+
+
+
+{\ttfamily \#include $<$Chord\+Audio\+Engine.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classChordAudioEngine_a943ad11d75a82f656ceffed4e1464262}\label{classChordAudioEngine_a943ad11d75a82f656ceffed4e1464262}} 
+\mbox{\hyperlink{classChordAudioEngine_a943ad11d75a82f656ceffed4e1464262}{Chord\+Audio\+Engine}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classChordAudioEngine}{Chord\+Audio\+Engine}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classChordAudioEngine_afc336f6e0f88206fdd4d03a7e69b3037}\label{classChordAudioEngine_afc336f6e0f88206fdd4d03a7e69b3037}} 
+\mbox{\hyperlink{classChordAudioEngine_afc336f6e0f88206fdd4d03a7e69b3037}{$\sim$\+Chord\+Audio\+Engine}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a21bf58d0fe67accd7486e76d0f29c8dc}\label{classChordAudioEngine_a21bf58d0fe67accd7486e76d0f29c8dc}} 
-void {\bfseries set\+Progression} (const \mbox{\hyperlink{classChordProgression}{Chord\+Progression}} \&progression)
-\item 
+void \mbox{\hyperlink{classChordAudioEngine_a21bf58d0fe67accd7486e76d0f29c8dc}{set\+Progression}} (const \mbox{\hyperlink{classChordProgression}{Chord\+Progression}} \&progression)
+\begin{DoxyCompactList}\small\item\em Set the chord progression to play. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a24e1074548416594a5a47f9bd6c4e845}\label{classChordAudioEngine_a24e1074548416594a5a47f9bd6c4e845}} 
-void {\bfseries set\+Bpm} (double bpm)
-\item 
+void \mbox{\hyperlink{classChordAudioEngine_a24e1074548416594a5a47f9bd6c4e845}{set\+Bpm}} (double bpm)
+\begin{DoxyCompactList}\small\item\em Set the tempo in BPM. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a147a7ca261ec576306d32a3ecfc8ce0f}\label{classChordAudioEngine_a147a7ca261ec576306d32a3ecfc8ce0f}} 
-void {\bfseries set\+Sample\+Rate} (unsigned int rate)
-\item 
+void \mbox{\hyperlink{classChordAudioEngine_a147a7ca261ec576306d32a3ecfc8ce0f}{set\+Sample\+Rate}} (unsigned int rate)
+\begin{DoxyCompactList}\small\item\em Set the audio sample rate. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a061e4aeb65fa6e79260c8083b6fd61ca}\label{classChordAudioEngine_a061e4aeb65fa6e79260c8083b6fd61ca}} 
-void {\bfseries start} ()
-\item 
+void \mbox{\hyperlink{classChordAudioEngine_a061e4aeb65fa6e79260c8083b6fd61ca}{start}} ()
+\begin{DoxyCompactList}\small\item\em Start audio playback. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a5cdb47ed59db2adb4468e40d787e8311}\label{classChordAudioEngine_a5cdb47ed59db2adb4468e40d787e8311}} 
-void {\bfseries stop} ()
-\item 
+void \mbox{\hyperlink{classChordAudioEngine_a5cdb47ed59db2adb4468e40d787e8311}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Stop audio playback. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_afa7e2f887fd49e15360d68c56e43207d}\label{classChordAudioEngine_afa7e2f887fd49e15360d68c56e43207d}} 
-bool {\bfseries is\+Running} () const
-\item 
+bool \mbox{\hyperlink{classChordAudioEngine_afa7e2f887fd49e15360d68c56e43207d}{is\+Running}} () const
+\begin{DoxyCompactList}\small\item\em Check if audio is running. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a5cfb5d013aa540c9d381a0723791d23a}\label{classChordAudioEngine_a5cfb5d013aa540c9d381a0723791d23a}} 
-void {\bfseries set\+Metronome} (class \mbox{\hyperlink{classMetronome}{Metronome}} $\ast$m)
-\item 
-\mbox{\Hypertarget{classChordAudioEngine_aa4f8ae7358c2c890c06db65e76c4f1b2}\label{classChordAudioEngine_aa4f8ae7358c2c890c06db65e76c4f1b2}} 
-void {\bfseries set\+Chord\+Change\+Callback} (std\+::function$<$ void(const std\+::string \&)$>$ cb)
-\item 
+void \mbox{\hyperlink{classChordAudioEngine_a5cfb5d013aa540c9d381a0723791d23a}{set\+Metronome}} (class \mbox{\hyperlink{classMetronome}{Metronome}} $\ast$m)
+\begin{DoxyCompactList}\small\item\em Set the metronome instance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordAudioEngine_aa4f8ae7358c2c890c06db65e76c4f1b2}{set\+Chord\+Change\+Callback}} (std\+::function$<$ void(const std\+::string \&)$>$ cb)
+\begin{DoxyCompactList}\small\item\em Set a callback for chord changes. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a6bed9767c9a6584b925b90a528943956}\label{classChordAudioEngine_a6bed9767c9a6584b925b90a528943956}} 
-void {\bfseries set\+Volume} (double v)
-\item 
+void \mbox{\hyperlink{classChordAudioEngine_a6bed9767c9a6584b925b90a528943956}{set\+Volume}} (double v)
+\begin{DoxyCompactList}\small\item\em Set the chord playback volume. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_ab9683b59960923c6f5993dac1cf0fc96}\label{classChordAudioEngine_ab9683b59960923c6f5993dac1cf0fc96}} 
-double {\bfseries get\+Volume} () const
-\item 
+double \mbox{\hyperlink{classChordAudioEngine_ab9683b59960923c6f5993dac1cf0fc96}{get\+Volume}} () const
+\begin{DoxyCompactList}\small\item\em Get the chord playback volume. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classChordAudioEngine_a38addc21181c7467b36f94116c28ba91}\label{classChordAudioEngine_a38addc21181c7467b36f94116c28ba91}} 
 void {\bfseries set\+Reverb\+Mix} (float mix)
 \item 
@@ -138,6 +152,27 @@ void {\bfseries set\+Strumming\+Pattern} (const \mbox{\hyperlink{structStrumming
 \mbox{\Hypertarget{classChordAudioEngine_adb49111e12582a636f7036c02e2084c7}\label{classChordAudioEngine_adb49111e12582a636f7036c02e2084c7}} 
 const \mbox{\hyperlink{structStrummingPattern}{Strumming\+Pattern}} \& {\bfseries get\+Strumming\+Pattern} () const
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles audio synthesis and FX for chord progressions. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classChordAudioEngine_aa4f8ae7358c2c890c06db65e76c4f1b2}\label{classChordAudioEngine_aa4f8ae7358c2c890c06db65e76c4f1b2}} 
+\index{ChordAudioEngine@{ChordAudioEngine}!setChordChangeCallback@{setChordChangeCallback}}
+\index{setChordChangeCallback@{setChordChangeCallback}!ChordAudioEngine@{ChordAudioEngine}}
+\doxysubsubsection{\texorpdfstring{setChordChangeCallback()}{setChordChangeCallback()}}
+{\footnotesize\ttfamily void Chord\+Audio\+Engine\+::set\+Chord\+Change\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const std\+::string \&)$>$}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a callback for chord changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cb} & Callback function called with chord name at every chord change. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

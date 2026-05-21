@@ -1,5 +1,11 @@
 #include "effects/Phaser.h"
 #include <cmath>
+#/**
+# * @file Phaser.cpp
+# * @brief Implements the Phaser audio effect for sweeping phase modulation.
+# */
+#include "effects/Phaser.h"
+#include <cmath>
 
 constexpr float PI = 3.14159265358979323846f;
 

@@ -4,10 +4,18 @@
 #include <complex>
 #include <cmath>
 
+/**
+ * @file fft.h
+ * @brief Fast Fourier Transform (FFT) utilities.
+ */
+
 namespace FFT {
     constexpr float PI = 3.14159265358979323846f;
 
-    // Basic Radix-2 Cooley-Tukey FFT
+    /**
+     * @brief Basic Radix-2 Cooley-Tukey FFT in-place transform.
+     * @param data Vector of complex samples (modified in-place).
+     */
     inline void transform(std::vector<std::complex<float>>& data) {
         const size_t N = data.size();
         if (N <= 1) return;

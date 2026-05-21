@@ -79,7 +79,7 @@ Inheritance diagram for Chorus:</div>
 <div class="center"><img src="classChorus__inherit__graph.png" border="0" usemap="#aChorus_inherit__map" alt="Inheritance graph"/></div>
 <map name="aChorus_inherit__map" id="aChorus_inherit__map">
 <area shape="rect" title="Chorus effect." alt="" coords="20,80,87,107"/>
-<area shape="rect" href="classAudioEffect.html" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" href="classAudioEffect.html" title="Abstract base class for audio effects." alt="" coords="5,5,101,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -88,7 +88,7 @@ Collaboration diagram for Chorus:</div>
 <div class="center"><img src="classChorus__coll__graph.png" border="0" usemap="#aChorus_coll__map" alt="Collaboration graph"/></div>
 <map name="aChorus_coll__map" id="aChorus_coll__map">
 <area shape="rect" title="Chorus effect." alt="" coords="20,80,87,107"/>
-<area shape="rect" href="classAudioEffect.html" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" href="classAudioEffect.html" title="Abstract base class for audio effects." alt="" coords="5,5,101,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -123,8 +123,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a8dc28c0fc97b09d444ad0b5ae8b9388c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the wet/dry mix (0.0 = dry, 1.0 = wet). <br /></td></tr>
 <tr class="separator:a8dc28c0fc97b09d444ad0b5ae8b9388c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAudioEffect"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classAudioEffect')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAudioEffect.html">AudioEffect</a></td></tr>
+<tr class="memitem:ac5ffba4b85dff14dec78bed476c632d2 inherit pub_methods_classAudioEffect"><td class="memItemLeft" align="right" valign="top"><a id="ac5ffba4b85dff14dec78bed476c632d2"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioEffect.html#ac5ffba4b85dff14dec78bed476c632d2">~AudioEffect</a> ()=default</td></tr>
+<tr class="memdesc:ac5ffba4b85dff14dec78bed476c632d2 inherit pub_methods_classAudioEffect"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
+<tr class="separator:ac5ffba4b85dff14dec78bed476c632d2 inherit pub_methods_classAudioEffect"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f27cad1b4774d8e6acc7e3c57fd18bc inherit pub_methods_classAudioEffect"><td class="memItemLeft" align="right" valign="top"><a id="a1f27cad1b4774d8e6acc7e3c57fd18bc"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (float *buffer, int numSamples)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioEffect.html#a1f27cad1b4774d8e6acc7e3c57fd18bc">process</a> (float *buffer, int numSamples)</td></tr>
+<tr class="memdesc:a1f27cad1b4774d8e6acc7e3c57fd18bc inherit pub_methods_classAudioEffect"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a buffer of audio samples. <br /></td></tr>
 <tr class="separator:a1f27cad1b4774d8e6acc7e3c57fd18bc inherit pub_methods_classAudioEffect"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

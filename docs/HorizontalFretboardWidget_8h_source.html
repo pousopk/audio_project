@@ -76,19 +76,22 @@ $(function() {
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../include/GuitarChordShape.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classHorizontalFretboardWidget.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHorizontalFretboardWidget.html">HorizontalFretboardWidget</a> : <span class="keyword">public</span> QWidget {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classHorizontalFretboardWidget.html">HorizontalFretboardWidget</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> setChordInversions(<span class="keyword">const</span> std::vector&lt;GuitarChordShape&gt;&amp; inversions);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">void</span> paintEvent(QPaintEvent* event) <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::vector&lt;GuitarChordShape&gt; chordInversions;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> numFrets = 24;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> numStrings = 6;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
-<div class="ttc" id="aclassHorizontalFretboardWidget_html"><div class="ttname"><a href="classHorizontalFretboardWidget.html">HorizontalFretboardWidget</a></div><div class="ttdef"><b>Definition:</b> HorizontalFretboardWidget.h:8</div></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classHorizontalFretboardWidget.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHorizontalFretboardWidget.html">HorizontalFretboardWidget</a> : <span class="keyword">public</span> QWidget {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classHorizontalFretboardWidget.html#a42151c18942ed6bac3ac2615a3f7d8c5">HorizontalFretboardWidget</a>(QWidget* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHorizontalFretboardWidget.html#af029f96ee34d50819e8b801f0e7fd642">setChordInversions</a>(<span class="keyword">const</span> std::vector&lt;GuitarChordShape&gt;&amp; inversions);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHorizontalFretboardWidget.html#ad0d2e439dc6afc56ef0d59cbc85d9237">paintEvent</a>(QPaintEvent* event) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::vector&lt;GuitarChordShape&gt; chordInversions;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> numFrets = 24;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">int</span> numStrings = 6;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="ttc" id="aclassHorizontalFretboardWidget_html"><div class="ttname"><a href="classHorizontalFretboardWidget.html">HorizontalFretboardWidget</a></div><div class="ttdoc">Widget for displaying horizontal guitar fretboard and chord inversions.</div><div class="ttdef"><b>Definition:</b> HorizontalFretboardWidget.h:11</div></div>
+<div class="ttc" id="aclassHorizontalFretboardWidget_html_a42151c18942ed6bac3ac2615a3f7d8c5"><div class="ttname"><a href="classHorizontalFretboardWidget.html#a42151c18942ed6bac3ac2615a3f7d8c5">HorizontalFretboardWidget::HorizontalFretboardWidget</a></div><div class="ttdeci">HorizontalFretboardWidget(QWidget *parent=nullptr)</div><div class="ttdoc">Construct a HorizontalFretboardWidget.</div><div class="ttdef"><b>Definition:</b> HorizontalFretboardWidget.cpp:8</div></div>
+<div class="ttc" id="aclassHorizontalFretboardWidget_html_ad0d2e439dc6afc56ef0d59cbc85d9237"><div class="ttname"><a href="classHorizontalFretboardWidget.html#ad0d2e439dc6afc56ef0d59cbc85d9237">HorizontalFretboardWidget::paintEvent</a></div><div class="ttdeci">void paintEvent(QPaintEvent *event) override</div><div class="ttdoc">Paint the fretboard and chord shapes.</div><div class="ttdef"><b>Definition:</b> HorizontalFretboardWidget.cpp:18</div></div>
+<div class="ttc" id="aclassHorizontalFretboardWidget_html_af029f96ee34d50819e8b801f0e7fd642"><div class="ttname"><a href="classHorizontalFretboardWidget.html#af029f96ee34d50819e8b801f0e7fd642">HorizontalFretboardWidget::setChordInversions</a></div><div class="ttdeci">void setChordInversions(const std::vector&lt; GuitarChordShape &gt; &amp;inversions)</div><div class="ttdoc">Set the chord inversions to display.</div><div class="ttdef"><b>Definition:</b> HorizontalFretboardWidget.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

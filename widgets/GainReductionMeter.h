@@ -2,13 +2,19 @@
 
 #include <QWidget>
 
+/**
+ * @brief Widget for displaying compressor gain reduction in dB.
+ */
 class GainReductionMeter : public QWidget {
     Q_OBJECT
 public:
+    /** @brief Construct a GainReductionMeter. */
     explicit GainReductionMeter(QWidget* parent = nullptr);
-    void setGainReduction(float db); // Value in dB, should be <= 0
+    /** @brief Set the gain reduction value in dB (should be <= 0). */
+    void setGainReduction(float db);
 
 protected:
+    /** @brief Paint the gain reduction meter. */
     void paintEvent(QPaintEvent* event) override;
 
 private:

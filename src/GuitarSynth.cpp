@@ -17,6 +17,10 @@ static double midiToFreq(int midi) {
 GuitarSynth::GuitarSynth() {
     initialize();
 }
+#/**
+# * @file GuitarSynth.cpp
+# * @brief Implements the GuitarSynth class for physical modeling synthesis of guitar sounds.
+# */
 
 void GuitarSynth::setSampleRate(unsigned int rate) {
     sampleRate_ = rate;

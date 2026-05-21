@@ -1,0 +1,52 @@
+\hypertarget{fft_8h}{}\doxysection{utils/fft.h File Reference}
+\label{fft_8h}\index{utils/fft.h@{utils/fft.h}}
+
+
+Fast Fourier Transform (FFT) utilities.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+Include dependency graph for fft.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{fft_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fft_8h_ac83891db77d57f9c6ae9291d01a75a87}{FFT\+::transform}} (std\+::vector$<$ std\+::complex$<$ float $>$$>$ \&data)
+\begin{DoxyCompactList}\small\item\em Basic Radix-\/2 Cooley-\/\+Tukey FFT in-\/place transform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{fft_8h_adaa4f4b940f97aee2049eea83db1e555}\label{fft_8h_adaa4f4b940f97aee2049eea83db1e555}} 
+constexpr float {\bfseries FFT\+::\+PI} = 3.\+14159265358979323846f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fast Fourier Transform (FFT) utilities. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{fft_8h_ac83891db77d57f9c6ae9291d01a75a87}\label{fft_8h_ac83891db77d57f9c6ae9291d01a75a87}} 
+\index{fft.h@{fft.h}!transform@{transform}}
+\index{transform@{transform}!fft.h@{fft.h}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily void FFT\+::transform (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::complex$<$ float $>$$>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Basic Radix-\/2 Cooley-\/\+Tukey FFT in-\/place transform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Vector of complex samples (modified in-\/place). \\
+\hline
+\end{DoxyParams}

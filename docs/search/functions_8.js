@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reverb_137',['Reverb',['../classReverb.html#a765b925557df7e43bf5ed275fc6950d1',1,'Reverb']]]
+  ['isrunning_259',['isRunning',['../classChordAudioEngine.html#afa7e2f887fd49e15360d68c56e43207d',1,'ChordAudioEngine::isRunning()'],['../classMetronome.html#ab64cd8102274c84cefe3fcca2ce09b5c',1,'Metronome::isRunning()']]]
 ];

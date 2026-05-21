@@ -1,12 +1,19 @@
 var searchData=
 [
-  ['chordaudioengine_4',['ChordAudioEngine',['../classChordAudioEngine.html',1,'']]],
-  ['chordchange_5',['ChordChange',['../structChordChange.html',1,'']]],
-  ['chordprogression_6',['ChordProgression',['../classChordProgression.html',1,'']]],
-  ['chordprogressionmanager_7',['ChordProgressionManager',['../classChordProgressionManager.html',1,'']]],
-  ['chordprogressionwidget_8',['ChordProgressionWidget',['../classChordProgressionWidget.html',1,'']]],
-  ['chordtrackwidget_9',['ChordTrackWidget',['../classChordTrackWidget.html',1,'']]],
-  ['chorus_10',['Chorus',['../classChorus.html',1,'Chorus'],['../classChorus.html#a125a7aa1daf841c2da11450b0c79b51b',1,'Chorus::Chorus()']]],
-  ['colorlegendswith_11',['ColorLegendsWith',['../classColorLegendsWith.html',1,'']]],
-  ['compressor_12',['Compressor',['../classCompressor.html',1,'Compressor'],['../classCompressor.html#a8a728ed1544cc0f82e8390f4606026b0',1,'Compressor::Compressor()']]]
+  ['chordaudioengine_8',['ChordAudioEngine',['../classChordAudioEngine.html',1,'ChordAudioEngine'],['../classChordAudioEngine.html#a943ad11d75a82f656ceffed4e1464262',1,'ChordAudioEngine::ChordAudioEngine()']]],
+  ['chordchange_9',['ChordChange',['../structChordChange.html',1,'']]],
+  ['chordname_10',['chordName',['../structNoteMap.html#a79d49e5b7c1485a79823c45a3817d667',1,'NoteMap::chordName()'],['../structChordChange.html#a58e69def179d8eaa9b38dd8254d40494',1,'ChordChange::chordName()']]],
+  ['chordprogression_11',['ChordProgression',['../classChordProgression.html',1,'']]],
+  ['chordprogression_2ecpp_12',['ChordProgression.cpp',['../ChordProgression_8cpp.html',1,'']]],
+  ['chordprogressionmanager_13',['ChordProgressionManager',['../classChordProgressionManager.html',1,'ChordProgressionManager'],['../classChordProgressionManager.html#a1402b4baa9e6715bb07016ac8956cfc3',1,'ChordProgressionManager::ChordProgressionManager()']]],
+  ['chordprogressionwidget_14',['ChordProgressionWidget',['../classChordProgressionWidget.html',1,'ChordProgressionWidget'],['../classChordProgressionWidget.html#ae0e21850e69869f63a5ddaef5eb7cc87',1,'ChordProgressionWidget::ChordProgressionWidget()']]],
+  ['chordtones_15',['chordTones',['../structNoteMap.html#aecd9fcb13aabb7328ec036f8e789cd16',1,'NoteMap']]],
+  ['chordtrackwidget_16',['ChordTrackWidget',['../classChordTrackWidget.html',1,'ChordTrackWidget'],['../classChordTrackWidget.html#a3a2d172c1f2b69816342102c97d1449e',1,'ChordTrackWidget::ChordTrackWidget()']]],
+  ['chordtypes_17',['chordTypes',['../structScaleDefinition.html#a59925bcb46f549c1e06f2c2306e3882d',1,'ScaleDefinition']]],
+  ['chorus_18',['Chorus',['../classChorus.html',1,'Chorus'],['../classChorus.html#a125a7aa1daf841c2da11450b0c79b51b',1,'Chorus::Chorus()']]],
+  ['clear_19',['clear',['../classChordProgression.html#a668129a346b960ec771e483e9f542be0',1,'ChordProgression::clear()'],['../classChordProgressionManager.html#a9739087ea5fee7a54359a2fc373c7162',1,'ChordProgressionManager::clear()']]],
+  ['colorlegendswith_20',['ColorLegendsWith',['../classColorLegendsWith.html',1,'ColorLegendsWith'],['../classColorLegendsWith.html#ad4bdcc8812ed462a4f2c754b96e28361',1,'ColorLegendsWith::ColorLegendsWith()']]],
+  ['compressor_21',['Compressor',['../classCompressor.html',1,'Compressor'],['../classCompressor.html#a8a728ed1544cc0f82e8390f4606026b0',1,'Compressor::Compressor()']]],
+  ['currentitemtext_22',['currentItemText',['../classFXChainWidget.html#a0dbe52e69a0c579f9caab4e8aae4b084',1,'FXChainWidget']]],
+  ['currentrow_23',['currentRow',['../classFXChainWidget.html#a994fca944526b9cd933a321dd518d18b',1,'FXChainWidget']]]
 ];

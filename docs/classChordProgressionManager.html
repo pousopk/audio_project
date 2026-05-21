@@ -68,37 +68,299 @@ $(function() {
 <div class="title">ChordProgressionManager Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages chord progressions, including saving/loading and standard progressions.  
+ <a href="classChordProgressionManager.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ChordProgressionManager_8h_source.html">ChordProgressionManager.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2eb2f816f08d50e7b08f533ba30b18f7"><td class="memItemLeft" align="right" valign="top"><a id="a2eb2f816f08d50e7b08f533ba30b18f7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addChord</b> (const QString &amp;chordName, int bars, int strummingPatternIndex=0)</td></tr>
+<tr class="memitem:a1402b4baa9e6715bb07016ac8956cfc3"><td class="memItemLeft" align="right" valign="top"><a id="a1402b4baa9e6715bb07016ac8956cfc3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#a1402b4baa9e6715bb07016ac8956cfc3">ChordProgressionManager</a> ()</td></tr>
+<tr class="memdesc:a1402b4baa9e6715bb07016ac8956cfc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="classChordProgressionManager.html" title="Manages chord progressions, including saving/loading and standard progressions.">ChordProgressionManager</a>. <br /></td></tr>
+<tr class="separator:a1402b4baa9e6715bb07016ac8956cfc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb2f816f08d50e7b08f533ba30b18f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#a2eb2f816f08d50e7b08f533ba30b18f7">addChord</a> (const QString &amp;chordName, int bars, int strummingPatternIndex=0)</td></tr>
+<tr class="memdesc:a2eb2f816f08d50e7b08f533ba30b18f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a chord to the progression.  <a href="classChordProgressionManager.html#a2eb2f816f08d50e7b08f533ba30b18f7">More...</a><br /></td></tr>
 <tr class="separator:a2eb2f816f08d50e7b08f533ba30b18f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e83cebac429e7648511a5820e71dfad"><td class="memItemLeft" align="right" valign="top"><a id="a5e83cebac429e7648511a5820e71dfad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeChord</b> (int index)</td></tr>
+<tr class="memitem:a5e83cebac429e7648511a5820e71dfad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#a5e83cebac429e7648511a5820e71dfad">removeChord</a> (int index)</td></tr>
+<tr class="memdesc:a5e83cebac429e7648511a5820e71dfad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a chord at the given index.  <a href="classChordProgressionManager.html#a5e83cebac429e7648511a5820e71dfad">More...</a><br /></td></tr>
 <tr class="separator:a5e83cebac429e7648511a5820e71dfad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9739087ea5fee7a54359a2fc373c7162"><td class="memItemLeft" align="right" valign="top"><a id="a9739087ea5fee7a54359a2fc373c7162"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+<tr class="memitem:a9739087ea5fee7a54359a2fc373c7162"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#a9739087ea5fee7a54359a2fc373c7162">clear</a> ()</td></tr>
+<tr class="memdesc:a9739087ea5fee7a54359a2fc373c7162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the progression.  <a href="classChordProgressionManager.html#a9739087ea5fee7a54359a2fc373c7162">More...</a><br /></td></tr>
 <tr class="separator:a9739087ea5fee7a54359a2fc373c7162"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0f133472a5dbfd0c20a484e660d0911"><td class="memItemLeft" align="right" valign="top"><a id="af0f133472a5dbfd0c20a484e660d0911"></a>
-QVector&lt; <a class="el" href="structChordChange.html">ChordChange</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getProgression</b> () const</td></tr>
+<tr class="memitem:af0f133472a5dbfd0c20a484e660d0911"><td class="memItemLeft" align="right" valign="top">QVector&lt; <a class="el" href="structChordChange.html">ChordChange</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#af0f133472a5dbfd0c20a484e660d0911">getProgression</a> () const</td></tr>
+<tr class="memdesc:af0f133472a5dbfd0c20a484e660d0911"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current progression.  <a href="classChordProgressionManager.html#af0f133472a5dbfd0c20a484e660d0911">More...</a><br /></td></tr>
 <tr class="separator:af0f133472a5dbfd0c20a484e660d0911"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af748f9f978a6265d13be68bba5ce92c5"><td class="memItemLeft" align="right" valign="top"><a id="af748f9f978a6265d13be68bba5ce92c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>saveProgression</b> (const QString &amp;name)</td></tr>
+<tr class="memitem:af748f9f978a6265d13be68bba5ce92c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#af748f9f978a6265d13be68bba5ce92c5">saveProgression</a> (const QString &amp;name)</td></tr>
+<tr class="memdesc:af748f9f978a6265d13be68bba5ce92c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the progression by name.  <a href="classChordProgressionManager.html#af748f9f978a6265d13be68bba5ce92c5">More...</a><br /></td></tr>
 <tr class="separator:af748f9f978a6265d13be68bba5ce92c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa1f936760586057a83f99ccea8a71b9"><td class="memItemLeft" align="right" valign="top"><a id="afa1f936760586057a83f99ccea8a71b9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadProgression</b> (const QString &amp;name)</td></tr>
+<tr class="memitem:afa1f936760586057a83f99ccea8a71b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#afa1f936760586057a83f99ccea8a71b9">loadProgression</a> (const QString &amp;name)</td></tr>
+<tr class="memdesc:afa1f936760586057a83f99ccea8a71b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a progression by name.  <a href="classChordProgressionManager.html#afa1f936760586057a83f99ccea8a71b9">More...</a><br /></td></tr>
 <tr class="separator:afa1f936760586057a83f99ccea8a71b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3a94d5c97a0ac65ba1ff1b1d8a45d8c"><td class="memItemLeft" align="right" valign="top"><a id="ab3a94d5c97a0ac65ba1ff1b1d8a45d8c"></a>
-QStringList&#160;</td><td class="memItemRight" valign="bottom"><b>listSavedProgressions</b> () const</td></tr>
+<tr class="memitem:ab3a94d5c97a0ac65ba1ff1b1d8a45d8c"><td class="memItemLeft" align="right" valign="top">QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#ab3a94d5c97a0ac65ba1ff1b1d8a45d8c">listSavedProgressions</a> () const</td></tr>
+<tr class="memdesc:ab3a94d5c97a0ac65ba1ff1b1d8a45d8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">List all saved progressions.  <a href="classChordProgressionManager.html#ab3a94d5c97a0ac65ba1ff1b1d8a45d8c">More...</a><br /></td></tr>
 <tr class="separator:ab3a94d5c97a0ac65ba1ff1b1d8a45d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a469bac3003460d35b848a4a7e630a433"><td class="memItemLeft" align="right" valign="top"><a id="a469bac3003460d35b848a4a7e630a433"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setStandardProgression</b> (const QString &amp;standardName, int strummingPatternIndex)</td></tr>
+<tr class="memitem:a469bac3003460d35b848a4a7e630a433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#a469bac3003460d35b848a4a7e630a433">setStandardProgression</a> (const QString &amp;standardName, int strummingPatternIndex)</td></tr>
+<tr class="memdesc:a469bac3003460d35b848a4a7e630a433"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a standard progression (e.g., I-IV-V).  <a href="classChordProgressionManager.html#a469bac3003460d35b848a4a7e630a433">More...</a><br /></td></tr>
 <tr class="separator:a469bac3003460d35b848a4a7e630a433"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa64adf7c4385bf2cb8ee09c5a398cb2f"><td class="memItemLeft" align="right" valign="top"><a id="aa64adf7c4385bf2cb8ee09c5a398cb2f"></a>
-QStringList&#160;</td><td class="memItemRight" valign="bottom"><b>standardProgressionNames</b> () const</td></tr>
+<tr class="memitem:aa64adf7c4385bf2cb8ee09c5a398cb2f"><td class="memItemLeft" align="right" valign="top">QStringList&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgressionManager.html#aa64adf7c4385bf2cb8ee09c5a398cb2f">standardProgressionNames</a> () const</td></tr>
+<tr class="memdesc:aa64adf7c4385bf2cb8ee09c5a398cb2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all available standard progression names.  <a href="classChordProgressionManager.html#aa64adf7c4385bf2cb8ee09c5a398cb2f">More...</a><br /></td></tr>
 <tr class="separator:aa64adf7c4385bf2cb8ee09c5a398cb2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages chord progressions, including saving/loading and standard progressions. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2eb2f816f08d50e7b08f533ba30b18f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eb2f816f08d50e7b08f533ba30b18f7">&#9670;&nbsp;</a></span>addChord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgressionManager::addChord </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>chordName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bars</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>strummingPatternIndex</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a chord to the progression. </p>
+<p>Add a chord to the current progression.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chordName</td><td>Name of the chord. </td></tr>
+    <tr><td class="paramname">bars</td><td>Number of bars to play. </td></tr>
+    <tr><td class="paramname">strummingPatternIndex</td><td>Strumming pattern index.</td></tr>
+    <tr><td class="paramname">chordName</td><td>Name of the chord. </td></tr>
+    <tr><td class="paramname">bars</td><td>Number of bars for the chord. </td></tr>
+    <tr><td class="paramname">strummingPatternIndex</td><td>Index of the strumming pattern. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9739087ea5fee7a54359a2fc373c7162"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9739087ea5fee7a54359a2fc373c7162">&#9670;&nbsp;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgressionManager::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear the progression. </p>
+<p>Clear the current chord progression. </p>
+
+</div>
+</div>
+<a id="af0f133472a5dbfd0c20a484e660d0911"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0f133472a5dbfd0c20a484e660d0911">&#9670;&nbsp;</a></span>getProgression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVector&lt; <a class="el" href="structChordChange.html">ChordChange</a> &gt; ChordProgressionManager::getProgression </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current progression. </p>
+<p>Get the current chord progression.</p>
+<dl class="section return"><dt>Returns</dt><dd>QVector of <a class="el" href="structChordChange.html" title="Represents a chord change in a progression.">ChordChange</a>. </dd></dl>
+
+</div>
+</div>
+<a id="ab3a94d5c97a0ac65ba1ff1b1d8a45d8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3a94d5c97a0ac65ba1ff1b1d8a45d8c">&#9670;&nbsp;</a></span>listSavedProgressions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QStringList ChordProgressionManager::listSavedProgressions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List all saved progressions. </p>
+<p>List all saved progression names.</p>
+<dl class="section return"><dt>Returns</dt><dd>QStringList of saved progression names. </dd></dl>
+
+</div>
+</div>
+<a id="afa1f936760586057a83f99ccea8a71b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa1f936760586057a83f99ccea8a71b9">&#9670;&nbsp;</a></span>loadProgression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgressionManager::loadProgression </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load a progression by name. </p>
+<p>Load a saved progression by name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name of the saved progression. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5e83cebac429e7648511a5820e71dfad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e83cebac429e7648511a5820e71dfad">&#9670;&nbsp;</a></span>removeChord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgressionManager::removeChord </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a chord at the given index. </p>
+<p>Remove a chord from the progression by index.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index of the chord to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af748f9f978a6265d13be68bba5ce92c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af748f9f978a6265d13be68bba5ce92c5">&#9670;&nbsp;</a></span>saveProgression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgressionManager::saveProgression </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save the progression by name. </p>
+<p>Save the current progression under a given name.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Name to save the progression as. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a469bac3003460d35b848a4a7e630a433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a469bac3003460d35b848a4a7e630a433">&#9670;&nbsp;</a></span>setStandardProgression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgressionManager::setStandardProgression </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>standardName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>strummingPatternIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a standard progression (e.g., I-IV-V). </p>
+<p>Set the progression to a standard pattern and apply a strumming pattern index.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">standardName</td><td>Name of the standard progression. </td></tr>
+    <tr><td class="paramname">strummingPatternIndex</td><td>Index of the strumming pattern. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa64adf7c4385bf2cb8ee09c5a398cb2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa64adf7c4385bf2cb8ee09c5a398cb2f">&#9670;&nbsp;</a></span>standardProgressionNames()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QStringList ChordProgressionManager::standardProgressionNames </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get all available standard progression names. </p>
+<p>Get the names of all standard progressions.</p>
+<dl class="section return"><dt>Returns</dt><dd>QStringList of standard progression names. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="ChordProgressionManager_8h_source.html">ChordProgressionManager.h</a></li>
 <li>src/ChordProgressionManager.cpp</li>

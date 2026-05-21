@@ -1,35 +1,196 @@
 \hypertarget{classChordProgressionManager}{}\doxysection{Chord\+Progression\+Manager Class Reference}
 \label{classChordProgressionManager}\index{ChordProgressionManager@{ChordProgressionManager}}
+
+
+Manages chord progressions, including saving/loading and standard progressions.  
+
+
+
+
+{\ttfamily \#include $<$Chord\+Progression\+Manager.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classChordProgressionManager_a1402b4baa9e6715bb07016ac8956cfc3}\label{classChordProgressionManager_a1402b4baa9e6715bb07016ac8956cfc3}} 
+\mbox{\hyperlink{classChordProgressionManager_a1402b4baa9e6715bb07016ac8956cfc3}{Chord\+Progression\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classChordProgressionManager}{Chord\+Progression\+Manager}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgressionManager_a2eb2f816f08d50e7b08f533ba30b18f7}{add\+Chord}} (const QString \&chord\+Name, int bars, int strumming\+Pattern\+Index=0)
+\begin{DoxyCompactList}\small\item\em Add a chord to the progression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgressionManager_a5e83cebac429e7648511a5820e71dfad}{remove\+Chord}} (int index)
+\begin{DoxyCompactList}\small\item\em Remove a chord at the given index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgressionManager_a9739087ea5fee7a54359a2fc373c7162}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear the progression. \end{DoxyCompactList}\item 
+QVector$<$ \mbox{\hyperlink{structChordChange}{Chord\+Change}} $>$ \mbox{\hyperlink{classChordProgressionManager_af0f133472a5dbfd0c20a484e660d0911}{get\+Progression}} () const
+\begin{DoxyCompactList}\small\item\em Get the current progression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgressionManager_af748f9f978a6265d13be68bba5ce92c5}{save\+Progression}} (const QString \&name)
+\begin{DoxyCompactList}\small\item\em Save the progression by name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgressionManager_afa1f936760586057a83f99ccea8a71b9}{load\+Progression}} (const QString \&name)
+\begin{DoxyCompactList}\small\item\em Load a progression by name. \end{DoxyCompactList}\item 
+QString\+List \mbox{\hyperlink{classChordProgressionManager_ab3a94d5c97a0ac65ba1ff1b1d8a45d8c}{list\+Saved\+Progressions}} () const
+\begin{DoxyCompactList}\small\item\em List all saved progressions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgressionManager_a469bac3003460d35b848a4a7e630a433}{set\+Standard\+Progression}} (const QString \&standard\+Name, int strumming\+Pattern\+Index)
+\begin{DoxyCompactList}\small\item\em Set a standard progression (e.\+g., I-\/\+IV-\/V). \end{DoxyCompactList}\item 
+QString\+List \mbox{\hyperlink{classChordProgressionManager_aa64adf7c4385bf2cb8ee09c5a398cb2f}{standard\+Progression\+Names}} () const
+\begin{DoxyCompactList}\small\item\em Get all available standard progression names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages chord progressions, including saving/loading and standard progressions. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classChordProgressionManager_a2eb2f816f08d50e7b08f533ba30b18f7}\label{classChordProgressionManager_a2eb2f816f08d50e7b08f533ba30b18f7}} 
-void {\bfseries add\+Chord} (const QString \&chord\+Name, int bars, int strumming\+Pattern\+Index=0)
-\item 
-\mbox{\Hypertarget{classChordProgressionManager_a5e83cebac429e7648511a5820e71dfad}\label{classChordProgressionManager_a5e83cebac429e7648511a5820e71dfad}} 
-void {\bfseries remove\+Chord} (int index)
-\item 
+\index{ChordProgressionManager@{ChordProgressionManager}!addChord@{addChord}}
+\index{addChord@{addChord}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{addChord()}{addChord()}}
+{\footnotesize\ttfamily void Chord\+Progression\+Manager\+::add\+Chord (\begin{DoxyParamCaption}\item[{const QString \&}]{chord\+Name,  }\item[{int}]{bars,  }\item[{int}]{strumming\+Pattern\+Index = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Add a chord to the progression. 
+
+Add a chord to the current progression.
+
+
+\begin{DoxyParams}{Parameters}
+{\em chord\+Name} & Name of the chord. \\
+\hline
+{\em bars} & Number of bars to play. \\
+\hline
+{\em strumming\+Pattern\+Index} & Strumming pattern index.\\
+\hline
+{\em chord\+Name} & Name of the chord. \\
+\hline
+{\em bars} & Number of bars for the chord. \\
+\hline
+{\em strumming\+Pattern\+Index} & Index of the strumming pattern. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classChordProgressionManager_a9739087ea5fee7a54359a2fc373c7162}\label{classChordProgressionManager_a9739087ea5fee7a54359a2fc373c7162}} 
-void {\bfseries clear} ()
-\item 
-\mbox{\Hypertarget{classChordProgressionManager_af0f133472a5dbfd0c20a484e660d0911}\label{classChordProgressionManager_af0f133472a5dbfd0c20a484e660d0911}} 
-QVector$<$ \mbox{\hyperlink{structChordChange}{Chord\+Change}} $>$ {\bfseries get\+Progression} () const
-\item 
-\mbox{\Hypertarget{classChordProgressionManager_af748f9f978a6265d13be68bba5ce92c5}\label{classChordProgressionManager_af748f9f978a6265d13be68bba5ce92c5}} 
-void {\bfseries save\+Progression} (const QString \&name)
-\item 
-\mbox{\Hypertarget{classChordProgressionManager_afa1f936760586057a83f99ccea8a71b9}\label{classChordProgressionManager_afa1f936760586057a83f99ccea8a71b9}} 
-void {\bfseries load\+Progression} (const QString \&name)
-\item 
+\index{ChordProgressionManager@{ChordProgressionManager}!clear@{clear}}
+\index{clear@{clear}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Chord\+Progression\+Manager\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clear the progression. 
+
+Clear the current chord progression. \mbox{\Hypertarget{classChordProgressionManager_af0f133472a5dbfd0c20a484e660d0911}\label{classChordProgressionManager_af0f133472a5dbfd0c20a484e660d0911}} 
+\index{ChordProgressionManager@{ChordProgressionManager}!getProgression@{getProgression}}
+\index{getProgression@{getProgression}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{getProgression()}{getProgression()}}
+{\footnotesize\ttfamily QVector$<$ \mbox{\hyperlink{structChordChange}{Chord\+Change}} $>$ Chord\+Progression\+Manager\+::get\+Progression (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the current progression. 
+
+Get the current chord progression.
+
+\begin{DoxyReturn}{Returns}
+QVector of \mbox{\hyperlink{structChordChange}{Chord\+Change}}. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classChordProgressionManager_ab3a94d5c97a0ac65ba1ff1b1d8a45d8c}\label{classChordProgressionManager_ab3a94d5c97a0ac65ba1ff1b1d8a45d8c}} 
-QString\+List {\bfseries list\+Saved\+Progressions} () const
-\item 
+\index{ChordProgressionManager@{ChordProgressionManager}!listSavedProgressions@{listSavedProgressions}}
+\index{listSavedProgressions@{listSavedProgressions}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{listSavedProgressions()}{listSavedProgressions()}}
+{\footnotesize\ttfamily QString\+List Chord\+Progression\+Manager\+::list\+Saved\+Progressions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+List all saved progressions. 
+
+List all saved progression names.
+
+\begin{DoxyReturn}{Returns}
+QString\+List of saved progression names. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classChordProgressionManager_afa1f936760586057a83f99ccea8a71b9}\label{classChordProgressionManager_afa1f936760586057a83f99ccea8a71b9}} 
+\index{ChordProgressionManager@{ChordProgressionManager}!loadProgression@{loadProgression}}
+\index{loadProgression@{loadProgression}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{loadProgression()}{loadProgression()}}
+{\footnotesize\ttfamily void Chord\+Progression\+Manager\+::load\+Progression (\begin{DoxyParamCaption}\item[{const QString \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Load a progression by name. 
+
+Load a saved progression by name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the saved progression. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classChordProgressionManager_a5e83cebac429e7648511a5820e71dfad}\label{classChordProgressionManager_a5e83cebac429e7648511a5820e71dfad}} 
+\index{ChordProgressionManager@{ChordProgressionManager}!removeChord@{removeChord}}
+\index{removeChord@{removeChord}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{removeChord()}{removeChord()}}
+{\footnotesize\ttfamily void Chord\+Progression\+Manager\+::remove\+Chord (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Remove a chord at the given index. 
+
+Remove a chord from the progression by index.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Index of the chord to remove. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classChordProgressionManager_af748f9f978a6265d13be68bba5ce92c5}\label{classChordProgressionManager_af748f9f978a6265d13be68bba5ce92c5}} 
+\index{ChordProgressionManager@{ChordProgressionManager}!saveProgression@{saveProgression}}
+\index{saveProgression@{saveProgression}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{saveProgression()}{saveProgression()}}
+{\footnotesize\ttfamily void Chord\+Progression\+Manager\+::save\+Progression (\begin{DoxyParamCaption}\item[{const QString \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Save the progression by name. 
+
+Save the current progression under a given name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name to save the progression as. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classChordProgressionManager_a469bac3003460d35b848a4a7e630a433}\label{classChordProgressionManager_a469bac3003460d35b848a4a7e630a433}} 
-void {\bfseries set\+Standard\+Progression} (const QString \&standard\+Name, int strumming\+Pattern\+Index)
-\item 
+\index{ChordProgressionManager@{ChordProgressionManager}!setStandardProgression@{setStandardProgression}}
+\index{setStandardProgression@{setStandardProgression}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{setStandardProgression()}{setStandardProgression()}}
+{\footnotesize\ttfamily void Chord\+Progression\+Manager\+::set\+Standard\+Progression (\begin{DoxyParamCaption}\item[{const QString \&}]{standard\+Name,  }\item[{int}]{strumming\+Pattern\+Index }\end{DoxyParamCaption})}
+
+
+
+Set a standard progression (e.\+g., I-\/\+IV-\/V). 
+
+Set the progression to a standard pattern and apply a strumming pattern index.
+
+
+\begin{DoxyParams}{Parameters}
+{\em standard\+Name} & Name of the standard progression. \\
+\hline
+{\em strumming\+Pattern\+Index} & Index of the strumming pattern. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classChordProgressionManager_aa64adf7c4385bf2cb8ee09c5a398cb2f}\label{classChordProgressionManager_aa64adf7c4385bf2cb8ee09c5a398cb2f}} 
-QString\+List {\bfseries standard\+Progression\+Names} () const
-\end{DoxyCompactItemize}
+\index{ChordProgressionManager@{ChordProgressionManager}!standardProgressionNames@{standardProgressionNames}}
+\index{standardProgressionNames@{standardProgressionNames}!ChordProgressionManager@{ChordProgressionManager}}
+\doxysubsubsection{\texorpdfstring{standardProgressionNames()}{standardProgressionNames()}}
+{\footnotesize\ttfamily QString\+List Chord\+Progression\+Manager\+::standard\+Progression\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get all available standard progression names. 
+
+Get the names of all standard progressions.
+
+\begin{DoxyReturn}{Returns}
+QString\+List of standard progression names. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

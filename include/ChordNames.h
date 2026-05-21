@@ -1,6 +1,10 @@
 #pragma once
 #include <QStringList>
 
+/**
+ * @brief Returns a list of all supported chord names.
+ * @return QStringList of chord names.
+ */
 inline QStringList getAllChordNames() {
     // Basic set, can be expanded
     return QStringList{

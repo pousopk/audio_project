@@ -1,44 +1,56 @@
 \hypertarget{classMetronome}{}\doxysection{Metronome Class Reference}
 \label{classMetronome}\index{Metronome@{Metronome}}
+
+
+Real-\/time metronome with audio output and beat callbacks.  
+
+
+
+
+{\ttfamily \#include $<$Metronome.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{classMetronome_a7da6e27d31fe8673594c5946e9c0dc6f}\label{classMetronome_a7da6e27d31fe8673594c5946e9c0dc6f}} 
-int {\bfseries get\+Current\+Beat\+Index} () const
-\item 
-\mbox{\Hypertarget{classMetronome_a9da1eea1576269f7f7ac0c604036ec61}\label{classMetronome_a9da1eea1576269f7f7ac0c604036ec61}} 
-void {\bfseries fill\+Buffer} (float $\ast$out, unsigned int n\+Frames)
-\item 
-\mbox{\Hypertarget{classMetronome_ac5604cc8bfa6de696795c4309ed08b65}\label{classMetronome_ac5604cc8bfa6de696795c4309ed08b65}} 
-void {\bfseries reset} ()
-\item 
+int \mbox{\hyperlink{classMetronome_a7da6e27d31fe8673594c5946e9c0dc6f}{get\+Current\+Beat\+Index}} () const
+\begin{DoxyCompactList}\small\item\em Get the current beat index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMetronome_a9da1eea1576269f7f7ac0c604036ec61}{fill\+Buffer}} (float $\ast$out, unsigned int n\+Frames)
+\begin{DoxyCompactList}\small\item\em Fill a buffer with metronome audio (for mixing). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMetronome_acc6e0b5140c79326682ec62eb879bf37}\label{classMetronome_acc6e0b5140c79326682ec62eb879bf37}} 
+\mbox{\hyperlink{classMetronome_acc6e0b5140c79326682ec62eb879bf37}{Metronome}} ()
+\begin{DoxyCompactList}\small\item\em Construct a \mbox{\hyperlink{classMetronome}{Metronome}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classMetronome_af2b37252e9dc5a11de46c77c2297e668}\label{classMetronome_af2b37252e9dc5a11de46c77c2297e668}} 
+\mbox{\hyperlink{classMetronome_af2b37252e9dc5a11de46c77c2297e668}{$\sim$\+Metronome}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMetronome_ac5604cc8bfa6de696795c4309ed08b65}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Reset the metronome state. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_a4643bd6649a14cab2450fa7579e6b50d}\label{classMetronome_a4643bd6649a14cab2450fa7579e6b50d}} 
-void {\bfseries set\+Bpm} (double bpm)
-\item 
+void \mbox{\hyperlink{classMetronome_a4643bd6649a14cab2450fa7579e6b50d}{set\+Bpm}} (double bpm)
+\begin{DoxyCompactList}\small\item\em Set the tempo in BPM. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_a8eadef9cfecf687cc31193e6082f5177}\label{classMetronome_a8eadef9cfecf687cc31193e6082f5177}} 
-void {\bfseries set\+Beats\+Per\+Bar} (int beats)
-\item 
+void \mbox{\hyperlink{classMetronome_a8eadef9cfecf687cc31193e6082f5177}{set\+Beats\+Per\+Bar}} (int beats)
+\begin{DoxyCompactList}\small\item\em Set the number of beats per bar. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_abfb6c98a966b18c3f9d7537940f2cb74}\label{classMetronome_abfb6c98a966b18c3f9d7537940f2cb74}} 
-void {\bfseries set\+Time\+Signature\+Denominator} (int denom)
-\item 
+void \mbox{\hyperlink{classMetronome_abfb6c98a966b18c3f9d7537940f2cb74}{set\+Time\+Signature\+Denominator}} (int denom)
+\begin{DoxyCompactList}\small\item\em Set the time signature denominator. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_a3c91d5a01593aafa7df7428f19d4418e}\label{classMetronome_a3c91d5a01593aafa7df7428f19d4418e}} 
-void {\bfseries set\+Subdivisions} (int subdivisions)
-\item 
+void \mbox{\hyperlink{classMetronome_a3c91d5a01593aafa7df7428f19d4418e}{set\+Subdivisions}} (int subdivisions)
+\begin{DoxyCompactList}\small\item\em Set the number of subdivisions per beat. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_a8dc99bff4b524479adda5eae34954065}\label{classMetronome_a8dc99bff4b524479adda5eae34954065}} 
-void {\bfseries set\+Volume} (double volume)
-\item 
+void \mbox{\hyperlink{classMetronome_a8dc99bff4b524479adda5eae34954065}{set\+Volume}} (double volume)
+\begin{DoxyCompactList}\small\item\em Set the output volume. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_adc7143836aec4af9e6bb271d5e5130f7}\label{classMetronome_adc7143836aec4af9e6bb271d5e5130f7}} 
-void {\bfseries set\+Click\+Freq\+Strong} (double freq)
-\item 
+void \mbox{\hyperlink{classMetronome_adc7143836aec4af9e6bb271d5e5130f7}{set\+Click\+Freq\+Strong}} (double freq)
+\begin{DoxyCompactList}\small\item\em Set the frequency for strong beats. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_abfdc3c946a8cc0df9c90ba98cf1ff3bf}\label{classMetronome_abfdc3c946a8cc0df9c90ba98cf1ff3bf}} 
-void {\bfseries set\+Click\+Freq\+Weak} (double freq)
-\item 
+void \mbox{\hyperlink{classMetronome_abfdc3c946a8cc0df9c90ba98cf1ff3bf}{set\+Click\+Freq\+Weak}} (double freq)
+\begin{DoxyCompactList}\small\item\em Set the frequency for weak beats. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_abc1830595c88e70a062cdacf30a82c03}\label{classMetronome_abc1830595c88e70a062cdacf30a82c03}} 
-void {\bfseries set\+Click\+Duration} (double sec)
-\item 
-\mbox{\Hypertarget{classMetronome_a1a331bfd54c225e943c30f21ef3e2db9}\label{classMetronome_a1a331bfd54c225e943c30f21ef3e2db9}} 
-void {\bfseries set\+Beat\+Callback} (std\+::function$<$ void(int)$>$ cb)
-\item 
+void \mbox{\hyperlink{classMetronome_abc1830595c88e70a062cdacf30a82c03}{set\+Click\+Duration}} (double sec)
+\begin{DoxyCompactList}\small\item\em Set the click duration in seconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMetronome_a1a331bfd54c225e943c30f21ef3e2db9}{set\+Beat\+Callback}} (std\+::function$<$ void(int)$>$ cb)
+\begin{DoxyCompactList}\small\item\em Set a callback for beat changes. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_a649759c3a79d650c4f84402e0a8b2c45}\label{classMetronome_a649759c3a79d650c4f84402e0a8b2c45}} 
 double {\bfseries get\+Bpm} () const
 \item 
@@ -64,14 +76,14 @@ double {\bfseries get\+Click\+Freq\+Weak} () const
 double {\bfseries get\+Click\+Duration} () const
 \item 
 \mbox{\Hypertarget{classMetronome_a5554d3779b1cdb643ee38a0e9e9184d6}\label{classMetronome_a5554d3779b1cdb643ee38a0e9e9184d6}} 
-bool {\bfseries start} ()
-\item 
+bool \mbox{\hyperlink{classMetronome_a5554d3779b1cdb643ee38a0e9e9184d6}{start}} ()
+\begin{DoxyCompactList}\small\item\em Start the metronome. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_a6d77db8aafda48abf3f2a91b9d898ad7}\label{classMetronome_a6d77db8aafda48abf3f2a91b9d898ad7}} 
-void {\bfseries stop} ()
-\item 
+void \mbox{\hyperlink{classMetronome_a6d77db8aafda48abf3f2a91b9d898ad7}{stop}} ()
+\begin{DoxyCompactList}\small\item\em Stop the metronome. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classMetronome_ab64cd8102274c84cefe3fcca2ce09b5c}\label{classMetronome_ab64cd8102274c84cefe3fcca2ce09b5c}} 
-bool {\bfseries is\+Running} () const
-\end{DoxyCompactItemize}
+bool \mbox{\hyperlink{classMetronome_ab64cd8102274c84cefe3fcca2ce09b5c}{is\+Running}} () const
+\begin{DoxyCompactList}\small\item\em Check if the metronome is running. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -86,7 +98,55 @@ static int {\bfseries parse\+Int\+Arg} (int argc, char $\ast$$\ast$argv, const c
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Real-\/time metronome with audio output and beat callbacks. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMetronome_a9da1eea1576269f7f7ac0c604036ec61}\label{classMetronome_a9da1eea1576269f7f7ac0c604036ec61}} 
+\index{Metronome@{Metronome}!fillBuffer@{fillBuffer}}
+\index{fillBuffer@{fillBuffer}!Metronome@{Metronome}}
+\doxysubsubsection{\texorpdfstring{fillBuffer()}{fillBuffer()}}
+{\footnotesize\ttfamily void Metronome\+::fill\+Buffer (\begin{DoxyParamCaption}\item[{float $\ast$}]{out,  }\item[{unsigned int}]{n\+Frames }\end{DoxyParamCaption})}
+
+
+
+Fill a buffer with metronome audio (for mixing). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & Output buffer. \\
+\hline
+{\em n\+Frames} & Number of frames to fill. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMetronome_ac5604cc8bfa6de696795c4309ed08b65}\label{classMetronome_ac5604cc8bfa6de696795c4309ed08b65}} 
+\index{Metronome@{Metronome}!reset@{reset}}
+\index{reset@{reset}!Metronome@{Metronome}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Metronome\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset the metronome state. 
+
+Reset the metronome\textquotesingle{}s internal state to ensure it starts fresh. \mbox{\Hypertarget{classMetronome_a1a331bfd54c225e943c30f21ef3e2db9}\label{classMetronome_a1a331bfd54c225e943c30f21ef3e2db9}} 
+\index{Metronome@{Metronome}!setBeatCallback@{setBeatCallback}}
+\index{setBeatCallback@{setBeatCallback}!Metronome@{Metronome}}
+\doxysubsubsection{\texorpdfstring{setBeatCallback()}{setBeatCallback()}}
+{\footnotesize\ttfamily void Metronome\+::set\+Beat\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(int)$>$}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a callback for beat changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cb} & Callback function called with beat index at every beat change. \\
+\hline
+\end{DoxyParams}
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/Metronome.\+h\item 
-src/Metronome.\+cpp\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{Metronome_8cpp}{Metronome.\+cpp}}\end{DoxyCompactItemize}

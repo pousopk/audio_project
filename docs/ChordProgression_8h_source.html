@@ -70,22 +70,26 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;ChordProgressionManager.h&quot;</span> <span class="comment">// For ChordChange</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classChordProgression.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classChordProgression.html">ChordProgression</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordtype">void</span> addChord(<span class="keyword">const</span> std::string&amp; chord, <span class="keywordtype">int</span> measures, <span class="keywordtype">int</span> strummingPatternIndex);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">void</span> removeChord(<span class="keywordtype">int</span> index);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="comment">// Note: We now use QVector&lt;ChordChange&gt; for consistency with the manager</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">const</span> QVector&lt;ChordChange&gt;&amp; getChords() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">void</span> clear();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">// Using the same data structure as ChordProgressionManager</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    QVector&lt;ChordChange&gt; chords_;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
-<div class="ttc" id="aclassChordProgression_html"><div class="ttname"><a href="classChordProgression.html">ChordProgression</a></div><div class="ttdef"><b>Definition:</b> ChordProgression.h:6</div></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;QVector&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;ChordChange.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classChordProgression.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classChordProgression.html">ChordProgression</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordProgression.html#a9c35758eb0721931285f51ba4734d13b">addChord</a>(<span class="keyword">const</span> std::string&amp; chord, <span class="keywordtype">int</span> measures, <span class="keywordtype">int</span> strummingPatternIndex);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordProgression.html#a240de930e68a8bb0e56f7a1685bbc70f">removeChord</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">const</span> QVector&lt;ChordChange&gt;&amp; <a class="code" href="classChordProgression.html#a9997a97b4b5dcf318ec2993e47dd0fa0">getChords</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordProgression.html#a668129a346b960ec771e483e9f542be0">clear</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    QVector&lt;ChordChange&gt; chords_; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="ttc" id="aclassChordProgression_html"><div class="ttname"><a href="classChordProgression.html">ChordProgression</a></div><div class="ttdoc">Manages a sequence of chord changes for a progression.</div><div class="ttdef"><b>Definition:</b> ChordProgression.h:11</div></div>
+<div class="ttc" id="aclassChordProgression_html_a240de930e68a8bb0e56f7a1685bbc70f"><div class="ttname"><a href="classChordProgression.html#a240de930e68a8bb0e56f7a1685bbc70f">ChordProgression::removeChord</a></div><div class="ttdeci">void removeChord(int index)</div><div class="ttdoc">Remove a chord at the given index.</div><div class="ttdef"><b>Definition:</b> ChordProgression.cpp:23</div></div>
+<div class="ttc" id="aclassChordProgression_html_a668129a346b960ec771e483e9f542be0"><div class="ttname"><a href="classChordProgression.html#a668129a346b960ec771e483e9f542be0">ChordProgression::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">Clear the progression.</div><div class="ttdef"><b>Definition:</b> ChordProgression.cpp:40</div></div>
+<div class="ttc" id="aclassChordProgression_html_a9997a97b4b5dcf318ec2993e47dd0fa0"><div class="ttname"><a href="classChordProgression.html#a9997a97b4b5dcf318ec2993e47dd0fa0">ChordProgression::getChords</a></div><div class="ttdeci">const QVector&lt; ChordChange &gt; &amp; getChords() const</div><div class="ttdoc">Get the list of chord changes.</div><div class="ttdef"><b>Definition:</b> ChordProgression.cpp:33</div></div>
+<div class="ttc" id="aclassChordProgression_html_a9c35758eb0721931285f51ba4734d13b"><div class="ttname"><a href="classChordProgression.html#a9c35758eb0721931285f51ba4734d13b">ChordProgression::addChord</a></div><div class="ttdeci">void addChord(const std::string &amp;chord, int measures, int strummingPatternIndex)</div><div class="ttdoc">Add a chord to the progression.</div><div class="ttdef"><b>Definition:</b> ChordProgression.cpp:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

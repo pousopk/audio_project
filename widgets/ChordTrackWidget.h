@@ -11,11 +11,17 @@
 #include "ChordAudioEngine.h"
 #include <QTimer>
 
+/**
+ * @brief Widget for building and playing a chord track.
+ */
 class ChordTrackWidget : public QWidget {
     Q_OBJECT
 public:
+    /** @brief Construct a ChordTrackWidget. */
     ChordTrackWidget(QWidget *parent = nullptr);
+    /** @brief Set the metronome instance. */
     void setMetronome(class Metronome* m);
+    /** @brief Set the chord selector text. */
     void setChordSelectorText(const QString& chordName);
 
 signals:

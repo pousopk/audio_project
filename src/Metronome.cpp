@@ -1,17 +1,28 @@
+/**
+ * @file Metronome.cpp
+ * @brief Implements the Metronome class for real-time audio click generation and beat tracking.
+ */
 
 #include "Metronome.h"
 #include <cmath>
 #include <iostream>
 #include <cstring>
 
+/**
+ * @brief Reset the metronome's internal state to ensure it starts fresh.
+ */
 void Metronome::reset() {
-    // Reset the metronome's internal state to ensure it starts fresh.
     state_.beatIndex = -1;
     state_.subdivisionIndex = 0;
     state_.samplesUntilBeat = 0;
     state_.clickSamplesRemaining = 0;
 }
 
+/**
+ * @brief Fill a buffer with metronome audio (for mixing).
+ * @param out Output buffer.
+ * @param nFrames Number of frames to fill.
+ */
 void Metronome::fillBuffer(float* out, unsigned int nFrames) {
     State* state = &state_;
     const double twoPi = 6.28318530717958647692;

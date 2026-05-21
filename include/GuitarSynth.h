@@ -5,16 +5,34 @@
 #include <string>
 #include "../strumming/StrummingPattern.h"
 
+/**
+ * @brief Physical modeling guitar synthesizer using Karplus-Strong algorithm.
+ */
 class GuitarSynth {
 public:
+    /** @brief Construct a GuitarSynth. */
     GuitarSynth();
 
+    /** @brief Set the sample rate. */
     void setSampleRate(unsigned int rate);
+    /** @brief Set the output volume. */
     void setVolume(double volume);
+    /** @brief Set the filter coefficient (brightness). */
     void setFilterCoefficient(double coeff);
+    /** @brief Set the decay factor. */
     void setDecayFactor(double factor);
 
-    // Process a block of audio for a given chord shape and strumming pattern
+    /**
+     * @brief Process a block of audio for a given chord shape and strumming pattern.
+     * @param out Output buffer.
+     * @param nFrames Number of frames to process.
+     * @param shapeFrets Fret positions for each string.
+     * @param strummingPattern Strumming pattern to use.
+     * @param samplesPerMeasure Samples per measure.
+     * @param measureSampleCounter Current sample in measure.
+     * @param beatsPerBar Number of beats per bar.
+     * @param samplesPerBeat Samples per beat.
+     */
     void process(float* out,
                  unsigned int nFrames,
                  const std::vector<int>& shapeFrets,
@@ -27,10 +45,10 @@ public:
 private:
     void initialize();
 
-    unsigned int sampleRate_ = 48000;
-    double volume_ = 1.0;
-    double filterCoefficient_ = 0.7; // For brightness (0.0 = darkest, 1.0 = brightest), higher is brighter
-    double decayFactor_ = 0.99;      // For decay (0.0 = fastest, 1.0 = slowest)
+    unsigned int sampleRate_ = 48000; ///< Sample rate
+    double volume_ = 1.0; ///< Output volume
+    double filterCoefficient_ = 0.7; ///< Brightness filter coefficient
+    double decayFactor_ = 0.99; ///< Decay factor
 
     // Synthesis state
     bool initialized_ = false;

@@ -68,25 +68,151 @@ $(function() {
 <div class="title">ChordProgression Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages a sequence of chord changes for a progression.  
+ <a href="classChordProgression.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ChordProgression_8h_source.html">ChordProgression.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9c35758eb0721931285f51ba4734d13b"><td class="memItemLeft" align="right" valign="top"><a id="a9c35758eb0721931285f51ba4734d13b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addChord</b> (const std::string &amp;chord, int measures, int strummingPatternIndex)</td></tr>
+<tr class="memitem:a9c35758eb0721931285f51ba4734d13b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgression.html#a9c35758eb0721931285f51ba4734d13b">addChord</a> (const std::string &amp;chord, int measures, int strummingPatternIndex)</td></tr>
+<tr class="memdesc:a9c35758eb0721931285f51ba4734d13b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a chord to the progression.  <a href="classChordProgression.html#a9c35758eb0721931285f51ba4734d13b">More...</a><br /></td></tr>
 <tr class="separator:a9c35758eb0721931285f51ba4734d13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a240de930e68a8bb0e56f7a1685bbc70f"><td class="memItemLeft" align="right" valign="top"><a id="a240de930e68a8bb0e56f7a1685bbc70f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeChord</b> (int index)</td></tr>
+<tr class="memitem:a240de930e68a8bb0e56f7a1685bbc70f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgression.html#a240de930e68a8bb0e56f7a1685bbc70f">removeChord</a> (int index)</td></tr>
+<tr class="memdesc:a240de930e68a8bb0e56f7a1685bbc70f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a chord at the given index.  <a href="classChordProgression.html#a240de930e68a8bb0e56f7a1685bbc70f">More...</a><br /></td></tr>
 <tr class="separator:a240de930e68a8bb0e56f7a1685bbc70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9997a97b4b5dcf318ec2993e47dd0fa0"><td class="memItemLeft" align="right" valign="top"><a id="a9997a97b4b5dcf318ec2993e47dd0fa0"></a>
-const QVector&lt; <a class="el" href="structChordChange.html">ChordChange</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getChords</b> () const</td></tr>
+<tr class="memitem:a9997a97b4b5dcf318ec2993e47dd0fa0"><td class="memItemLeft" align="right" valign="top">const QVector&lt; <a class="el" href="structChordChange.html">ChordChange</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgression.html#a9997a97b4b5dcf318ec2993e47dd0fa0">getChords</a> () const</td></tr>
+<tr class="memdesc:a9997a97b4b5dcf318ec2993e47dd0fa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of chord changes.  <a href="classChordProgression.html#a9997a97b4b5dcf318ec2993e47dd0fa0">More...</a><br /></td></tr>
 <tr class="separator:a9997a97b4b5dcf318ec2993e47dd0fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a668129a346b960ec771e483e9f542be0"><td class="memItemLeft" align="right" valign="top"><a id="a668129a346b960ec771e483e9f542be0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+<tr class="memitem:a668129a346b960ec771e483e9f542be0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classChordProgression.html#a668129a346b960ec771e483e9f542be0">clear</a> ()</td></tr>
+<tr class="memdesc:a668129a346b960ec771e483e9f542be0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the progression.  <a href="classChordProgression.html#a668129a346b960ec771e483e9f542be0">More...</a><br /></td></tr>
 <tr class="separator:a668129a346b960ec771e483e9f542be0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages a sequence of chord changes for a progression. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9c35758eb0721931285f51ba4734d13b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c35758eb0721931285f51ba4734d13b">&#9670;&nbsp;</a></span>addChord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgression::addChord </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>chord</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>measures</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>strummingPatternIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a chord to the progression. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chord</td><td>The chord name. </td></tr>
+    <tr><td class="paramname">measures</td><td>Number of measures to play the chord. </td></tr>
+    <tr><td class="paramname">strummingPatternIndex</td><td>Index of the strumming pattern.</td></tr>
+    <tr><td class="paramname">chord</td><td>Name of the chord (std::string). </td></tr>
+    <tr><td class="paramname">measures</td><td>Number of measures for the chord. </td></tr>
+    <tr><td class="paramname">strummingPatternIndex</td><td>Index of the strumming pattern. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a668129a346b960ec771e483e9f542be0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a668129a346b960ec771e483e9f542be0">&#9670;&nbsp;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgression::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear the progression. </p>
+<p>Clear the chord progression. </p>
+
+</div>
+</div>
+<a id="a9997a97b4b5dcf318ec2993e47dd0fa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9997a97b4b5dcf318ec2993e47dd0fa0">&#9670;&nbsp;</a></span>getChords()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QVector&lt; <a class="el" href="structChordChange.html">ChordChange</a> &gt; &amp; ChordProgression::getChords </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the list of chord changes. </p>
+<p>Get the list of chords in the progression.</p>
+<dl class="section return"><dt>Returns</dt><dd>QVector of <a class="el" href="structChordChange.html" title="Represents a chord change in a progression.">ChordChange</a>.</dd>
+<dd>
+Reference to QVector of <a class="el" href="structChordChange.html" title="Represents a chord change in a progression.">ChordChange</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a240de930e68a8bb0e56f7a1685bbc70f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a240de930e68a8bb0e56f7a1685bbc70f">&#9670;&nbsp;</a></span>removeChord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ChordProgression::removeChord </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove a chord at the given index. </p>
+<p>Remove a chord from the progression by index.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index to remove.</td></tr>
+    <tr><td class="paramname">index</td><td>Index of the chord to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="ChordProgression_8h_source.html">ChordProgression.h</a></li>
-<li>src/ChordProgression.cpp</li>
+<li>src/<a class="el" href="ChordProgression_8cpp.html">ChordProgression.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

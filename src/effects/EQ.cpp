@@ -1,3 +1,7 @@
+#/**
+# * @file EQ.cpp
+# * @brief Implements the EQ (equalizer) audio effect with low, mid, and high bands.
+# */
 #include "effects/EQ.h"
 #include <cmath>
 

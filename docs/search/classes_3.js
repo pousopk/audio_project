@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['delay_84',['Delay',['../classDelay.html',1,'']]],
-  ['distortion_85',['Distortion',['../classDistortion.html',1,'']]]
+  ['delay_182',['Delay',['../classDelay.html',1,'']]],
+  ['distortion_183',['Distortion',['../classDistortion.html',1,'']]]
 ];

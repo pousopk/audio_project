@@ -69,12 +69,17 @@ $(function() {
 <div class="title">FXChainWidget Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Widget for managing the order of effects in the FX chain.  
+ <a href="classFXChainWidget.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="FXChainWidget_8h_source.html">FXChainWidget.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for FXChainWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFXChainWidget__inherit__graph.png" border="0" usemap="#aFXChainWidget_inherit__map" alt="Inheritance graph"/></div>
 <map name="aFXChainWidget_inherit__map" id="aFXChainWidget_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,127,107"/>
+<area shape="rect" title="Widget for managing the order of effects in the FX chain." alt="" coords="5,80,127,107"/>
 <area shape="rect" title=" " alt="" coords="27,5,105,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -83,7 +88,7 @@ Collaboration diagram for FXChainWidget:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFXChainWidget__coll__graph.png" border="0" usemap="#aFXChainWidget_coll__map" alt="Collaboration graph"/></div>
 <map name="aFXChainWidget_coll__map" id="aFXChainWidget_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,127,107"/>
+<area shape="rect" title="Widget for managing the order of effects in the FX chain." alt="" coords="5,80,127,107"/>
 <area shape="rect" title=" " alt="" coords="27,5,105,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -97,25 +102,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>orderChanged</b> (con
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae292a46c0408fcb036c8679a358570ec"><td class="memItemLeft" align="right" valign="top"><a id="ae292a46c0408fcb036c8679a358570ec"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FXChainWidget</b> (QWidget *parent=nullptr)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFXChainWidget.html#ae292a46c0408fcb036c8679a358570ec">FXChainWidget</a> (QWidget *parent=nullptr)</td></tr>
+<tr class="memdesc:ae292a46c0408fcb036c8679a358570ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an <a class="el" href="classFXChainWidget.html" title="Widget for managing the order of effects in the FX chain.">FXChainWidget</a>. <br /></td></tr>
 <tr class="separator:ae292a46c0408fcb036c8679a358570ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6431e8d5d2f42982c17c0314d23ebe62"><td class="memItemLeft" align="right" valign="top"><a id="a6431e8d5d2f42982c17c0314d23ebe62"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOrder</b> (const QStringList &amp;newOrder)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFXChainWidget.html#a6431e8d5d2f42982c17c0314d23ebe62">setOrder</a> (const QStringList &amp;newOrder)</td></tr>
+<tr class="memdesc:a6431e8d5d2f42982c17c0314d23ebe62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the order of effects. <br /></td></tr>
 <tr class="separator:a6431e8d5d2f42982c17c0314d23ebe62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98d469d51941fc5536215b3a676193fe"><td class="memItemLeft" align="right" valign="top"><a id="a98d469d51941fc5536215b3a676193fe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addItem</b> (const QString &amp;item)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFXChainWidget.html#a98d469d51941fc5536215b3a676193fe">addItem</a> (const QString &amp;item)</td></tr>
+<tr class="memdesc:a98d469d51941fc5536215b3a676193fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an effect item. <br /></td></tr>
 <tr class="separator:a98d469d51941fc5536215b3a676193fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa219b0e872403a51b7bc11a2a0a9df74"><td class="memItemLeft" align="right" valign="top"><a id="aa219b0e872403a51b7bc11a2a0a9df74"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeItem</b> (int index)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFXChainWidget.html#aa219b0e872403a51b7bc11a2a0a9df74">removeItem</a> (int index)</td></tr>
+<tr class="memdesc:aa219b0e872403a51b7bc11a2a0a9df74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an effect at the given index. <br /></td></tr>
 <tr class="separator:aa219b0e872403a51b7bc11a2a0a9df74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dbe52e69a0c579f9caab4e8aae4b084"><td class="memItemLeft" align="right" valign="top"><a id="a0dbe52e69a0c579f9caab4e8aae4b084"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>currentItemText</b> () const</td></tr>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFXChainWidget.html#a0dbe52e69a0c579f9caab4e8aae4b084">currentItemText</a> () const</td></tr>
+<tr class="memdesc:a0dbe52e69a0c579f9caab4e8aae4b084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently selected item text. <br /></td></tr>
 <tr class="separator:a0dbe52e69a0c579f9caab4e8aae4b084"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a994fca944526b9cd933a321dd518d18b"><td class="memItemLeft" align="right" valign="top"><a id="a994fca944526b9cd933a321dd518d18b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>currentRow</b> () const</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFXChainWidget.html#a994fca944526b9cd933a321dd518d18b">currentRow</a> () const</td></tr>
+<tr class="memdesc:a994fca944526b9cd933a321dd518d18b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current row index. <br /></td></tr>
 <tr class="separator:a994fca944526b9cd933a321dd518d18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Widget for managing the order of effects in the FX chain. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>widgets/<a class="el" href="FXChainWidget_8h_source.html">FXChainWidget.h</a></li>
 <li>build/audio_project_autogen/IMAN36LHMA/moc_FXChainWidget.cpp</li>
 <li>widgets/FXChainWidget.cpp</li>

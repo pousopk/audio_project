@@ -1,4 +1,9 @@
 #include "effects/Tremolo.h"
+#/**
+# * @file Tremolo.cpp
+# * @brief Implements the Tremolo audio effect for amplitude modulation.
+# */
+#include "effects/Tremolo.h"
 #include <cmath>
 
 constexpr float PI = 3.14159265358979323846f;

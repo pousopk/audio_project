@@ -11,13 +11,20 @@ class QSlider;
 class QLabel;
 class QComboBox;
 
+/**
+ * @brief Widget for managing and editing chord progressions.
+ */
 class ChordProgressionWidget : public QWidget {
     Q_OBJECT
 public:
+    /** @brief Construct a ChordProgressionWidget. */
     explicit ChordProgressionWidget(QWidget* parent = nullptr);
+    /** @brief Get the progression manager instance. */
     ChordProgressionManager* progressionManager();
 
+    /** @brief Get the selected scale root. */
     QString scaleRoot() const;
+    /** @brief Get the selected scale type. */
     QString scaleType() const;
 
 signals:

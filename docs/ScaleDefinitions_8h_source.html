@@ -75,14 +75,17 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structScaleDefinition.html">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structScaleDefinition.html">ScaleDefinition</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    std::vector&lt;int&gt; intervals; <span class="comment">// in semitones</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    std::vector&lt;std::string&gt; chordTypes; <span class="comment">// diatonic chord types for a 7-note scale (e.g., &quot;&quot;, &quot;m&quot;, &quot;m&quot;, &quot;&quot;, &quot;7&quot;, &quot;m&quot;, &quot;dim&quot;)</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;};</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> std::map&lt;std::string, ScaleDefinition&gt; kScaleDefinitions;</div>
-<div class="ttc" id="astructScaleDefinition_html"><div class="ttname"><a href="structScaleDefinition.html">ScaleDefinition</a></div><div class="ttdef"><b>Definition:</b> ScaleDefinitions.h:7</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structScaleDefinition.html">   10</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structScaleDefinition.html">ScaleDefinition</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structScaleDefinition.html#af9766d3f352dbd7c48d49e5bc087282a">   11</a></span>&#160;    std::string <a class="code" href="structScaleDefinition.html#af9766d3f352dbd7c48d49e5bc087282a">name</a>; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structScaleDefinition.html#a35f86d2735c43161bc28f10f82ebf37c">   12</a></span>&#160;    std::vector&lt;int&gt; <a class="code" href="structScaleDefinition.html#a35f86d2735c43161bc28f10f82ebf37c">intervals</a>; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="structScaleDefinition.html#a59925bcb46f549c1e06f2c2306e3882d">   13</a></span>&#160;    std::vector&lt;std::string&gt; <a class="code" href="structScaleDefinition.html#a59925bcb46f549c1e06f2c2306e3882d">chordTypes</a>; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> std::map&lt;std::string, ScaleDefinition&gt; kScaleDefinitions;</div>
+<div class="ttc" id="astructScaleDefinition_html"><div class="ttname"><a href="structScaleDefinition.html">ScaleDefinition</a></div><div class="ttdoc">Definition of a musical scale.</div><div class="ttdef"><b>Definition:</b> ScaleDefinitions.h:10</div></div>
+<div class="ttc" id="astructScaleDefinition_html_a35f86d2735c43161bc28f10f82ebf37c"><div class="ttname"><a href="structScaleDefinition.html#a35f86d2735c43161bc28f10f82ebf37c">ScaleDefinition::intervals</a></div><div class="ttdeci">std::vector&lt; int &gt; intervals</div><div class="ttdoc">Intervals in semitones.</div><div class="ttdef"><b>Definition:</b> ScaleDefinitions.h:12</div></div>
+<div class="ttc" id="astructScaleDefinition_html_a59925bcb46f549c1e06f2c2306e3882d"><div class="ttname"><a href="structScaleDefinition.html#a59925bcb46f549c1e06f2c2306e3882d">ScaleDefinition::chordTypes</a></div><div class="ttdeci">std::vector&lt; std::string &gt; chordTypes</div><div class="ttdoc">Diatonic chord types for a 7-note scale.</div><div class="ttdef"><b>Definition:</b> ScaleDefinitions.h:13</div></div>
+<div class="ttc" id="astructScaleDefinition_html_af9766d3f352dbd7c48d49e5bc087282a"><div class="ttname"><a href="structScaleDefinition.html#af9766d3f352dbd7c48d49e5bc087282a">ScaleDefinition::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">Name of the scale.</div><div class="ttdef"><b>Definition:</b> ScaleDefinitions.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

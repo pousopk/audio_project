@@ -1,4 +1,4 @@
 <map id="EQ" name="EQ">
 <area shape="rect" id="node1" title="3&#45;band parametric equalizer effect." alt="" coords="33,80,73,107"/>
-<area shape="rect" id="node2" href="$classAudioEffect.html" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" id="node2" href="$classAudioEffect.html" title="Abstract base class for audio effects." alt="" coords="5,5,101,32"/>
 </map>

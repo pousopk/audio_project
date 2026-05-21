@@ -5,25 +5,43 @@
 #include <csignal>
 #include <functional>
 
+/**
+ * @brief Real-time metronome with audio output and beat callbacks.
+ */
 class Metronome {
 public:
-        int getCurrentBeatIndex() const { return state_.beatIndex; }
-    // Fill a buffer with metronome audio (for mixing)
+    /** @brief Get the current beat index. */
+    int getCurrentBeatIndex() const { return state_.beatIndex; }
+    /** @brief Fill a buffer with metronome audio (for mixing). */
     void fillBuffer(float* out, unsigned int nFrames);
+    /** @brief Construct a Metronome. */
     Metronome();
+    /** @brief Destructor. */
     ~Metronome();
+    /** @brief Reset the metronome state. */
     void reset();
 
+    /** @brief Set the tempo in BPM. */
     void setBpm(double bpm);
+    /** @brief Set the number of beats per bar. */
     void setBeatsPerBar(int beats);
+    /** @brief Set the time signature denominator. */
     void setTimeSignatureDenominator(int denom);
+    /** @brief Set the number of subdivisions per beat. */
     void setSubdivisions(int subdivisions);
+    /** @brief Set the output volume. */
     void setVolume(double volume);
+    /** @brief Set the frequency for strong beats. */
     void setClickFreqStrong(double freq);
+    /** @brief Set the frequency for weak beats. */
     void setClickFreqWeak(double freq);
+    /** @brief Set the click duration in seconds. */
     void setClickDuration(double sec);
 
-    // Beat change callback: called with beat index at every beat change
+    /**
+     * @brief Set a callback for beat changes.
+     * @param cb Callback function called with beat index at every beat change.
+     */
     void setBeatCallback(std::function<void(int)> cb) { beatCallback = std::move(cb); }
 
     double getBpm() const;
@@ -35,8 +53,11 @@ public:
     double getClickFreqWeak() const;
     double getClickDuration() const;
 
+    /** @brief Start the metronome. */
     bool start();
+    /** @brief Stop the metronome. */
     void stop();
+    /** @brief Check if the metronome is running. */
     bool isRunning() const;
 
     static void printUsage(const char* progName);
@@ -60,9 +81,6 @@ private:
         double clickFreqWeak = 1320.0;
         double clickDurationSec = 0.02;
     };
-    // ...existing code...
-    // (removed duplicate private declarations)
-    // ...existing code...
 
     static int audioCallback(void* outputBuffer, void* inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void* userData);
     static void handleSignal(int);

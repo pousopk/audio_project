@@ -4,36 +4,70 @@ ChordProgressionManager::ChordProgressionManager() {
     initStandardProgressions();
 }
 
+/**
+ * @brief Add a chord to the current progression.
+ * @param chordName Name of the chord.
+ * @param bars Number of bars for the chord.
+ * @param strummingPatternIndex Index of the strumming pattern.
+ */
 void ChordProgressionManager::addChord(const QString& chordName, int bars, int strummingPatternIndex) {
     progression_.append({chordName, bars, strummingPatternIndex});
 }
 
+/**
+ * @brief Remove a chord from the progression by index.
+ * @param index Index of the chord to remove.
+ */
 void ChordProgressionManager::removeChord(int index) {
     if (index >= 0 && index < progression_.size())
         progression_.removeAt(index);
 }
 
+/**
+ * @brief Clear the current chord progression.
+ */
 void ChordProgressionManager::clear() {
     progression_.clear();
 }
 
+/**
+ * @brief Get the current chord progression.
+ * @return QVector of ChordChange.
+ */
 QVector<ChordChange> ChordProgressionManager::getProgression() const {
     return progression_;
 }
 
+/**
+ * @brief Save the current progression under a given name.
+ * @param name Name to save the progression as.
+ */
 void ChordProgressionManager::saveProgression(const QString& name) {
     savedProgressions_[name] = progression_;
 }
 
+/**
+ * @brief Load a saved progression by name.
+ * @param name Name of the saved progression.
+ */
 void ChordProgressionManager::loadProgression(const QString& name) {
     if (savedProgressions_.contains(name))
         progression_ = savedProgressions_[name];
 }
 
+/**
+ * @brief List all saved progression names.
+ * @return QStringList of saved progression names.
+ */
 QStringList ChordProgressionManager::listSavedProgressions() const {
     return savedProgressions_.keys();
 }
 
+/**
+ * @brief Set the progression to a standard pattern and apply a strumming pattern index.
+ * @param standardName Name of the standard progression.
+ * @param strummingPatternIndex Index of the strumming pattern.
+ */
 void ChordProgressionManager::setStandardProgression(const QString& standardName, int strummingPatternIndex) {
     if (standardProgressions_.contains(standardName)) {
         progression_ = standardProgressions_[standardName];
@@ -43,10 +77,17 @@ void ChordProgressionManager::setStandardProgression(const QString& standardName
     }
 }
 
+/**
+ * @brief Get the names of all standard progressions.
+ * @return QStringList of standard progression names.
+ */
 QStringList ChordProgressionManager::standardProgressionNames() const {
     return standardProgressions_.keys();
 }
 
+/**
+ * @brief Initialize the set of standard chord progressions.
+ */
 void ChordProgressionManager::initStandardProgressions() {
     // I-IV-V in C
     standardProgressions_["Pop: I-V-vi-IV (C)"] = {
@@ -54,9 +95,8 @@ void ChordProgressionManager::initStandardProgressions() {
     };
     // 12-bar blues in E
     standardProgressions_["12-bar Blues (E)"] = {
-        {"E", 4}, {"A", 2}, {"E", 2}, {"B", 1}, {"A", 1}, {"E", 2}
+        {"E", 4}, {"A", 2}, {"E", 2}, {"B7", 1}, {"A", 1}, {"E", 2}
     };
-    // Pop I-V-vi-IV in G
     standardProgressions_["Pop: I-V-vi-IV (G)"] = {
         {"G", 2}, {"D", 2}, {"Em", 2}, {"C", 2}
     };

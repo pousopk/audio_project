@@ -5,7 +5,12 @@
 #include <QMap>
 #include <map>
 
-// Returns (interval name, color) for a note relative to a root note.
+/**
+ * @brief Returns the interval name and color for a note relative to a root note.
+ * @param note The note name.
+ * @param rootNote The root note name.
+ * @return Pair of interval name and QColor.
+ */
 inline std::pair<QString, QColor> getIntervalAndColor(const QString& note, const QString& rootNote) {
     static const QMap<QString, int> noteIndices = {
         {"C",0}, {"C#",1}, {"Db",1}, {"D",2}, {"D#",3}, {"Eb",3}, {"E",4}, {"F",5},

@@ -43,6 +43,10 @@ float Limiter::process(float input) {
     gain_ = 0.99f * gain_ + 0.01f * target_gain;
 
     // Store gain reduction in dB for the meter
+    #/**
+    # * @file Limiter.cpp
+    # * @brief Implements the Limiter audio effect for peak limiting and gain reduction.
+    # */
     if (gain_ < 1.0f) {
         gain_reduction_db_.store(20.0f * log10(gain_));
     } else {

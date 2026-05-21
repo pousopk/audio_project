@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['phaser_135',['Phaser',['../classPhaser.html#a849a7f7cd7d1491c490e4ba8e9906af0',1,'Phaser']]],
-  ['process_136',['process',['../classChorus.html#ad88464e617203c1f1addec6d67fab2cd',1,'Chorus::process()'],['../classCompressor.html#a0df15295761c6ac6a62738fcf0ee2900',1,'Compressor::process()'],['../classDelay.html#a9e7972906966ada5cd751eb1195c52f4',1,'Delay::process()'],['../classDistortion.html#a4e7a86e083e46b8cdf1726d6be21aad8',1,'Distortion::process()'],['../classEQ.html#a181825fa2b714ded93cdf7b905dff157',1,'EQ::process()'],['../classFlanger.html#a5f5a55e51bf63026d46104c18a21b5b3',1,'Flanger::process()'],['../classGate.html#ac59d383ce84ea7269001936d028ace70',1,'Gate::process()'],['../classLimiter.html#a1a3583e5135d6823977a94607a6865f5',1,'Limiter::process()'],['../classPhaser.html#a0c529369400e26a9611f8c9f9424fbd8',1,'Phaser::process()'],['../classReverb.html#aaa4750018a83380cc0490d2e99925f7e',1,'Reverb::process()'],['../classTremolo.html#a818129f56397933fd6241b0494493f07',1,'Tremolo::process()']]]
+  ['horizontalfretboardwidget_258',['HorizontalFretboardWidget',['../classHorizontalFretboardWidget.html#a42151c18942ed6bac3ac2615a3f7d8c5',1,'HorizontalFretboardWidget']]]
 ];

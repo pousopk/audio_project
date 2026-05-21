@@ -38,7 +38,6 @@ Collaboration diagram for Limiter\+:
 \mbox{\Hypertarget{classLimiter_a43e7019cc7df9792a9dc8089579abdd6}\label{classLimiter_a43e7019cc7df9792a9dc8089579abdd6}} 
 void \mbox{\hyperlink{classLimiter_a43e7019cc7df9792a9dc8089579abdd6}{set\+Sample\+Rate}} (float rate) override
 \begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classLimiter_a1a3583e5135d6823977a94607a6865f5}\label{classLimiter_a1a3583e5135d6823977a94607a6865f5}} 
 float \mbox{\hyperlink{classLimiter_a1a3583e5135d6823977a94607a6865f5}{process}} (float input) override
 \begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classLimiter_a82f20cd0b22865745bf57800a4da4fe9}\label{classLimiter_a82f20cd0b22865745bf57800a4da4fe9}} 
@@ -59,6 +58,26 @@ float \mbox{\hyperlink{classLimiter_a75bf2b529eb9f3b18a8fab39be62bf51}{get\+Gain
 Brickwall limiter effect. 
 
 Prevents the signal from exceeding a set threshold. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLimiter_a1a3583e5135d6823977a94607a6865f5}\label{classLimiter_a1a3583e5135d6823977a94607a6865f5}} 
+\index{Limiter@{Limiter}!process@{process}}
+\index{process@{process}!Limiter@{Limiter}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily float Limiter\+::process (\begin{DoxyParamCaption}\item[{float}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Process a single audio sample. 
+
+\hypertarget{Limiter.cpp_autotoc_md27}{}\doxysubsection{$\ast$ @file Limiter.\+cpp}\label{Limiter.cpp_autotoc_md27}
+\hypertarget{Limiter.cpp_autotoc_md28}{}\doxysubsection{$\ast$ @brief Implements the Limiter audio effect for peak limiting and gain reduction.}\label{Limiter.cpp_autotoc_md28}
+\hypertarget{Limiter.cpp_autotoc_md29}{}\doxysubsection{autotoc\+\_\+md29}\label{Limiter.cpp_autotoc_md29}
+
+
+Implements \mbox{\hyperlink{classAudioEffect_a14d0bc86bd6382c32a9e762dcf0b38b4}{Audio\+Effect}}.
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

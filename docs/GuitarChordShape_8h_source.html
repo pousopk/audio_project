@@ -72,13 +72,16 @@ $(function() {
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Simple chord shape: -1 = muted, 0 = open, 1+ = fret number</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="structGuitarChordShape.html">    5</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structGuitarChordShape.html">GuitarChordShape</a> {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    std::vector&lt;int&gt; frets; <span class="comment">// size = 6 for standard guitar</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    std::vector&lt;int&gt; fingers; <span class="comment">// optional: finger numbers (0 = none)</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    QString name;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;};</div>
-<div class="ttc" id="astructGuitarChordShape_html"><div class="ttname"><a href="structGuitarChordShape.html">GuitarChordShape</a></div><div class="ttdef"><b>Definition:</b> GuitarChordShape.h:5</div></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structGuitarChordShape.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structGuitarChordShape.html">GuitarChordShape</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="structGuitarChordShape.html#af9b548d55944716cac0dbced61d4949f">   10</a></span>&#160;    std::vector&lt;int&gt; <a class="code" href="structGuitarChordShape.html#af9b548d55944716cac0dbced61d4949f">frets</a>;    </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="structGuitarChordShape.html#a4b9c5e0af38384ce5756fd20bb796282">   11</a></span>&#160;    std::vector&lt;int&gt; <a class="code" href="structGuitarChordShape.html#a4b9c5e0af38384ce5756fd20bb796282">fingers</a>;  </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structGuitarChordShape.html#ad6e6fc017595cc6f71af88bcadb58d95">   12</a></span>&#160;    QString <a class="code" href="structGuitarChordShape.html#ad6e6fc017595cc6f71af88bcadb58d95">name</a>;              </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;};</div>
+<div class="ttc" id="astructGuitarChordShape_html"><div class="ttname"><a href="structGuitarChordShape.html">GuitarChordShape</a></div><div class="ttdoc">Represents a guitar chord shape.</div><div class="ttdef"><b>Definition:</b> GuitarChordShape.h:9</div></div>
+<div class="ttc" id="astructGuitarChordShape_html_a4b9c5e0af38384ce5756fd20bb796282"><div class="ttname"><a href="structGuitarChordShape.html#a4b9c5e0af38384ce5756fd20bb796282">GuitarChordShape::fingers</a></div><div class="ttdeci">std::vector&lt; int &gt; fingers</div><div class="ttdoc">Optional finger numbers (0 = none)</div><div class="ttdef"><b>Definition:</b> GuitarChordShape.h:11</div></div>
+<div class="ttc" id="astructGuitarChordShape_html_ad6e6fc017595cc6f71af88bcadb58d95"><div class="ttname"><a href="structGuitarChordShape.html#ad6e6fc017595cc6f71af88bcadb58d95">GuitarChordShape::name</a></div><div class="ttdeci">QString name</div><div class="ttdoc">Name of the chord shape.</div><div class="ttdef"><b>Definition:</b> GuitarChordShape.h:12</div></div>
+<div class="ttc" id="astructGuitarChordShape_html_af9b548d55944716cac0dbced61d4949f"><div class="ttname"><a href="structGuitarChordShape.html#af9b548d55944716cac0dbced61d4949f">GuitarChordShape::frets</a></div><div class="ttdeci">std::vector&lt; int &gt; frets</div><div class="ttdoc">Fret numbers for each string (size = 6)</div><div class="ttdef"><b>Definition:</b> GuitarChordShape.h:10</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

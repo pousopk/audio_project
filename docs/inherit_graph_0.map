@@ -1,5 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classAudioEffect.html" title=" " alt="" coords="5,259,101,285"/>
+<area shape="rect" id="node1" href="$classAudioEffect.html" title="Abstract base class for audio effects." alt="" coords="5,259,101,285"/>
 <area shape="rect" id="node2" href="$classChorus.html" title="Chorus effect." alt="" coords="166,5,233,32"/>
 <area shape="rect" id="node3" href="$classCompressor.html" title="Dynamic range compressor effect." alt="" coords="149,56,249,83"/>
 <area shape="rect" id="node4" href="$classDelay.html" title="Simple delay effect with feedback and mix control." alt="" coords="169,107,229,133"/>

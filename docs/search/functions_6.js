@@ -1,4 +1,12 @@
 var searchData=
 [
-  ['name_134',['name',['../classChorus.html#ac1018abe7a4a1d97fc03c591e7e6454f',1,'Chorus::name()'],['../classCompressor.html#a1a5d30960246b640fa50bf499f84f5cb',1,'Compressor::name()'],['../classDelay.html#afbcbea07d4a9be76de269c1475990a1c',1,'Delay::name()'],['../classDistortion.html#a49abba1ee74fe39eed27d4c7241552d2',1,'Distortion::name()'],['../classEQ.html#a91d577d973bc0fd98ba4ac6c126795b8',1,'EQ::name()'],['../classFlanger.html#aa127937a299c63c1e8302b86973881d5',1,'Flanger::name()'],['../classGate.html#a84403f16d69e89dbd72af689c8adc995',1,'Gate::name()'],['../classLimiter.html#a82f20cd0b22865745bf57800a4da4fe9',1,'Limiter::name()'],['../classPhaser.html#a86477d34891879389a4a3092db9f3b8c',1,'Phaser::name()'],['../classReverb.html#ac95fd576f321ca60ff2d326f6153d265',1,'Reverb::name()'],['../classTremolo.html#a9e4ed8196ee8a820e9ba3a030ecd1021',1,'Tremolo::name()']]]
+  ['gainreductionmeter_249',['GainReductionMeter',['../classGainReductionMeter.html#ab23fa537f521bf326c399c79a9a602c6',1,'GainReductionMeter']]],
+  ['gate_250',['Gate',['../classGate.html#a4fc24ecebc0ca8252bf7ab96a705e58a',1,'Gate']]],
+  ['getchords_251',['getChords',['../classChordProgression.html#a9997a97b4b5dcf318ec2993e47dd0fa0',1,'ChordProgression']]],
+  ['getcompressorgainreductiondb_252',['getCompressorGainReductionDB',['../classFXChain.html#a7df2ea72153763d3082949d79ff83fee',1,'FXChain']]],
+  ['getcurrentbeatindex_253',['getCurrentBeatIndex',['../classMetronome.html#a7da6e27d31fe8673594c5946e9c0dc6f',1,'Metronome']]],
+  ['getgainreductiondb_254',['getGainReductionDB',['../classCompressor.html#a41c2afd3e3bbdb38dab08f31ed8e6eec',1,'Compressor::getGainReductionDB()'],['../classLimiter.html#a75bf2b529eb9f3b18a8fab39be62bf51',1,'Limiter::getGainReductionDB()']]],
+  ['getprogression_255',['getProgression',['../classChordProgressionManager.html#af0f133472a5dbfd0c20a484e660d0911',1,'ChordProgressionManager']]],
+  ['getvolume_256',['getVolume',['../classChordAudioEngine.html#ab9683b59960923c6f5993dac1cf0fc96',1,'ChordAudioEngine']]],
+  ['guitarsynth_257',['GuitarSynth',['../classGuitarSynth.html#addca6c1af1c78eff39ca1ae113b6a41a',1,'GuitarSynth']]]
 ];

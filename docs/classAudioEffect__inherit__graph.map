@@ -1,5 +1,5 @@
 <map id="AudioEffect" name="AudioEffect">
-<area shape="rect" id="node1" title=" " alt="" coords="468,5,564,32"/>
+<area shape="rect" id="node1" title="Abstract base class for audio effects." alt="" coords="468,5,564,32"/>
 <area shape="rect" id="node2" href="$classChorus.html" title="Chorus effect." alt="" coords="5,80,72,107"/>
 <area shape="rect" id="node3" href="$classCompressor.html" title="Dynamic range compressor effect." alt="" coords="97,80,197,107"/>
 <area shape="rect" id="node4" href="$classDelay.html" title="Simple delay effect with feedback and mix control." alt="" coords="221,80,281,107"/>

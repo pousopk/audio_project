@@ -14,6 +14,10 @@ void Flanger::setSampleRate(float rate) {
 }
 
 void Flanger::setRate(float rate_hz) {
+    #/**
+    # * @file Flanger.cpp
+    # * @brief Implements the Flanger audio effect for modulated delay and comb filtering.
+    # */
     rate_hz_ = rate_hz;
 }
 

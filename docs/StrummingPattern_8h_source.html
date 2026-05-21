@@ -69,34 +69,40 @@ $(function() {
 <div class="title">StrummingPattern.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// StrumType: Down, Up, Arpeggio, etc.</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">enum class</span> StrumType {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    Down,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    Up,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    ArpeggioAsc,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    ArpeggioDesc,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    DownAltBass <span class="comment">// For alternating bass notes</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;};</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="structStrumEvent.html">   14</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structStrumEvent.html">StrumEvent</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">double</span> position; <span class="comment">// Position in bar (0.0-1.0)</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    StrumType type;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> numNotes; <span class="comment">// For arpeggios: how many notes to play (0 = all)</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structStrummingPattern.html">   20</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structStrummingPattern.html">StrummingPattern</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    std::vector&lt;StrumEvent&gt; events;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// Some common patterns (to be filled in .cpp)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> std::vector&lt;StrummingPattern&gt; kStrummingPatterns;</div>
-<div class="ttc" id="astructStrumEvent_html"><div class="ttname"><a href="structStrumEvent.html">StrumEvent</a></div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:14</div></div>
-<div class="ttc" id="astructStrummingPattern_html"><div class="ttname"><a href="structStrummingPattern.html">StrummingPattern</a></div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:20</div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">enum class</span> StrumType {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    Down,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    Up,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    ArpeggioAsc,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    ArpeggioDesc,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    DownAltBass <span class="comment">// For alternating bass notes</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structStrumEvent.html">   21</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structStrumEvent.html">StrumEvent</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structStrumEvent.html#abd56b4f37a8cc5fd2cd881ad64c9f55f">   22</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structStrumEvent.html#abd56b4f37a8cc5fd2cd881ad64c9f55f">position</a>; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structStrumEvent.html#a176dd90a1612ef77878c84e929917d4d">   23</a></span>&#160;    StrumType <a class="code" href="structStrumEvent.html#a176dd90a1612ef77878c84e929917d4d">type</a>; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structStrumEvent.html#a44596e33c2dc6e8fe4ab9dced2cfdce9">   24</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structStrumEvent.html#a44596e33c2dc6e8fe4ab9dced2cfdce9">numNotes</a>; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structStrummingPattern.html">   30</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structStrummingPattern.html">StrummingPattern</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structStrummingPattern.html#af956b52e962c890c9e3c4a30797653ac">   31</a></span>&#160;    std::string <a class="code" href="structStrummingPattern.html#af956b52e962c890c9e3c4a30797653ac">name</a>; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structStrummingPattern.html#a5c6b5527dbf06ba103305e6f88889f1d">   32</a></span>&#160;    std::vector&lt;StrumEvent&gt; <a class="code" href="structStrummingPattern.html#a5c6b5527dbf06ba103305e6f88889f1d">events</a>; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// Some common patterns (to be filled in .cpp)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> std::vector&lt;StrummingPattern&gt; kStrummingPatterns;</div>
+<div class="ttc" id="astructStrumEvent_html"><div class="ttname"><a href="structStrumEvent.html">StrumEvent</a></div><div class="ttdoc">Represents a single strum or picking event in a pattern.</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:21</div></div>
+<div class="ttc" id="astructStrumEvent_html_a176dd90a1612ef77878c84e929917d4d"><div class="ttname"><a href="structStrumEvent.html#a176dd90a1612ef77878c84e929917d4d">StrumEvent::type</a></div><div class="ttdeci">StrumType type</div><div class="ttdoc">Type of strum or arpeggio.</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:23</div></div>
+<div class="ttc" id="astructStrumEvent_html_a44596e33c2dc6e8fe4ab9dced2cfdce9"><div class="ttname"><a href="structStrumEvent.html#a44596e33c2dc6e8fe4ab9dced2cfdce9">StrumEvent::numNotes</a></div><div class="ttdeci">int numNotes</div><div class="ttdoc">For arpeggios: how many notes to play (0 = all)</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:24</div></div>
+<div class="ttc" id="astructStrumEvent_html_abd56b4f37a8cc5fd2cd881ad64c9f55f"><div class="ttname"><a href="structStrumEvent.html#abd56b4f37a8cc5fd2cd881ad64c9f55f">StrumEvent::position</a></div><div class="ttdeci">double position</div><div class="ttdoc">Position in bar (0.0-1.0)</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:22</div></div>
+<div class="ttc" id="astructStrummingPattern_html"><div class="ttname"><a href="structStrummingPattern.html">StrummingPattern</a></div><div class="ttdoc">Represents a strumming pattern for guitar.</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:30</div></div>
+<div class="ttc" id="astructStrummingPattern_html_a5c6b5527dbf06ba103305e6f88889f1d"><div class="ttname"><a href="structStrummingPattern.html#a5c6b5527dbf06ba103305e6f88889f1d">StrummingPattern::events</a></div><div class="ttdeci">std::vector&lt; StrumEvent &gt; events</div><div class="ttdoc">Sequence of strum events.</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:32</div></div>
+<div class="ttc" id="astructStrummingPattern_html_af956b52e962c890c9e3c4a30797653ac"><div class="ttname"><a href="structStrummingPattern.html#af956b52e962c890c9e3c4a30797653ac">StrummingPattern::name</a></div><div class="ttdeci">std::string name</div><div class="ttdoc">Name of the strumming pattern.</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:31</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

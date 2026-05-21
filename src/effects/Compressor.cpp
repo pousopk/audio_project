@@ -1,3 +1,7 @@
+#/**
+# * @file Compressor.cpp
+# * @brief Implements the Compressor audio effect for dynamic range control.
+# */
 #include "effects/Compressor.h"
 
 Compressor::Compressor() {

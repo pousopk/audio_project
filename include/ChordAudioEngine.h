@@ -11,24 +11,41 @@
 #include "effects/FXChain.h"
 
 
+/**
+ * @brief Handles audio synthesis and FX for chord progressions.
+ */
 class ChordAudioEngine {
 public:
+    /** @brief Construct a ChordAudioEngine. */
     ChordAudioEngine();
+    /** @brief Destructor. */
     ~ChordAudioEngine();
 
+    /** @brief Set the chord progression to play. */
     void setProgression(const ChordProgression& progression);
+    /** @brief Set the tempo in BPM. */
     void setBpm(double bpm);
+    /** @brief Set the audio sample rate. */
     void setSampleRate(unsigned int rate);
+    /** @brief Start audio playback. */
     void start();
+    /** @brief Stop audio playback. */
     void stop();
+    /** @brief Check if audio is running. */
     bool isRunning() const;
 
+    /** @brief Set the metronome instance. */
     void setMetronome(class Metronome* m);
 
-    // Chord change callback: called with chord name at every chord change
+    /**
+     * @brief Set a callback for chord changes.
+     * @param cb Callback function called with chord name at every chord change.
+     */
     void setChordChangeCallback(std::function<void(const std::string&)> cb) { chordChangeCallback = std::move(cb); }
 
+    /** @brief Set the chord playback volume. */
     void setVolume(double v) { chordVolume = v; }
+    /** @brief Get the chord playback volume. */
     double getVolume() const { return chordVolume; }
 
     // Synth parameter controls

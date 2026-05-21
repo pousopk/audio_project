@@ -3,7 +3,9 @@
 #include <string>
 #include <vector>
 
-// Chord shapes: {E, A, D, G, B, e} (low E to high E)
+/**
+ * @brief Map of chord names to their fret shapes (low E to high E string).
+ */
 static const std::map<std::string, std::vector<int>> kGuitarChordShapes = {
     // Major
     {"C",    {-1, 3, 2, 0, 1, 0}}, // Standard open C major

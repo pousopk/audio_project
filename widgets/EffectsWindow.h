@@ -11,9 +11,13 @@ class QComboBox;
 class GainReductionMeter;
 class SpectrumAnalyzerWidget;
 
+/**
+ * @brief Window for controlling and visualizing audio effects parameters.
+ */
 class EffectsWindow : public QWidget {
     Q_OBJECT
 public:
+    /** @brief Construct an EffectsWindow. */
     explicit EffectsWindow(QWidget* parent = nullptr);
 
     // Methods to set initial values from MainWindow

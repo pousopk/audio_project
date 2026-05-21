@@ -1,3 +1,7 @@
+#/**
+# * @file Gate.cpp
+# * @brief Implements the Gate audio effect for noise gating and signal muting.
+# */
 #include "effects/Gate.h"
 
 Gate::Gate() {

@@ -14,12 +14,17 @@ class ColorLegendsWith;
 class FXChainWidget;
 class EffectsWindow;
 
+/**
+ * @brief Main application window for the audio project UI.
+ */
 class MainWindow : public QWidget {
     Q_OBJECT
 public:
+    /** @brief Construct the main window. */
     MainWindow(QWidget *parent = nullptr);
 
 private slots:
+    // UI event handlers for all controls
     void onPlayRequested(const QVector<ChordChange>& progression);
     void onBPMChanged(int value);
     void onBeatsChanged(int value);
@@ -61,8 +66,8 @@ private slots:
     void onUpdateMeters();
 
 private:
-    ChordAudioEngine audioEngine;
-    Metronome metronome;
+    ChordAudioEngine audioEngine; ///< Audio engine instance
+    Metronome metronome; ///< Metronome instance
     QSlider *slider;
     QLabel *bpmValue;
     QSlider *beatsSlider;

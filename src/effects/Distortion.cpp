@@ -1,5 +1,11 @@
 #include "effects/Distortion.h"
 #include <cmath>
+#/**
+# * @file Distortion.cpp
+# * @brief Implements the Distortion audio effect for nonlinear waveshaping.
+# */
+#include "effects/Distortion.h"
+#include <cmath>
 
 void Distortion::setDrive(float drive) {
     drive_ = std::clamp(drive, 0.0f, 1.0f);

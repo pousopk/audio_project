@@ -1,4 +1,4 @@
 <map id="Phaser" name="Phaser">
 <area shape="rect" id="node1" title="Phaser effect." alt="" coords="20,80,87,107"/>
-<area shape="rect" id="node2" href="$classAudioEffect.html" title=" " alt="" coords="5,5,101,32"/>
+<area shape="rect" id="node2" href="$classAudioEffect.html" title="Abstract base class for audio effects." alt="" coords="5,5,101,32"/>
 </map>

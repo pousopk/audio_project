@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['horizontalfretboardwidget_97',['HorizontalFretboardWidget',['../classHorizontalFretboardWidget.html',1,'']]]
+  ['horizontalfretboardwidget_195',['HorizontalFretboardWidget',['../classHorizontalFretboardWidget.html',1,'']]]
 ];

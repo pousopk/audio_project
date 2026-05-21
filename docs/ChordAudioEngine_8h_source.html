@@ -82,106 +82,117 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;effects/FXChain.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classChordAudioEngine.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classChordAudioEngine.html">ChordAudioEngine</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classChordAudioEngine.html">ChordAudioEngine</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ~<a class="code" href="classChordAudioEngine.html">ChordAudioEngine</a>();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> setProgression(<span class="keyword">const</span> <a class="code" href="classChordProgression.html">ChordProgression</a>&amp; progression);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> setBpm(<span class="keywordtype">double</span> bpm);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> setSampleRate(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rate);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> start();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> stop();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> isRunning() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> setMetronome(<span class="keyword">class</span> <a class="code" href="classMetronome.html">Metronome</a>* m);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// Chord change callback: called with chord name at every chord change</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> setChordChangeCallback(std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> std::string&amp;)&gt; cb) { chordChangeCallback = std::move(cb); }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> setVolume(<span class="keywordtype">double</span> v) { chordVolume = v; }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">double</span> getVolume()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> chordVolume; }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// Synth parameter controls</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> setReverbMix(<span class="keywordtype">float</span> mix);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> setDelayTime(<span class="keywordtype">float</span> time_ms);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> setDelayFeedback(<span class="keywordtype">float</span> feedback);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> setDelayMix(<span class="keywordtype">float</span> mix);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> setDistortionDrive(<span class="keywordtype">float</span> drive);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> setDistortionMix(<span class="keywordtype">float</span> mix);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> setCompressorThreshold(<span class="keywordtype">float</span> threshold_dB);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> setCompressorRatio(<span class="keywordtype">float</span> ratio);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> setCompressorAttack(<span class="keywordtype">float</span> attack_ms);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> setCompressorRelease(<span class="keywordtype">float</span> release_ms);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> setEQLowGain(<span class="keywordtype">float</span> gain_db);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> setEQMidGain(<span class="keywordtype">float</span> gain_db);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> setEQHighGain(<span class="keywordtype">float</span> gain_db);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> setLimiterThreshold(<span class="keywordtype">float</span> threshold_db);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> setLimiterRelease(<span class="keywordtype">float</span> release_ms);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> setChorusRate(<span class="keywordtype">float</span> rate_hz);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> setChorusDepth(<span class="keywordtype">float</span> depth_ms);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> setChorusMix(<span class="keywordtype">float</span> mix);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> setGateThreshold(<span class="keywordtype">float</span> threshold_db);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> setGateRelease(<span class="keywordtype">float</span> release_ms);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> setFlangerRate(<span class="keywordtype">float</span> rate_hz);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> setFlangerDepth(<span class="keywordtype">float</span> depth_ms);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> setFlangerFeedback(<span class="keywordtype">float</span> feedback);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> setFlangerMix(<span class="keywordtype">float</span> mix);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> setPhaserRate(<span class="keywordtype">float</span> rate_hz);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> setPhaserDepth(<span class="keywordtype">float</span> depth);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> setPhaserFeedback(<span class="keywordtype">float</span> feedback);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> setPhaserMix(<span class="keywordtype">float</span> mix);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> setTremoloRate(<span class="keywordtype">float</span> rate_hz);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> setTremoloDepth(<span class="keywordtype">float</span> depth);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> setFXOrder(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; newOrder);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Metering</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">float</span> getCompressorGainReductionDB() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::vector&lt;float&gt; getSpectrumData() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// Strumming pattern selection</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> setStrummingPattern(<span class="keyword">const</span> <a class="code" href="structStrummingPattern.html">StrummingPattern</a>&amp; pattern) { strummingPattern = pattern; }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">const</span> <a class="code" href="structStrummingPattern.html">StrummingPattern</a>&amp; getStrummingPattern()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> strummingPattern; }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> resetChordSyncState();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// Synthesis &amp; Sync State (moved from global/static)</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">int</span> measureSampleCounter_ = 0;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span> chordMeasureCount_ = 0;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> started_ = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    std::function&lt;void(<span class="keyword">const</span> std::string&amp;)&gt; chordChangeCallback;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> audioCallback(<span class="keywordtype">void</span>* outputBuffer, <span class="keywordtype">void</span>* inputBuffer, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nBufferFrames, <span class="keywordtype">double</span> streamTime, RtAudioStreamStatus status, <span class="keywordtype">void</span>* userData);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> fillBuffer(<span class="keywordtype">float</span>* out, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nFrames);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    RtAudio dac;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sampleRate = 48000;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">double</span> bpm = 120.0;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::atomic&lt;bool&gt; running{<span class="keyword">false</span>};</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="classChordProgression.html">ChordProgression</a> progression;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">int</span> currentChordIndex = 0;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">int</span> samplesLeftInChord = 0;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">class </span><a class="code" href="classMetronome.html">Metronome</a>* metronome = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">double</span> chordVolume = 1.0;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="structStrummingPattern.html">StrummingPattern</a> strummingPattern;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="classGuitarSynth.html">GuitarSynth</a> synth_;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="classFXChain.html">FXChain</a> fxChain_;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">int</span> lastChordIndex_ = -1;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// FFT and Spectrum Analyzer members</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::vector&lt;float&gt; fft_input_buffer_;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">int</span> fft_input_pos_ = 0;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::vector&lt;float&gt; spectrum_magnitudes_;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">mutable</span> std::mutex spectrum_mutex_;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
-<div class="ttc" id="aclassChordAudioEngine_html"><div class="ttname"><a href="classChordAudioEngine.html">ChordAudioEngine</a></div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.h:14</div></div>
-<div class="ttc" id="aclassChordProgression_html"><div class="ttname"><a href="classChordProgression.html">ChordProgression</a></div><div class="ttdef"><b>Definition:</b> ChordProgression.h:6</div></div>
-<div class="ttc" id="aclassFXChain_html"><div class="ttname"><a href="classFXChain.html">FXChain</a></div><div class="ttdef"><b>Definition:</b> FXChain.h:6</div></div>
-<div class="ttc" id="aclassGuitarSynth_html"><div class="ttname"><a href="classGuitarSynth.html">GuitarSynth</a></div><div class="ttdef"><b>Definition:</b> GuitarSynth.h:8</div></div>
-<div class="ttc" id="aclassMetronome_html"><div class="ttname"><a href="classMetronome.html">Metronome</a></div><div class="ttdef"><b>Definition:</b> Metronome.h:8</div></div>
-<div class="ttc" id="astructStrummingPattern_html"><div class="ttname"><a href="structStrummingPattern.html">StrummingPattern</a></div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:20</div></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classChordAudioEngine.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classChordAudioEngine.html">ChordAudioEngine</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classChordAudioEngine.html#a943ad11d75a82f656ceffed4e1464262">ChordAudioEngine</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classChordAudioEngine.html#afc336f6e0f88206fdd4d03a7e69b3037">~ChordAudioEngine</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#a21bf58d0fe67accd7486e76d0f29c8dc">setProgression</a>(<span class="keyword">const</span> <a class="code" href="classChordProgression.html">ChordProgression</a>&amp; progression);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#a24e1074548416594a5a47f9bd6c4e845">setBpm</a>(<span class="keywordtype">double</span> bpm);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#a147a7ca261ec576306d32a3ecfc8ce0f">setSampleRate</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> rate);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#a061e4aeb65fa6e79260c8083b6fd61ca">start</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#a5cdb47ed59db2adb4468e40d787e8311">stop</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classChordAudioEngine.html#afa7e2f887fd49e15360d68c56e43207d">isRunning</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#a5cfb5d013aa540c9d381a0723791d23a">setMetronome</a>(<span class="keyword">class</span> <a class="code" href="classMetronome.html">Metronome</a>* m);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classChordAudioEngine.html#aa4f8ae7358c2c890c06db65e76c4f1b2">   44</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#aa4f8ae7358c2c890c06db65e76c4f1b2">setChordChangeCallback</a>(std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> std::string&amp;)&gt; cb) { chordChangeCallback = std::move(cb); }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classChordAudioEngine.html#a6bed9767c9a6584b925b90a528943956">   47</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classChordAudioEngine.html#a6bed9767c9a6584b925b90a528943956">setVolume</a>(<span class="keywordtype">double</span> v) { chordVolume = v; }</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classChordAudioEngine.html#ab9683b59960923c6f5993dac1cf0fc96">   49</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classChordAudioEngine.html#ab9683b59960923c6f5993dac1cf0fc96">getVolume</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> chordVolume; }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Synth parameter controls</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> setReverbMix(<span class="keywordtype">float</span> mix);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> setDelayTime(<span class="keywordtype">float</span> time_ms);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> setDelayFeedback(<span class="keywordtype">float</span> feedback);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> setDelayMix(<span class="keywordtype">float</span> mix);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> setDistortionDrive(<span class="keywordtype">float</span> drive);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> setDistortionMix(<span class="keywordtype">float</span> mix);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> setCompressorThreshold(<span class="keywordtype">float</span> threshold_dB);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> setCompressorRatio(<span class="keywordtype">float</span> ratio);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> setCompressorAttack(<span class="keywordtype">float</span> attack_ms);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> setCompressorRelease(<span class="keywordtype">float</span> release_ms);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> setEQLowGain(<span class="keywordtype">float</span> gain_db);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> setEQMidGain(<span class="keywordtype">float</span> gain_db);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> setEQHighGain(<span class="keywordtype">float</span> gain_db);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> setLimiterThreshold(<span class="keywordtype">float</span> threshold_db);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> setLimiterRelease(<span class="keywordtype">float</span> release_ms);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> setChorusRate(<span class="keywordtype">float</span> rate_hz);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> setChorusDepth(<span class="keywordtype">float</span> depth_ms);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> setChorusMix(<span class="keywordtype">float</span> mix);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> setGateThreshold(<span class="keywordtype">float</span> threshold_db);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> setGateRelease(<span class="keywordtype">float</span> release_ms);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> setFlangerRate(<span class="keywordtype">float</span> rate_hz);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> setFlangerDepth(<span class="keywordtype">float</span> depth_ms);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> setFlangerFeedback(<span class="keywordtype">float</span> feedback);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> setFlangerMix(<span class="keywordtype">float</span> mix);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> setPhaserRate(<span class="keywordtype">float</span> rate_hz);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> setPhaserDepth(<span class="keywordtype">float</span> depth);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> setPhaserFeedback(<span class="keywordtype">float</span> feedback);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> setPhaserMix(<span class="keywordtype">float</span> mix);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> setTremoloRate(<span class="keywordtype">float</span> rate_hz);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> setTremoloDepth(<span class="keywordtype">float</span> depth);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> setFXOrder(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; newOrder);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// Metering</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">float</span> getCompressorGainReductionDB() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::vector&lt;float&gt; getSpectrumData() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// Strumming pattern selection</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> setStrummingPattern(<span class="keyword">const</span> <a class="code" href="structStrummingPattern.html">StrummingPattern</a>&amp; pattern) { strummingPattern = pattern; }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">const</span> <a class="code" href="structStrummingPattern.html">StrummingPattern</a>&amp; getStrummingPattern()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> strummingPattern; }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> resetChordSyncState();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// Synthesis &amp; Sync State (moved from global/static)</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">int</span> measureSampleCounter_ = 0;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> chordMeasureCount_ = 0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">bool</span> started_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::function&lt;void(<span class="keyword">const</span> std::string&amp;)&gt; chordChangeCallback;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> audioCallback(<span class="keywordtype">void</span>* outputBuffer, <span class="keywordtype">void</span>* inputBuffer, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nBufferFrames, <span class="keywordtype">double</span> streamTime, RtAudioStreamStatus status, <span class="keywordtype">void</span>* userData);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span> fillBuffer(<span class="keywordtype">float</span>* out, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nFrames);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    RtAudio dac;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sampleRate = 48000;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">double</span> bpm = 120.0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::atomic&lt;bool&gt; running{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="classChordProgression.html">ChordProgression</a> progression;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">int</span> currentChordIndex = 0;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> samplesLeftInChord = 0;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">class </span><a class="code" href="classMetronome.html">Metronome</a>* metronome = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">double</span> chordVolume = 1.0;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="structStrummingPattern.html">StrummingPattern</a> strummingPattern;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="classGuitarSynth.html">GuitarSynth</a> synth_;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="classFXChain.html">FXChain</a> fxChain_;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">int</span> lastChordIndex_ = -1;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">// FFT and Spectrum Analyzer members</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    std::vector&lt;float&gt; fft_input_buffer_;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">int</span> fft_input_pos_ = 0;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    std::vector&lt;float&gt; spectrum_magnitudes_;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">mutable</span> std::mutex spectrum_mutex_;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
+<div class="ttc" id="aclassChordAudioEngine_html"><div class="ttname"><a href="classChordAudioEngine.html">ChordAudioEngine</a></div><div class="ttdoc">Handles audio synthesis and FX for chord progressions.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.h:17</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a061e4aeb65fa6e79260c8083b6fd61ca"><div class="ttname"><a href="classChordAudioEngine.html#a061e4aeb65fa6e79260c8083b6fd61ca">ChordAudioEngine::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Start audio playback.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:52</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a147a7ca261ec576306d32a3ecfc8ce0f"><div class="ttname"><a href="classChordAudioEngine.html#a147a7ca261ec576306d32a3ecfc8ce0f">ChordAudioEngine::setSampleRate</a></div><div class="ttdeci">void setSampleRate(unsigned int rate)</div><div class="ttdoc">Set the audio sample rate.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:45</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a21bf58d0fe67accd7486e76d0f29c8dc"><div class="ttname"><a href="classChordAudioEngine.html#a21bf58d0fe67accd7486e76d0f29c8dc">ChordAudioEngine::setProgression</a></div><div class="ttdeci">void setProgression(const ChordProgression &amp;progression)</div><div class="ttdoc">Set the chord progression to play.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:38</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a24e1074548416594a5a47f9bd6c4e845"><div class="ttname"><a href="classChordAudioEngine.html#a24e1074548416594a5a47f9bd6c4e845">ChordAudioEngine::setBpm</a></div><div class="ttdeci">void setBpm(double bpm)</div><div class="ttdoc">Set the tempo in BPM.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:44</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a5cdb47ed59db2adb4468e40d787e8311"><div class="ttname"><a href="classChordAudioEngine.html#a5cdb47ed59db2adb4468e40d787e8311">ChordAudioEngine::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stop audio playback.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:87</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a5cfb5d013aa540c9d381a0723791d23a"><div class="ttname"><a href="classChordAudioEngine.html#a5cfb5d013aa540c9d381a0723791d23a">ChordAudioEngine::setMetronome</a></div><div class="ttdeci">void setMetronome(class Metronome *m)</div><div class="ttdoc">Set the metronome instance.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:27</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a6bed9767c9a6584b925b90a528943956"><div class="ttname"><a href="classChordAudioEngine.html#a6bed9767c9a6584b925b90a528943956">ChordAudioEngine::setVolume</a></div><div class="ttdeci">void setVolume(double v)</div><div class="ttdoc">Set the chord playback volume.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.h:47</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_a943ad11d75a82f656ceffed4e1464262"><div class="ttname"><a href="classChordAudioEngine.html#a943ad11d75a82f656ceffed4e1464262">ChordAudioEngine::ChordAudioEngine</a></div><div class="ttdeci">ChordAudioEngine()</div><div class="ttdoc">Construct a ChordAudioEngine.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:31</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_aa4f8ae7358c2c890c06db65e76c4f1b2"><div class="ttname"><a href="classChordAudioEngine.html#aa4f8ae7358c2c890c06db65e76c4f1b2">ChordAudioEngine::setChordChangeCallback</a></div><div class="ttdeci">void setChordChangeCallback(std::function&lt; void(const std::string &amp;)&gt; cb)</div><div class="ttdoc">Set a callback for chord changes.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.h:44</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_ab9683b59960923c6f5993dac1cf0fc96"><div class="ttname"><a href="classChordAudioEngine.html#ab9683b59960923c6f5993dac1cf0fc96">ChordAudioEngine::getVolume</a></div><div class="ttdeci">double getVolume() const</div><div class="ttdoc">Get the chord playback volume.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.h:49</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_afa7e2f887fd49e15360d68c56e43207d"><div class="ttname"><a href="classChordAudioEngine.html#afa7e2f887fd49e15360d68c56e43207d">ChordAudioEngine::isRunning</a></div><div class="ttdeci">bool isRunning() const</div><div class="ttdoc">Check if audio is running.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:50</div></div>
+<div class="ttc" id="aclassChordAudioEngine_html_afc336f6e0f88206fdd4d03a7e69b3037"><div class="ttname"><a href="classChordAudioEngine.html#afc336f6e0f88206fdd4d03a7e69b3037">ChordAudioEngine::~ChordAudioEngine</a></div><div class="ttdeci">~ChordAudioEngine()</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> ChordAudioEngine.cpp:36</div></div>
+<div class="ttc" id="aclassChordProgression_html"><div class="ttname"><a href="classChordProgression.html">ChordProgression</a></div><div class="ttdoc">Manages a sequence of chord changes for a progression.</div><div class="ttdef"><b>Definition:</b> ChordProgression.h:11</div></div>
+<div class="ttc" id="aclassFXChain_html"><div class="ttname"><a href="classFXChain.html">FXChain</a></div><div class="ttdoc">Manages a chain of audio effects and their parameters.</div><div class="ttdef"><b>Definition:</b> FXChain.h:9</div></div>
+<div class="ttc" id="aclassGuitarSynth_html"><div class="ttname"><a href="classGuitarSynth.html">GuitarSynth</a></div><div class="ttdoc">Physical modeling guitar synthesizer using Karplus-Strong algorithm.</div><div class="ttdef"><b>Definition:</b> GuitarSynth.h:11</div></div>
+<div class="ttc" id="aclassMetronome_html"><div class="ttname"><a href="classMetronome.html">Metronome</a></div><div class="ttdoc">Real-time metronome with audio output and beat callbacks.</div><div class="ttdef"><b>Definition:</b> Metronome.h:11</div></div>
+<div class="ttc" id="astructStrummingPattern_html"><div class="ttname"><a href="structStrummingPattern.html">StrummingPattern</a></div><div class="ttdoc">Represents a strumming pattern for guitar.</div><div class="ttdef"><b>Definition:</b> StrummingPattern.h:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

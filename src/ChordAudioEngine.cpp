@@ -1,3 +1,7 @@
+#/**
+# * @file ChordAudioEngine.cpp
+# * @brief Implements the ChordAudioEngine class for real-time chord playback, effects, and synchronization.
+# */
 #include "../strumming/StrummingPattern.h"
 #include <atomic>
 #include "ChordAudioEngine.h"

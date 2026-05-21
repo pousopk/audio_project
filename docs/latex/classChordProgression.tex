@@ -1,23 +1,105 @@
 \hypertarget{classChordProgression}{}\doxysection{Chord\+Progression Class Reference}
 \label{classChordProgression}\index{ChordProgression@{ChordProgression}}
+
+
+Manages a sequence of chord changes for a progression.  
+
+
+
+
+{\ttfamily \#include $<$Chord\+Progression.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{classChordProgression_a9c35758eb0721931285f51ba4734d13b}{add\+Chord}} (const std\+::string \&chord, int measures, int strumming\+Pattern\+Index)
+\begin{DoxyCompactList}\small\item\em Add a chord to the progression. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgression_a240de930e68a8bb0e56f7a1685bbc70f}{remove\+Chord}} (int index)
+\begin{DoxyCompactList}\small\item\em Remove a chord at the given index. \end{DoxyCompactList}\item 
+const QVector$<$ \mbox{\hyperlink{structChordChange}{Chord\+Change}} $>$ \& \mbox{\hyperlink{classChordProgression_a9997a97b4b5dcf318ec2993e47dd0fa0}{get\+Chords}} () const
+\begin{DoxyCompactList}\small\item\em Get the list of chord changes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classChordProgression_a668129a346b960ec771e483e9f542be0}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear the progression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a sequence of chord changes for a progression. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classChordProgression_a9c35758eb0721931285f51ba4734d13b}\label{classChordProgression_a9c35758eb0721931285f51ba4734d13b}} 
-void {\bfseries add\+Chord} (const std\+::string \&chord, int measures, int strumming\+Pattern\+Index)
-\item 
-\mbox{\Hypertarget{classChordProgression_a240de930e68a8bb0e56f7a1685bbc70f}\label{classChordProgression_a240de930e68a8bb0e56f7a1685bbc70f}} 
-void {\bfseries remove\+Chord} (int index)
-\item 
-\mbox{\Hypertarget{classChordProgression_a9997a97b4b5dcf318ec2993e47dd0fa0}\label{classChordProgression_a9997a97b4b5dcf318ec2993e47dd0fa0}} 
-const QVector$<$ \mbox{\hyperlink{structChordChange}{Chord\+Change}} $>$ \& {\bfseries get\+Chords} () const
-\item 
+\index{ChordProgression@{ChordProgression}!addChord@{addChord}}
+\index{addChord@{addChord}!ChordProgression@{ChordProgression}}
+\doxysubsubsection{\texorpdfstring{addChord()}{addChord()}}
+{\footnotesize\ttfamily void Chord\+Progression\+::add\+Chord (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{chord,  }\item[{int}]{measures,  }\item[{int}]{strumming\+Pattern\+Index }\end{DoxyParamCaption})}
+
+
+
+Add a chord to the progression. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em chord} & The chord name. \\
+\hline
+{\em measures} & Number of measures to play the chord. \\
+\hline
+{\em strumming\+Pattern\+Index} & Index of the strumming pattern.\\
+\hline
+{\em chord} & Name of the chord (std\+::string). \\
+\hline
+{\em measures} & Number of measures for the chord. \\
+\hline
+{\em strumming\+Pattern\+Index} & Index of the strumming pattern. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classChordProgression_a668129a346b960ec771e483e9f542be0}\label{classChordProgression_a668129a346b960ec771e483e9f542be0}} 
-void {\bfseries clear} ()
-\end{DoxyCompactItemize}
+\index{ChordProgression@{ChordProgression}!clear@{clear}}
+\index{clear@{clear}!ChordProgression@{ChordProgression}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Chord\+Progression\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clear the progression. 
+
+Clear the chord progression. \mbox{\Hypertarget{classChordProgression_a9997a97b4b5dcf318ec2993e47dd0fa0}\label{classChordProgression_a9997a97b4b5dcf318ec2993e47dd0fa0}} 
+\index{ChordProgression@{ChordProgression}!getChords@{getChords}}
+\index{getChords@{getChords}!ChordProgression@{ChordProgression}}
+\doxysubsubsection{\texorpdfstring{getChords()}{getChords()}}
+{\footnotesize\ttfamily const QVector$<$ \mbox{\hyperlink{structChordChange}{Chord\+Change}} $>$ \& Chord\+Progression\+::get\+Chords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the list of chord changes. 
+
+Get the list of chords in the progression.
+
+\begin{DoxyReturn}{Returns}
+QVector of \mbox{\hyperlink{structChordChange}{Chord\+Change}}.
+
+Reference to QVector of \mbox{\hyperlink{structChordChange}{Chord\+Change}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classChordProgression_a240de930e68a8bb0e56f7a1685bbc70f}\label{classChordProgression_a240de930e68a8bb0e56f7a1685bbc70f}} 
+\index{ChordProgression@{ChordProgression}!removeChord@{removeChord}}
+\index{removeChord@{removeChord}!ChordProgression@{ChordProgression}}
+\doxysubsubsection{\texorpdfstring{removeChord()}{removeChord()}}
+{\footnotesize\ttfamily void Chord\+Progression\+::remove\+Chord (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Remove a chord at the given index. 
+
+Remove a chord from the progression by index.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index to remove.\\
+\hline
+{\em index} & Index of the chord to remove. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/Chord\+Progression.\+h\item 
-src/Chord\+Progression.\+cpp\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{ChordProgression_8cpp}{Chord\+Progression.\+cpp}}\end{DoxyCompactItemize}

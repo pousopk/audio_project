@@ -21,6 +21,10 @@ std::vector<QString> getChordNotes(const QString& chordName) {
     QString typeStr;
 
     if (chordName.length() > 1 && (chordName[1] == '#' || chordName[1] == 'b')) {
+        #/**
+        # * @file main.cpp
+        # * @brief Entry point for the Qt-based audio application with metronome and chord progression features.
+        # */
         rootStr = chordName.left(2);
     } else {
         rootStr = chordName.left(1);
@@ -66,6 +70,12 @@ std::vector<QString> getChordNotes(const QString& chordName) {
     return notes;
 }
 
+/**
+ * @brief Main entry point for the application. Sets up the QApplication, loads styles, and shows the main window.
+ * @param argc Argument count.
+ * @param argv Argument vector.
+ * @return Application exit code.
+ */
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 

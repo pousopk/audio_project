@@ -3,32 +3,46 @@
 #include <QVector>
 #include <QMap>
 
+
+/**
+ * @brief Represents a chord change in a progression.
+ */
 struct ChordChange {
-    QString chordName;
-    int bars; // Number of bars to play this chord
-    int strummingPatternIndex = 0;
+    QString chordName; ///< Name of the chord
+    int bars; ///< Number of bars to play this chord
+    int strummingPatternIndex = 0; ///< Strumming pattern index
 };
 
+/**
+ * @brief Manages chord progressions, including saving/loading and standard progressions.
+ */
 class ChordProgressionManager {
 public:
+    /** @brief Construct a ChordProgressionManager. */
     ChordProgressionManager();
 
-    // Add a chord to the progression
+    /**
+     * @brief Add a chord to the progression.
+     * @param chordName Name of the chord.
+     * @param bars Number of bars to play.
+     * @param strummingPatternIndex Strumming pattern index.
+     */
     void addChord(const QString& chordName, int bars, int strummingPatternIndex = 0);
-    // Remove a chord at index
+    /** @brief Remove a chord at the given index. */
     void removeChord(int index);
-    // Clear the progression
+    /** @brief Clear the progression. */
     void clear();
-    // Get the current progression
+    /** @brief Get the current progression. */
     QVector<ChordChange> getProgression() const;
-    // Save/load progression by name
+    /** @brief Save the progression by name. */
     void saveProgression(const QString& name);
+    /** @brief Load a progression by name. */
     void loadProgression(const QString& name);
-    // List all saved progressions
+    /** @brief List all saved progressions. */
     QStringList listSavedProgressions() const;
-    // Set a standard progression (e.g., I-IV-V)
+    /** @brief Set a standard progression (e.g., I-IV-V). */
     void setStandardProgression(const QString& standardName, int strummingPatternIndex);
-    // Get all available standard progressions
+    /** @brief Get all available standard progression names. */
     QStringList standardProgressionNames() const;
 
 private:

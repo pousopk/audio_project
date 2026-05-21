@@ -68,12 +68,17 @@ $(function() {
 <div class="title">AudioEffect Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Abstract base class for audio effects.  
+ <a href="classAudioEffect.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="AudioEffect_8h_source.html">AudioEffect.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for AudioEffect:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAudioEffect__inherit__graph.png" border="0" usemap="#aAudioEffect_inherit__map" alt="Inheritance graph"/></div>
 <map name="aAudioEffect_inherit__map" id="aAudioEffect_inherit__map">
-<area shape="rect" title=" " alt="" coords="468,5,564,32"/>
+<area shape="rect" title="Abstract base class for audio effects." alt="" coords="468,5,564,32"/>
 <area shape="rect" href="classChorus.html" title="Chorus effect." alt="" coords="5,80,72,107"/>
 <area shape="rect" href="classCompressor.html" title="Dynamic range compressor effect." alt="" coords="97,80,197,107"/>
 <area shape="rect" href="classDelay.html" title="Simple delay effect with feedback and mix control." alt="" coords="221,80,281,107"/>
@@ -90,20 +95,30 @@ Inheritance diagram for AudioEffect:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ac5ffba4b85dff14dec78bed476c632d2"><td class="memItemLeft" align="right" valign="top"><a id="ac5ffba4b85dff14dec78bed476c632d2"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioEffect.html#ac5ffba4b85dff14dec78bed476c632d2">~AudioEffect</a> ()=default</td></tr>
+<tr class="memdesc:ac5ffba4b85dff14dec78bed476c632d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor. <br /></td></tr>
+<tr class="separator:ac5ffba4b85dff14dec78bed476c632d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a418690bdf7a705efcd530a033a4b6e61"><td class="memItemLeft" align="right" valign="top"><a id="a418690bdf7a705efcd530a033a4b6e61"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setSampleRate</b> (float rate)=0</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioEffect.html#a418690bdf7a705efcd530a033a4b6e61">setSampleRate</a> (float rate)=0</td></tr>
+<tr class="memdesc:a418690bdf7a705efcd530a033a4b6e61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sample rate for the effect. <br /></td></tr>
 <tr class="separator:a418690bdf7a705efcd530a033a4b6e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14d0bc86bd6382c32a9e762dcf0b38b4"><td class="memItemLeft" align="right" valign="top"><a id="a14d0bc86bd6382c32a9e762dcf0b38b4"></a>
-virtual float&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (float input)=0</td></tr>
+virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioEffect.html#a14d0bc86bd6382c32a9e762dcf0b38b4">process</a> (float input)=0</td></tr>
+<tr class="memdesc:a14d0bc86bd6382c32a9e762dcf0b38b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a single audio sample. <br /></td></tr>
 <tr class="separator:a14d0bc86bd6382c32a9e762dcf0b38b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f27cad1b4774d8e6acc7e3c57fd18bc"><td class="memItemLeft" align="right" valign="top"><a id="a1f27cad1b4774d8e6acc7e3c57fd18bc"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (float *buffer, int numSamples)</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioEffect.html#a1f27cad1b4774d8e6acc7e3c57fd18bc">process</a> (float *buffer, int numSamples)</td></tr>
+<tr class="memdesc:a1f27cad1b4774d8e6acc7e3c57fd18bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a buffer of audio samples. <br /></td></tr>
 <tr class="separator:a1f27cad1b4774d8e6acc7e3c57fd18bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a668b05e2b83d4fdbf0f7a8fedd79d9f4"><td class="memItemLeft" align="right" valign="top"><a id="a668b05e2b83d4fdbf0f7a8fedd79d9f4"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> () const =0</td></tr>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAudioEffect.html#a668b05e2b83d4fdbf0f7a8fedd79d9f4">name</a> () const =0</td></tr>
+<tr class="memdesc:a668b05e2b83d4fdbf0f7a8fedd79d9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the effect name. <br /></td></tr>
 <tr class="separator:a668b05e2b83d4fdbf0f7a8fedd79d9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Abstract base class for audio effects. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/effects/<a class="el" href="AudioEffect_8h_source.html">AudioEffect.h</a></li>
 </ul>
 </div><!-- contents -->

@@ -2,6 +2,15 @@
 \label{classAudioEffect}\index{AudioEffect@{AudioEffect}}
 
 
+Abstract base class for audio effects.  
+
+
+
+
+{\ttfamily \#include $<$Audio\+Effect.\+h$>$}
+
+
+
 Inheritance diagram for Audio\+Effect\+:
 \nopagebreak
 \begin{figure}[H]
@@ -13,19 +22,25 @@ Inheritance diagram for Audio\+Effect\+:
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classAudioEffect_ac5ffba4b85dff14dec78bed476c632d2}\label{classAudioEffect_ac5ffba4b85dff14dec78bed476c632d2}} 
+virtual \mbox{\hyperlink{classAudioEffect_ac5ffba4b85dff14dec78bed476c632d2}{$\sim$\+Audio\+Effect}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAudioEffect_a418690bdf7a705efcd530a033a4b6e61}\label{classAudioEffect_a418690bdf7a705efcd530a033a4b6e61}} 
-virtual void {\bfseries set\+Sample\+Rate} (float rate)=0
-\item 
+virtual void \mbox{\hyperlink{classAudioEffect_a418690bdf7a705efcd530a033a4b6e61}{set\+Sample\+Rate}} (float rate)=0
+\begin{DoxyCompactList}\small\item\em Set the sample rate for the effect. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAudioEffect_a14d0bc86bd6382c32a9e762dcf0b38b4}\label{classAudioEffect_a14d0bc86bd6382c32a9e762dcf0b38b4}} 
-virtual float {\bfseries process} (float input)=0
-\item 
+virtual float \mbox{\hyperlink{classAudioEffect_a14d0bc86bd6382c32a9e762dcf0b38b4}{process}} (float input)=0
+\begin{DoxyCompactList}\small\item\em Process a single audio sample. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAudioEffect_a1f27cad1b4774d8e6acc7e3c57fd18bc}\label{classAudioEffect_a1f27cad1b4774d8e6acc7e3c57fd18bc}} 
-virtual void {\bfseries process} (float $\ast$buffer, int num\+Samples)
-\item 
+virtual void \mbox{\hyperlink{classAudioEffect_a1f27cad1b4774d8e6acc7e3c57fd18bc}{process}} (float $\ast$buffer, int num\+Samples)
+\begin{DoxyCompactList}\small\item\em Process a buffer of audio samples. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classAudioEffect_a668b05e2b83d4fdbf0f7a8fedd79d9f4}\label{classAudioEffect_a668b05e2b83d4fdbf0f7a8fedd79d9f4}} 
-virtual std\+::string {\bfseries name} () const =0
-\end{DoxyCompactItemize}
+virtual std\+::string \mbox{\hyperlink{classAudioEffect_a668b05e2b83d4fdbf0f7a8fedd79d9f4}{name}} () const =0
+\begin{DoxyCompactList}\small\item\em Get the effect name. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Abstract base class for audio effects. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,18 +1,32 @@
 \hypertarget{structGuitarChordShape}{}\doxysection{Guitar\+Chord\+Shape Struct Reference}
 \label{structGuitarChordShape}\index{GuitarChordShape@{GuitarChordShape}}
+
+
+Represents a guitar chord shape.  
+
+
+
+
+{\ttfamily \#include $<$Guitar\+Chord\+Shape.\+h$>$}
+
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{structGuitarChordShape_af9b548d55944716cac0dbced61d4949f}\label{structGuitarChordShape_af9b548d55944716cac0dbced61d4949f}} 
-std\+::vector$<$ int $>$ {\bfseries frets}
-\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{structGuitarChordShape_af9b548d55944716cac0dbced61d4949f}{frets}}
+\begin{DoxyCompactList}\small\item\em Fret numbers for each string (size = 6) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structGuitarChordShape_a4b9c5e0af38384ce5756fd20bb796282}\label{structGuitarChordShape_a4b9c5e0af38384ce5756fd20bb796282}} 
-std\+::vector$<$ int $>$ {\bfseries fingers}
-\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{structGuitarChordShape_a4b9c5e0af38384ce5756fd20bb796282}{fingers}}
+\begin{DoxyCompactList}\small\item\em Optional finger numbers (0 = none) \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{structGuitarChordShape_ad6e6fc017595cc6f71af88bcadb58d95}\label{structGuitarChordShape_ad6e6fc017595cc6f71af88bcadb58d95}} 
-QString {\bfseries name}
-\end{DoxyCompactItemize}
+QString \mbox{\hyperlink{structGuitarChordShape_ad6e6fc017595cc6f71af88bcadb58d95}{name}}
+\begin{DoxyCompactList}\small\item\em Name of the chord shape. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Represents a guitar chord shape. 
+
+-\/1 = muted, 0 = open, 1+ = fret number. 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

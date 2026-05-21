@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['legenditem_28',['LegendItem',['../structLegendItem.html',1,'']]],
-  ['limiter_29',['Limiter',['../classLimiter.html',1,'Limiter'],['../classLimiter.html#aeb9287deaa87e9a6ad9658990cde09fe',1,'Limiter::Limiter()']]]
+  ['intervals_49',['intervals',['../structScaleDefinition.html#a35f86d2735c43161bc28f10f82ebf37c',1,'ScaleDefinition']]],
+  ['isrunning_50',['isRunning',['../classChordAudioEngine.html#afa7e2f887fd49e15360d68c56e43207d',1,'ChordAudioEngine::isRunning()'],['../classMetronome.html#ab64cd8102274c84cefe3fcca2ce09b5c',1,'Metronome::isRunning()']]]
 ];

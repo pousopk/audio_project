@@ -1,3 +1,7 @@
+#/**
+# * @file FXChain.cpp
+# * @brief Implements the FXChain class for managing and processing a chain of audio effects.
+# */
 
 #include "effects/FXChain.h"
 #include <algorithm>

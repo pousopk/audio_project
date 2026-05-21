@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['effectswindow_86',['EffectsWindow',['../classEffectsWindow.html',1,'']]],
-  ['eq_87',['EQ',['../classEQ.html',1,'']]]
+  ['effectswindow_184',['EffectsWindow',['../classEffectsWindow.html',1,'']]],
+  ['eq_185',['EQ',['../classEQ.html',1,'']]]
 ];

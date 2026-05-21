@@ -1,3 +1,7 @@
+#/**
+# * @file Reverb.cpp
+# * @brief Implements the Reverb audio effect for simulating acoustic spaces.
+# */
 #include "effects/Reverb.h"
 #include <cmath>
 
