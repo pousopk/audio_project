@@ -1,4 +1,0 @@
-<map id="Gate" name="Gate">
-<area shape="rect" id="node1" title="Noise gate effect." alt="" coords="27,80,80,107"/>
-<area shape="rect" id="node2" href="$classAudioEffect.html" title=" " alt="" coords="5,5,101,32"/>
-</map>

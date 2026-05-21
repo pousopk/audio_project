@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['name_33',['name',['../classChorus.html#ac1018abe7a4a1d97fc03c591e7e6454f',1,'Chorus::name()'],['../classCompressor.html#a1a5d30960246b640fa50bf499f84f5cb',1,'Compressor::name()'],['../classDelay.html#afbcbea07d4a9be76de269c1475990a1c',1,'Delay::name()'],['../classDistortion.html#a49abba1ee74fe39eed27d4c7241552d2',1,'Distortion::name()'],['../classEQ.html#a91d577d973bc0fd98ba4ac6c126795b8',1,'EQ::name()'],['../classFlanger.html#aa127937a299c63c1e8302b86973881d5',1,'Flanger::name()'],['../classGate.html#a84403f16d69e89dbd72af689c8adc995',1,'Gate::name()'],['../classLimiter.html#a82f20cd0b22865745bf57800a4da4fe9',1,'Limiter::name()'],['../classPhaser.html#a86477d34891879389a4a3092db9f3b8c',1,'Phaser::name()'],['../classReverb.html#ac95fd576f321ca60ff2d326f6153d265',1,'Reverb::name()'],['../classTremolo.html#a9e4ed8196ee8a820e9ba3a030ecd1021',1,'Tremolo::name()']]],
-  ['notemap_34',['NoteMap',['../structNoteMap.html',1,'']]],
-  ['notemapfretboardwidget_35',['NoteMapFretboardWidget',['../classNoteMapFretboardWidget.html',1,'']]]
-];
