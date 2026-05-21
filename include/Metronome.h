@@ -3,6 +3,7 @@
 #include <atomic>
 #include <thread>
 #include <csignal>
+#include <functional>
 
 class Metronome {
 public:
@@ -21,6 +22,9 @@ public:
     void setClickFreqStrong(double freq);
     void setClickFreqWeak(double freq);
     void setClickDuration(double sec);
+
+    // Beat change callback: called with beat index at every beat change
+    void setBeatCallback(std::function<void(int)> cb) { beatCallback = std::move(cb); }
 
     double getBpm() const;
     int getBeatsPerBar() const;
@@ -47,7 +51,7 @@ private:
         double phase = 0.0;
         int samplesUntilBeat = 0;
         int clickSamplesRemaining = 0;
-        int beatIndex = 0;
+        int beatIndex = -1;
         int beatsPerBar = 4;
         int timeSigDenominator = 4; // 4 = quarter note, 8 = eighth note, etc.
         int subdivisions = 1; // new: sub-beats per beat
@@ -63,6 +67,7 @@ private:
     static int audioCallback(void* outputBuffer, void* inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void* userData);
     static void handleSignal(int);
 
+    std::function<void(int)> beatCallback;
     State state_;
     RtAudio dac_;
     std::atomic<bool> running_;

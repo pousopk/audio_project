@@ -7,6 +7,7 @@ struct NoteMap {
     // For each string, a vector of fret numbers where the target notes occur
     std::vector<std::vector<int>> noteFrets; // size = numStrings
     QString chordName;
+    std::vector<QString> chordTones; // Notes to highlight as "target tones"
 };
 
 class NoteMapFretboardWidget : public QWidget {

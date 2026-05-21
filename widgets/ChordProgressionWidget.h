@@ -7,6 +7,8 @@
 class QListWidget;
 class QPushButton;
 class QLineEdit;
+class QSlider;
+class QLabel;
 class QComboBox;
 
 class ChordProgressionWidget : public QWidget {
@@ -15,10 +17,15 @@ public:
     explicit ChordProgressionWidget(QWidget* parent = nullptr);
     ChordProgressionManager* progressionManager();
 
+    QString scaleRoot() const;
+    QString scaleType() const;
+
 signals:
     void progressionChanged(const QVector<ChordChange>& progression);
     void playRequested(const QVector<ChordChange>& progression);
     void stopRequested();
+    void chordVolumeChanged(double volume);
+    void scaleChanged(const QString& root, const QString& name);
 
 private slots:
     void addChord();
@@ -26,7 +33,6 @@ private slots:
     void saveProgression();
     void loadProgression();
     void setStandardProgression();
-    void appendStandardToList();
     void updateProgressionList();
     void playProgression();
     void stopProgression();
@@ -47,6 +53,10 @@ private:
     QPushButton* appendStandardButton_;
     QPushButton* playButton_;
     QComboBox* strumCombo_;
+    QComboBox* scaleRootCombo_;
+    QComboBox* scaleTypeCombo_;
+    QSlider* chordVolumeSlider_;
+    QLabel* chordVolumeValue_;
     void refreshSavedCombo();
     void refreshStandardCombo();
 };

@@ -2,11 +2,13 @@
 
 ## Folder Structure
 
-- include/   — Public headers (core logic)
+- include/   — Public headers (core logic, effects API)
+- include/effects/ — Audio effect interfaces and effect headers
 - src/       — Core source files (main logic, audio, metronome, progression)
-- widgets/   — Qt widget implementations (fretboard, chord UI, etc.)
+- src/effects/ — Effect implementations
+- widgets/   — Qt widget implementations (fretboard, chord UI, effects UI, etc.)
 - utils/     — Utility/helper headers and sources
-- tests/     — Test/demo applications
+- tests/     — Test/demo applications and harnesses
 
 ## Building
 
@@ -29,20 +31,28 @@ make
 
 ## Project Overview
 
-
 This project is a modular C++/Qt audio application featuring:
 
 - Real-time metronome with audio output (RtAudio)
-- Visual beat indicator (Qt) with strong beat in red, weak beats in blue, others black
+- Visual beat indicator (Qt) with strong/weak/other beat coloring
 - BPM and time signature controls (including dynamic changes)
 - Chord progression backing track with additive synthesis
 - Per-chord strumming/arpeggio pattern selection and scheduling
 - Chord progression UI: add/remove chords, measures, strumming pattern, volume
 - Guitar fretboard and note map visualization widgets
 - Full-bar, half-bar, and short strum/arpeggio logic (musically accurate)
-- All code modularized: include/, src/, widgets/, utils/, tests/
-- Comprehensive test harnesses for metronome, chord/strum logic, fretboard
+- Modular effects system: flexible FXChain, with Delay, Reverb, Distortion, Compressor, EQ, Limiter, Chorus, Gate, Flanger, Phaser, Tremolo
+- All code modularized: include/, src/, widgets/, utils/, tests/, effects/
+- Comprehensive test harnesses for metronome, chord/strum logic, fretboard, and effects
 - Example test: `test_metronome_visual` demonstrates perfect sync between metronome audio and visualizer, with automatic time signature changes
+## Modular Effects System
+
+The project features a fully modular audio effects architecture:
+
+- All effect interfaces are in `include/effects/` (e.g., AudioEffect.h, FXChain.h)
+- Effect implementations are in `src/effects/` (e.g., Delay.cpp, Reverb.cpp, etc.)
+- Effects can be chained, reordered, and parameterized at runtime via the FXChain class
+- UI widgets for effect control and visualization are in `widgets/`
 
 ## Usage
 
@@ -65,11 +75,14 @@ This project is a modular C++/Qt audio application featuring:
 - Accurate strumming/arpeggio scheduling and sustain logic
 - Guitar chord shape and inversion logic (expandable)
 - Fretboard and note map widgets
-- All major UI controls: chord root/type, measure count, strumming pattern, volume
-- Test harnesses for all major modules
+- Modular FXChain with all major audio effects (see above)
+- All major UI controls: chord root/type, measure count, strumming pattern, volume, FX controls
+- Test harnesses for all major modules and effects
 
 ## TODO / In Progress
 - Show all notes of a chord on the fretboard (note map)
 - Generate all possible chord shapes (inversions) up to fret 24
+- Expand effect parameter UI and presets
+- Add more advanced musical features and test cases
 
 See the respective folders for details on each module and test.

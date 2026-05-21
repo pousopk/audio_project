@@ -2,6 +2,7 @@
 #include <QDebug>
 #include "Metronome.h"
 #include <thread>
+#include "ChordAudioEngine.h"
 #include <chrono>
 
 int main(int argc, char *argv[]) {
@@ -12,7 +13,10 @@ int main(int argc, char *argv[]) {
     metronome.setBeatsPerBar(4);
     metronome.setTimeSignatureDenominator(4);
 
-    metronome.start();
+    // Use the audio engine to drive the metronome
+    ChordAudioEngine engine;
+    engine.setMetronome(&metronome);
+    engine.start();
 
 
     int beatsPerBar = 4;
@@ -33,6 +37,6 @@ int main(int argc, char *argv[]) {
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
 
-    metronome.stop();
+    engine.stop();
     return 0;
 }

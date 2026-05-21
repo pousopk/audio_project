@@ -29,8 +29,14 @@ void runChordStrumTest(int strumIdx, int bpm = 120, int numLoops = 2) {
     engine.setProgression(prog);
     engine.start();
     for (int i = 0; i < numLoops; ++i) {
-        std::cout << "Loop " << (i+1) << "/" << numLoops << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(16 * 60 / bpm)); // 4 chords x 1 bar x 4 beats
+        std::cout << "Loop " << (i + 1) << "/" << numLoops << std::endl;
+        // Calculate total duration of the progression
+        double totalMeasures = 0;
+        for (const auto& chord : prog.getChords()) {
+            totalMeasures += chord.bars;
+        }
+        double secondsPerLoop = totalMeasures * 4.0 * 60.0 / bpm; // Assuming 4/4 time
+        std::this_thread::sleep_for(std::chrono::duration<double>(secondsPerLoop));
     }
     engine.stop();
 }

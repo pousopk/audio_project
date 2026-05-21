@@ -3,6 +3,7 @@
 #include <QFont>
 #include <algorithm>
 #include "../utils/NoteColorUtils.h"
+#include <QMap> // For QMap in getIntervalAndColor
 
 HorizontalFretboardWidget::HorizontalFretboardWidget(QWidget* parent)
     : QWidget(parent) {
@@ -39,16 +40,14 @@ void HorizontalFretboardWidget::paintEvent(QPaintEvent*) {
     }
     // For degree coloring, parse chord notes from shape.name if possible (e.g. "Cmaj7 (C, E, G, B)")
     for (const auto& shape : chordInversions) {
-        std::vector<QString> chordNotes;
-        int l = shape.name.indexOf('(');
-        int r = shape.name.indexOf(')');
-        if (l != -1 && r != -1 && r > l) {
-            QString notesStr = shape.name.mid(l+1, r-l-1);
-            QStringList noteList = notesStr.split(',', Qt::SkipEmptyParts);
-            for (QString n : noteList) chordNotes.push_back(n.trimmed());
+        // Determine the root note from the shape.name (e.g., "C#m7" -> "C#")
+        QString rootNote = shape.name.left(1);
+        if (shape.name.length() > 1 && (shape.name[1] == '#' || shape.name[1] == 'b')) {
+            rootNote = shape.name.left(2);
         }
-        for (int s = 0; s < numStrings; ++s) {
-            int fret = shape.frets.size() > s ? shape.frets[s] : -1;
+
+        for (size_t s = 0; s < numStrings; ++s) { // Use size_t for 's' to avoid signed/unsigned warning
+            int fret = (s < shape.frets.size()) ? shape.frets[s] : -1;
             if (fret > 0 && fret <= numFrets) {
                 int x = marginX + fret * fretSpacing - fretSpacing / 2;
                 int y = marginY + s * stringSpacing;
@@ -56,27 +55,22 @@ void HorizontalFretboardWidget::paintEvent(QPaintEvent*) {
                 static const int stringMidi[6] = {40, 45, 50, 55, 59, 64};
                 int midi = stringMidi[s] + fret;
                 int noteClass = midi % 12;
-                static const char* noteNames[12] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
+                static const char* noteNames[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
                 QString noteName = noteNames[noteClass];
-                int degree = -1;
-                QColor color = Qt::gray;
-                if (!chordNotes.empty()) {
-                    auto dc = getNoteDegreeAndColor(noteName, chordNotes);
-                    degree = dc.first;
-                    color = dc.second;
-                }
+
+                // Get interval and color using the new function
+                auto intervalAndColor = getIntervalAndColor(noteName, rootNote);
+                QString intervalText = intervalAndColor.first;
+                QColor color = intervalAndColor.second;
+
                 p.setBrush(color);
                 p.setPen(Qt::black);
                 p.drawEllipse(QPoint(x, y), 8, 8);
-                // Draw degree number (1=root, 3=3rd, 5=5th, 7=7th)
-                if (degree >= 0 && degree <= 3) {
-                    QString num = (degree == 0) ? "1" : (degree == 1) ? "3" : (degree == 2) ? "5" : "7";
-                    p.setPen(Qt::white);
-                    p.drawText(x-6, y+5, num);
-                } else {
-                    p.setPen(Qt::white);
-                    p.drawText(x-6, y+5, noteName);
-                }
+                p.setPen(Qt::white);
+                QFont font = p.font();
+                font.setPointSize(7);
+                p.setFont(font);
+                p.drawText(QRect(x - 8, y - 8, 16, 16), Qt::AlignCenter, intervalText);
             }
             // Optionally, mark muted/open strings above nut
             if (fret == 0) {

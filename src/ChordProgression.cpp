@@ -1,20 +1,21 @@
 #include "ChordProgression.h"
+#include <QString>
 
 void ChordProgression::addChord(const std::string& chord, int measures, int strummingPatternIndex) {
-    chords.push_back({chord, measures, strummingPatternIndex});
+    chords_.append({QString::fromStdString(chord), measures, strummingPatternIndex});
 }
 
 
 void ChordProgression::removeChord(int index) {
-    if (index >= 0 && index < static_cast<int>(chords.size())) {
-        chords.erase(chords.begin() + index);
+    if (index >= 0 && index < chords_.size()) {
+        chords_.removeAt(index);
     }
 }
 
-const std::vector<ChordEntry>& ChordProgression::getChords() const {
-    return chords;
+const QVector<ChordChange>& ChordProgression::getChords() const {
+    return chords_;
 }
 
 void ChordProgression::clear() {
-    chords.clear();
+    chords_.clear();
 }

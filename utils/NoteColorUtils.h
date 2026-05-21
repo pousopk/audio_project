@@ -1,21 +1,34 @@
 #pragma once
 #include <QString>
 #include <QColor>
+#include <vector>
+#include <QMap>
+#include <map>
 
-// Returns (degree, color) for a note in a chord
-inline std::pair<int, QColor> getNoteDegreeAndColor(const QString& note, const std::vector<QString>& chordNotes) {
-    // chordNotes[0] = root, [1] = 3rd, [2] = 5th, [3] = 7th (optional)
-    int idx = -1;
-    for (int i = 0; i < (int)chordNotes.size(); ++i) {
-        if (note == chordNotes[i]) { idx = i; break; }
+// Returns (interval name, color) for a note relative to a root note.
+inline std::pair<QString, QColor> getIntervalAndColor(const QString& note, const QString& rootNote) {
+    static const QMap<QString, int> noteIndices = {
+        {"C",0}, {"C#",1}, {"Db",1}, {"D",2}, {"D#",3}, {"Eb",3}, {"E",4}, {"F",5},
+        {"F#",6}, {"Gb",6}, {"G",7}, {"G#",8}, {"Ab",8}, {"A",9}, {"A#",10}, {"Bb",10}, {"B",11}
+    };
+
+    int rootIdx = noteIndices.value(rootNote, 0);
+    int noteIdx = noteIndices.value(note, 0);
+    int interval = (noteIdx - rootIdx + 12) % 12;
+
+    switch (interval) {
+        case 0:  return {"1", QColor(255, 70, 70)};   // Root - Red
+        case 1:  return {"b2", Qt::darkGray};
+        case 2:  return {"2", Qt::lightGray};
+        case 3:  return {"b3", QColor(100, 100, 255)}; // Minor 3rd - Dark Blue
+        case 4:  return {"3", QColor(150, 150, 255)}; // Major 3rd - Bright Blue
+        case 5:  return {"4", Qt::lightGray};
+        case 6:  return {"b5", Qt::darkGray};
+        case 7:  return {"5", QColor(70, 180, 70)};   // 5th - Green
+        case 8:  return {"#5", Qt::darkGray};
+        case 9:  return {"6", Qt::lightGray};
+        case 10: return {"b7", QColor(200, 100, 200)}; // Minor 7th - Dark Purple
+        case 11: return {"7", QColor(255, 150, 255)}; // Major 7th - Bright Purple
+        default: return {"", Qt::black};
     }
-    QColor color = Qt::black;
-    switch (idx) {
-        case 0: color = Qt::black; break; // root
-        case 1: color = QColor(0, 102, 204); break; // 3rd (blue)
-        case 2: color = QColor(255, 204, 0); break; // 5th (yellow)
-        case 3: color = QColor(204, 0, 0); break; // 7th (red)
-        default: color = Qt::gray; break;
-    }
-    return {idx, color};
 }

@@ -37,14 +37,10 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
         int y = marginY + (numStrings - 1 - s) * stringSpacing;
         p.drawLine(marginX, y, w - marginX, y);
     }
-    // For degree coloring, parse chord notes from chordName if possible (e.g. "E major note map (E, G#, B)")
-    std::vector<QString> chordNotes;
-    int l = currentMap.chordName.indexOf('(');
-    int r = currentMap.chordName.indexOf(')');
-    if (l != -1 && r != -1 && r > l) {
-        QString notesStr = currentMap.chordName.mid(l+1, r-l-1);
-        QStringList noteList = notesStr.split(',', Qt::SkipEmptyParts);
-        for (QString n : noteList) chordNotes.push_back(n.trimmed());
+    // Determine the root note from the chord/scale name (e.g., "C#m7" -> "C#")
+    QString rootNote = currentMap.chordName.left(1);
+    if (currentMap.chordName.length() > 1 && (currentMap.chordName[1] == '#' || currentMap.chordName[1] == 'b')) {
+        rootNote = currentMap.chordName.left(2);
     }
     // Draw note positions (top = high E)
     QFont font = p.font();
@@ -54,7 +50,12 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
         int y = marginY + (numStrings - 1 - s) * stringSpacing;
         for (int fret : currentMap.noteFrets[s]) {
             if (fret >= 0 && fret <= numFrets) {
-                int x = marginX + fret * fretSpacing;
+                int x;
+                if (fret == 0) {
+                    x = marginX - fretSpacing / 2; // Position for open strings
+                } else {
+                    x = marginX + fret * fretSpacing - fretSpacing / 2; // Position between frets
+                }
                 // Determine note name for this position
                 QString noteName;
                 // Standard tuning MIDI for each string
@@ -64,25 +65,28 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
                 static const char* noteNames[12] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
                 noteName = noteNames[noteClass];
                 // Get degree and color
-                int degree = -1;
-                QColor color = Qt::gray;
-                if (!chordNotes.empty()) {
-                    auto dc = getNoteDegreeAndColor(noteName, chordNotes);
-                    degree = dc.first;
-                    color = dc.second;
+                auto intervalAndColor = getIntervalAndColor(noteName, rootNote);
+                QString intervalText = intervalAndColor.first;
+                QColor color = intervalAndColor.second;
+
+                // Check if this note is a "target tone" (a chord tone)
+                bool isTargetTone = std::find(currentMap.chordTones.begin(), currentMap.chordTones.end(), noteName) != currentMap.chordTones.end();
+
+                // Draw highlight for target tones
+                if (isTargetTone) {
+                    p.setPen(QPen(QColor(255, 255, 0, 200), 3)); // Bright yellow outline
+                    p.drawEllipse(QPoint(x, y), 12, 12);
                 }
+
                 p.setBrush(color);
                 p.setPen(Qt::black);
                 p.drawEllipse(QPoint(x, y), 10, 10);
-                // Draw degree number (1=root, 3=3rd, 5=5th, 7=7th)
-                if (degree >= 0 && degree <= 3) {
-                    QString num = (degree == 0) ? "1" : (degree == 1) ? "3" : (degree == 2) ? "5" : "7";
-                    p.setPen(Qt::white);
-                    p.drawText(x-6, y+5, num);
-                } else {
-                    p.setPen(Qt::white);
-                    p.drawText(x-6, y+5, noteName);
-                }
+
+                // Draw interval text inside the circle
+                p.setPen(Qt::white);
+                font.setPointSize(7);
+                p.setFont(font);
+                p.drawText(QRect(x-10, y-10, 20, 20), Qt::AlignCenter, intervalText);
             }
         }
     }

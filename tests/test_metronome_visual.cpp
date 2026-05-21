@@ -1,8 +1,10 @@
 #include "../include/Metronome.h"
+#include "../include/ChordAudioEngine.h"
 #include "../widgets/BeatVisualizerWidget.h"
 #include <QApplication>
 #include <QTimer>
 #include <QVBoxLayout>
+#include <QMetaObject>
 #include <QWidget>
 
 // Simple test window to show metronome and beat visualizer in sync
@@ -22,13 +24,18 @@ public:
         metronome.setBeatsPerBar(4);
         metronome.setTimeSignatureDenominator(4);
         metronome.setVolume(0.5);
-        metronome.start();
-        visualizer->setBeatsPerBar(4);
 
-        // Polling timer for perfect sync
-        pollTimer = new QTimer(this);
-        connect(pollTimer, &QTimer::timeout, this, &TestMetronomeVisualWindow::onPoll);
-        pollTimer->start(10); // Poll every 10ms
+        // Set up the beat callback for perfect UI sync
+        metronome.setBeatCallback([this](int beat) {
+            // Safely invoke the UI update on the main GUI thread
+            QMetaObject::invokeMethod(this, "onBeat", Qt::QueuedConnection, Q_ARG(int, beat));
+        });
+
+        // Use the audio engine to drive the metronome
+        engine.setMetronome(&metronome);
+        engine.start();
+
+        visualizer->setBeatsPerBar(4);
 
         // Timer to change time signatures
         changeTimer = new QTimer(this);
@@ -36,19 +43,14 @@ public:
         changeTimer->start(20000); // 20 seconds
     }
 private slots:
-    void onPoll() {
-        int beat = metronome.getCurrentBeatIndex();
-        if (beat != lastBeat) {
-            visualizer->setCurrentBeat(beat);
-            lastBeat = beat;
-        }
+    void onBeat(int beat) {
+        visualizer->setCurrentBeat(beat);
     }
 private:
     Metronome metronome;
+    ChordAudioEngine engine;
     BeatVisualizerWidget *visualizer;
-    QTimer *pollTimer;
     QTimer *changeTimer;
-    int lastBeat = -1;
     int signatureStep = 0;
 private slots:
     void onChangeSignature() {

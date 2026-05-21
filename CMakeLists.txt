@@ -11,29 +11,61 @@ set(CMAKE_AUTOMOC ON)
 # Set include directories
 include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/widgets)
+include_directories(${CMAKE_SOURCE_DIR}/include/effects)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
 
 
-set(SRC_FILES
-  src/main.cpp
+# Define source files for a core static library
+set(AUDIO_CORE_SOURCES
   src/Metronome.cpp
   src/ChordProgression.cpp
   src/ChordAudioEngine.cpp
   src/ChordProgressionManager.cpp
+  src/GuitarSynth.cpp
+  strumming/StrummingPattern.cpp
+  src/effects/Reverb.cpp
+  src/effects/Delay.cpp
+  src/effects/Distortion.cpp
+  src/effects/Compressor.cpp
+  src/effects/EQ.cpp
+  src/effects/Limiter.cpp
+  src/effects/Chorus.cpp
+  src/effects/Gate.cpp
+  src/effects/Flanger.cpp
+  src/effects/Phaser.cpp
+  src/effects/Tremolo.cpp
+  src/effects/FXChain.cpp
+  utils/ScaleDefinitions.cpp
+)
+
+add_library(audio_core STATIC ${AUDIO_CORE_SOURCES})
+
+# Find Qt5 Core for the static library
+find_package(Qt5 COMPONENTS Core REQUIRED)
+target_link_libraries(audio_core PRIVATE Qt5::Core)
+
+# Define source files for the main application
+set(APP_SOURCES
+  src/main.cpp
+  widgets/MainWindow.cpp
+  widgets/ColorLegendsWith.cpp
+  widgets/EffectsWindow.cpp
+  widgets/FXChainWidget.cpp
   widgets/ChordTrackWidget.cpp
   widgets/GuitarFretboardWidget.cpp
   widgets/HorizontalFretboardWidget.cpp
   widgets/NoteMapFretboardWidget.cpp
+  widgets/GainReductionMeter.cpp
+  widgets/SpectrumAnalyzerWidget.cpp
   widgets/BeatVisualizerWidget.cpp
   widgets/ChordProgressionWidget.cpp
   utils/NoteMapUtils.cpp
-  strumming/StrummingPattern.cpp
 )
 
 # Place all Qt autogen files in a dedicated 'qt' folder in the build directory
 set(CMAKE_AUTOGEN_OUTPUT_DIR ${CMAKE_BINARY_DIR}/qt)
 
-add_executable(audio_project ${SRC_FILES})
+add_executable(audio_project ${APP_SOURCES})
 set_target_properties(audio_project PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src
   AUTOGEN_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/qt/audio_project_autogen
@@ -41,7 +73,7 @@ set_target_properties(audio_project PROPERTIES
 
 # Find Qt5 Widgets
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
-target_link_libraries(audio_project PRIVATE Qt5::Widgets)
+target_link_libraries(audio_project PRIVATE Qt5::Widgets audio_core)
 
 # Find RtAudio (assumes RtAudio is in ../rtaudio or system path)
 find_path(RTAUDIO_INCLUDE_DIR RtAudio.h
@@ -53,7 +85,9 @@ find_library(RTAUDIO_LIBRARY NAMES rtaudio
 
 if (RTAUDIO_INCLUDE_DIR AND RTAUDIO_LIBRARY)
   target_include_directories(audio_project PRIVATE ${RTAUDIO_INCLUDE_DIR})
+  target_include_directories(audio_core PUBLIC ${RTAUDIO_INCLUDE_DIR})
   target_link_libraries(audio_project PRIVATE ${RTAUDIO_LIBRARY})
+  target_link_libraries(audio_core PUBLIC ${RTAUDIO_LIBRARY})
 else()
   message(FATAL_ERROR "RtAudio not found. Set RTAUDIO_INCLUDE_DIR and RTAUDIO_LIBRARY.")
 endif()
@@ -64,52 +98,30 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 
-# Option to build tests (default ON)
-option(BUILD_TESTS "Build test and demo executables" ON)
+# Option to build tests (default OFF)
+option(BUILD_TESTS "Build test and demo executables" OFF)
 
 if(BUILD_TESTS)
 
-    add_executable(test_metronome_beats tests/test_metronome_beats.cpp src/Metronome.cpp src/ChordProgressionManager.cpp)
+    add_executable(test_metronome_beats tests/test_metronome_beats.cpp)
     set_target_properties(test_metronome_beats PROPERTIES
       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
     )
-    if (RTAUDIO_INCLUDE_DIR)
-      target_include_directories(test_metronome_beats PRIVATE ${RTAUDIO_INCLUDE_DIR})
-    endif()
-    if (RTAUDIO_LIBRARY)
-      target_link_libraries(test_metronome_beats PRIVATE ${RTAUDIO_LIBRARY})
-    endif()
-    target_link_libraries(test_metronome_beats PRIVATE Qt5::Widgets)
+    target_link_libraries(test_metronome_beats PRIVATE Qt5::Widgets audio_core)
 
     add_executable(test_chord_strong_beat
       tests/test_chord_strong_beat.cpp
-      src/ChordAudioEngine.cpp
-      src/ChordProgression.cpp
-      src/Metronome.cpp
-      strumming/StrummingPattern.cpp
     )
-    if (RTAUDIO_INCLUDE_DIR)
-      target_include_directories(test_chord_strong_beat PRIVATE ${RTAUDIO_INCLUDE_DIR})
-    endif()
-    if (RTAUDIO_LIBRARY)
-      target_link_libraries(test_chord_strong_beat PRIVATE ${RTAUDIO_LIBRARY})
-    endif()
-    target_link_libraries(test_chord_strong_beat PRIVATE Qt5::Widgets)
     set_target_properties(test_chord_strong_beat PROPERTIES
       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
     )
+    target_link_libraries(test_chord_strong_beat PRIVATE Qt5::Widgets audio_core)
 
-        add_executable(test_metronome_visual tests/test_metronome_visual.cpp widgets/BeatVisualizerWidget.cpp src/Metronome.cpp)
-        set_target_properties(test_metronome_visual PROPERTIES
-          RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
-        )
-        if (RTAUDIO_INCLUDE_DIR)
-          target_include_directories(test_metronome_visual PRIVATE ${RTAUDIO_INCLUDE_DIR})
-        endif()
-        if (RTAUDIO_LIBRARY)
-          target_link_libraries(test_metronome_visual PRIVATE ${RTAUDIO_LIBRARY})
-        endif()
-        target_link_libraries(test_metronome_visual PRIVATE Qt5::Widgets)
+    add_executable(test_metronome_visual tests/test_metronome_visual.cpp widgets/BeatVisualizerWidget.cpp)
+    set_target_properties(test_metronome_visual PROPERTIES
+      RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
+    )
+    target_link_libraries(test_metronome_visual PRIVATE Qt5::Widgets audio_core)
     add_executable(test_chord_shape_to_freq tests/test_chord_shape_to_freq.cpp)
     set_target_properties(test_chord_shape_to_freq PROPERTIES
       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
@@ -128,22 +140,12 @@ if(BUILD_TESTS)
 
     add_executable(test_chord_strumming
       tests/test_chord_strumming.cpp
-      src/ChordAudioEngine.cpp
-      src/ChordProgression.cpp
-      src/Metronome.cpp
-      strumming/StrummingPattern.cpp
-      # Add any other needed sources here
     )
-    if (RTAUDIO_INCLUDE_DIR)
-      target_include_directories(test_chord_strumming PRIVATE ${RTAUDIO_INCLUDE_DIR})
-    endif()
-    if (RTAUDIO_LIBRARY)
-      target_link_libraries(test_chord_strumming PRIVATE ${RTAUDIO_LIBRARY})
-    endif()
-    target_link_libraries(test_chord_strumming PRIVATE Qt5::Widgets)
     set_target_properties(test_chord_strumming PROPERTIES
       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/tests
     )
+    target_link_libraries(test_chord_strumming PRIVATE Qt5::Widgets audio_core)
+
   target_link_libraries(test_fretboard Qt5::Widgets)
 
   add_executable(test_horizontal_fretboard tests/test_horizontal_fretboard.cpp widgets/HorizontalFretboardWidget.cpp)

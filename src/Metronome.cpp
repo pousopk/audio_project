@@ -5,11 +5,11 @@
 #include <cstring>
 
 void Metronome::reset() {
-    state_.beatIndex = 0;
+    // Reset the metronome's internal state to ensure it starts fresh.
+    state_.beatIndex = -1;
     state_.subdivisionIndex = 0;
-    state_.samplesUntilBeat = 1;
+    state_.samplesUntilBeat = 0;
     state_.clickSamplesRemaining = 0;
-    state_.phase = 0.0;
 }
 
 void Metronome::fillBuffer(float* out, unsigned int nFrames) {
@@ -50,7 +50,7 @@ void Metronome::fillBuffer(float* out, unsigned int nFrames) {
             if (subClick) {
                 volume *= 0.5;
             }
-            sample = static_cast<float>(volume * env * std::sin(static_cast<double>(state->phase)));
+            sample = static_cast<float>(volume * env * std::sin(state->phase));
             state->phase += twoPi * freq / state->sampleRate;
             if (state->phase > twoPi) {
                 state->phase -= twoPi;
@@ -58,12 +58,9 @@ void Metronome::fillBuffer(float* out, unsigned int nFrames) {
             state->clickSamplesRemaining = state->clickSamplesRemaining - 1;
         }
         out[i] = sample;
-        state->samplesUntilBeat = state->samplesUntilBeat - 1;
+        state->samplesUntilBeat--;
     }
 }
-
-
-
 
 void Metronome::setTimeSignatureDenominator(int denom)
 {
@@ -209,6 +206,10 @@ int Metronome::audioCallback(void* outputBuffer, void*, unsigned int nBufferFram
             if (state->subdivisionIndex >= state->subdivisions) {
                 state->subdivisionIndex = 0;
                 state->beatIndex = (state->beatIndex + 1) % state->beatsPerBar;
+                // If a callback is set, invoke it with the new beat index
+                if (static_cast<Metronome*>(userData)->beatCallback) {
+                    static_cast<Metronome*>(userData)->beatCallback(state->beatIndex);
+                }
             }
         }
 

@@ -27,7 +27,7 @@ public:
     // List all saved progressions
     QStringList listSavedProgressions() const;
     // Set a standard progression (e.g., I-IV-V)
-    void setStandardProgression(const QString& standardName);
+    void setStandardProgression(const QString& standardName, int strummingPatternIndex);
     // Get all available standard progressions
     QStringList standardProgressionNames() const;
 

@@ -1,0 +1,84 @@
+/* Dark Theme for Audio Project */
+
+QWidget {
+    background-color: #2e2e2e;
+    color: #e0e0e0;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+QGroupBox {
+    background-color: #3c3c3c;
+    border: 1px solid #555;
+    border-radius: 5px;
+    margin-top: 1ex; /* leave space at the top for the title */
+    font-weight: bold;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+}
+
+QLabel {
+    background-color: transparent;
+}
+
+QPushButton {
+    background-color: #555;
+    border: 1px solid #666;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+QPushButton:hover {
+    background-color: #6a6a6a;
+}
+
+QPushButton:pressed {
+    background-color: #4a4a4a;
+}
+
+QComboBox {
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #444;
+    selection-background-color: #5a5a5a;
+}
+
+QLineEdit {
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+QListWidget {
+    background-color: #3a3a3a;
+    border: 1px solid #555;
+}
+
+QSlider::groove:horizontal {
+    border: 1px solid #555;
+    height: 8px;
+    background: #3a3a3a;
+    margin: 2px 0;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #8a8a8a;
+    border: 1px solid #555;
+    width: 16px;
+    margin: -4px 0;
+    border-radius: 8px;
+}

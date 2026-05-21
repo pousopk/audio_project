@@ -70,3 +70,17 @@ Testing/
 
 # Qt/CMake autogen folders
 *_autogen/
+
+# Doxygen documentation output
+docs/doxygen/
+docs/doxygen/html/
+docs/doxygen/latex/
+docs/doxygen/xml/
+docs/doxygen/*.tag
+docs/doxygen/*.log
+html/
+latex/
+xml/
+*.tag
+*.log
+Doxyfile

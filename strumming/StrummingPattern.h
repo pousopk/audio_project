@@ -7,7 +7,8 @@ enum class StrumType {
     Down,
     Up,
     ArpeggioAsc,
-    ArpeggioDesc
+    ArpeggioDesc,
+    DownAltBass // For alternating bass notes
 };
 
 struct StrumEvent {
