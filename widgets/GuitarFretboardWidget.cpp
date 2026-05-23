@@ -39,7 +39,8 @@ void GuitarFretboardWidget::paintEvent(QPaintEvent*) {
     }
     // Draw finger positions (flipped)
     for (int s = 0; s < numStrings; ++s) {
-        int fret = currentShape.frets.size() > s ? currentShape.frets[s] : -1;
+        const std::size_t stringIndex = static_cast<std::size_t>(s);
+        int fret = stringIndex < currentShape.frets.size() ? currentShape.frets[stringIndex] : -1;
         int x = margin + (numStrings - 1 - s) * stringSpacing;
         if (fret == -1) {
             // Muted string

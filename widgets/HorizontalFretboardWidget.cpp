@@ -46,8 +46,9 @@ void HorizontalFretboardWidget::paintEvent(QPaintEvent*) {
             rootNote = shape.name.left(2);
         }
 
-        for (size_t s = 0; s < numStrings; ++s) { // Use size_t for 's' to avoid signed/unsigned warning
-            int fret = (s < shape.frets.size()) ? shape.frets[s] : -1;
+        for (int s = 0; s < numStrings; ++s) {
+            const std::size_t stringIndex = static_cast<std::size_t>(s);
+            int fret = (stringIndex < shape.frets.size()) ? shape.frets[stringIndex] : -1;
             if (fret > 0 && fret <= numFrets) {
                 int x = marginX + fret * fretSpacing - fretSpacing / 2;
                 int y = marginY + s * stringSpacing;

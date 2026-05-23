@@ -46,8 +46,9 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
     QFont font = p.font();
     font.setPointSize(9);
     p.setFont(font);
-    for (int s = 0; s < currentMap.noteFrets.size(); ++s) {
-        int y = marginY + (numStrings - 1 - s) * stringSpacing;
+    for (std::size_t s = 0; s < currentMap.noteFrets.size(); ++s) {
+        const int stringIndex = static_cast<int>(s);
+        int y = marginY + (numStrings - 1 - stringIndex) * stringSpacing;
         for (int fret : currentMap.noteFrets[s]) {
             if (fret >= 0 && fret <= numFrets) {
                 int x;
@@ -60,7 +61,7 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
                 QString noteName;
                 // Standard tuning MIDI for each string
                 static const int stringMidi[6] = {40, 45, 50, 55, 59, 64};
-                int midi = stringMidi[s] + fret;
+                int midi = stringMidi[stringIndex] + fret;
                 int noteClass = midi % 12;
                 static const char* noteNames[12] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
                 noteName = noteNames[noteClass];
