@@ -11,7 +11,6 @@
 #include <map>
 #include "../include/GuitarChordShape.h"
 #include "../utils/GuitarChordShapes.h"
-#include <QString>
 #include <vector>
 #include <array>
 #include <iostream>
@@ -287,7 +286,7 @@ void ChordAudioEngine::fillBuffer(float* out, unsigned int nFrames) {
         const ChordChange& chord = chords[currentChordIndex];
         // --- Chord change event ---
         if (lastChordIndex_ != currentChordIndex && chordChangeCallback) {
-            chordChangeCallback(chord.chordName.toStdString());
+            chordChangeCallback(chord.chordName);
             lastChordIndex_ = currentChordIndex;
         }
         if (chordMeasureCount_ <= 0) {
@@ -298,7 +297,7 @@ void ChordAudioEngine::fillBuffer(float* out, unsigned int nFrames) {
         // --- Use lowest available guitar inversion for this chord ---
         // Use the same logic as generateChordInversions in main.cpp
         std::vector<int> shapeFrets;
-        auto it = kGuitarChordShapes.find(chord.chordName.toStdString());
+        auto it = kGuitarChordShapes.find(chord.chordName);
         if (it != kGuitarChordShapes.end()) {
             shapeFrets = it->second;
         } else {

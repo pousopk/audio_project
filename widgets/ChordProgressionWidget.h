@@ -2,6 +2,7 @@
 #pragma once
 #include <QWidget>
 #include <QPushButton>
+#include <vector>
 #include "ChordProgressionManager.h"
 
 class QListWidget;
@@ -28,8 +29,8 @@ public:
     QString scaleType() const;
 
 signals:
-    void progressionChanged(const QVector<ChordChange>& progression);
-    void playRequested(const QVector<ChordChange>& progression);
+    void progressionChanged(const std::vector<ChordChange>& progression);
+    void playRequested(const std::vector<ChordChange>& progression);
     void stopRequested();
     void chordVolumeChanged(double volume);
     void scaleChanged(const QString& root, const QString& name);

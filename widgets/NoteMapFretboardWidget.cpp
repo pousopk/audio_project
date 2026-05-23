@@ -38,9 +38,10 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
         p.drawLine(marginX, y, w - marginX, y);
     }
     // Determine the root note from the chord/scale name (e.g., "C#m7" -> "C#")
-    QString rootNote = currentMap.chordName.left(1);
+    const QString chordLabel = QString::fromStdString(currentMap.chordName);
+    std::string rootNote = currentMap.chordName.substr(0, 1);
     if (currentMap.chordName.length() > 1 && (currentMap.chordName[1] == '#' || currentMap.chordName[1] == 'b')) {
-        rootNote = currentMap.chordName.left(2);
+        rootNote = currentMap.chordName.substr(0, 2);
     }
     // Draw note positions (top = high E)
     QFont font = p.font();
@@ -66,12 +67,14 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
                 static const char* noteNames[12] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
                 noteName = noteNames[noteClass];
                 // Get degree and color
-                auto intervalAndColor = getIntervalAndColor(noteName, rootNote);
-                QString intervalText = intervalAndColor.first;
-                QColor color = intervalAndColor.second;
+                auto intervalAndColor = getIntervalAndColor(noteName.toStdString(), rootNote);
+                QString intervalText = QString::fromStdString(intervalAndColor.first);
+                const NoteColor& colorData = intervalAndColor.second;
+                QColor color(colorData.r, colorData.g, colorData.b);
 
                 // Check if this note is a "target tone" (a chord tone)
-                bool isTargetTone = std::find(currentMap.chordTones.begin(), currentMap.chordTones.end(), noteName) != currentMap.chordTones.end();
+                const std::string noteStd = noteName.toStdString();
+                bool isTargetTone = std::find(currentMap.chordTones.begin(), currentMap.chordTones.end(), noteStd) != currentMap.chordTones.end();
 
                 // Draw highlight for target tones
                 if (isTargetTone) {
@@ -92,11 +95,11 @@ void NoteMapFretboardWidget::paintEvent(QPaintEvent*) {
         }
     }
     // Draw chord name
-    if (!currentMap.chordName.isEmpty()) {
+    if (!currentMap.chordName.empty()) {
         QFont font = p.font();
         font.setPointSize(14);
         font.setBold(true);
         p.setFont(font);
-        p.drawText(rect(), Qt::AlignTop | Qt::AlignHCenter, currentMap.chordName);
+        p.drawText(rect(), Qt::AlignTop | Qt::AlignHCenter, chordLabel);
     }
 }

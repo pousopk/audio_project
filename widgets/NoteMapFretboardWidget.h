@@ -1,16 +1,6 @@
 #pragma once
 #include <QWidget>
-#include <vector>
-#include <QString>
-
-/**
- * @brief Maps notes to fret positions for a chord or scale.
- */
-struct NoteMap {
-    std::vector<std::vector<int>> noteFrets; ///< For each string, fret numbers where target notes occur
-    QString chordName; ///< Name of the chord
-    std::vector<QString> chordTones; ///< Notes to highlight as target tones
-};
+#include "../include/NoteMap.h"
 
 /**
  * @brief Widget for displaying a fretboard with highlighted notes.

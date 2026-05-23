@@ -162,8 +162,7 @@ void ChordProgressionWidget::addChord() {
         return;
     }
     int strumIdx = strumCombo_ ? strumCombo_->currentIndex() : 0;
-    // If ChordProgressionManager::addChord only takes 2 args, use that
-    manager_.addChord(chord, bars, strumIdx);
+    manager_.addChord(chord.toStdString(), bars, strumIdx);
     updateProgressionList();
     emit progressionChanged(manager_.getProgression());
 }
@@ -187,7 +186,7 @@ void ChordProgressionWidget::saveProgression() {
     bool ok;
     QString name = QInputDialog::getText(this, "Save Progression", "Name:", QLineEdit::Normal, "", &ok);
     if (ok && !name.trimmed().isEmpty()) {
-        manager_.saveProgression(name.trimmed());
+        manager_.saveProgression(name.trimmed().toStdString());
         refreshSavedCombo();
     }
 }
@@ -195,7 +194,7 @@ void ChordProgressionWidget::saveProgression() {
 void ChordProgressionWidget::loadProgression() {
     QString name = savedCombo_->currentText();
     if (!name.isEmpty()) {
-        manager_.loadProgression(name);
+        manager_.loadProgression(name.toStdString());
         updateProgressionList();
         emit progressionChanged(manager_.getProgression());
     }
@@ -205,7 +204,7 @@ void ChordProgressionWidget::setStandardProgression() {
     QString name = standardCombo_->currentText();
     if (!name.isEmpty()) {
         int strumIdx = strumCombo_ ? strumCombo_->currentIndex() : 0;
-        manager_.setStandardProgression(name, strumIdx);
+        manager_.setStandardProgression(name.toStdString(), strumIdx);
         updateProgressionList();
         emit progressionChanged(manager_.getProgression());
     }
@@ -214,16 +213,24 @@ void ChordProgressionWidget::setStandardProgression() {
 void ChordProgressionWidget::updateProgressionList() {
     chordList_->clear();
     for (const auto& change : manager_.getProgression()) {
-        chordList_->addItem(QString("%1 (%2 bars)").arg(change.chordName).arg(change.bars));
+        chordList_->addItem(QString("%1 (%2 bars)").arg(QString::fromStdString(change.chordName)).arg(change.bars));
     }
 }
 
 void ChordProgressionWidget::refreshSavedCombo() {
     savedCombo_->clear();
-    savedCombo_->addItems(manager_.listSavedProgressions());
+    QStringList names;
+    for (const auto& name : manager_.listSavedProgressions()) {
+        names.append(QString::fromStdString(name));
+    }
+    savedCombo_->addItems(names);
 }
 
 void ChordProgressionWidget::refreshStandardCombo() {
     standardCombo_->clear();
-    standardCombo_->addItems(manager_.standardProgressionNames());
+    QStringList names;
+    for (const auto& name : manager_.standardProgressionNames()) {
+        names.append(QString::fromStdString(name));
+    }
+    standardCombo_->addItems(names);
 }

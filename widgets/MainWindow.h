@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QWidget>
+#include <vector>
+#include <string>
 #include "Metronome.h"
 #include "ChordAudioEngine.h"
 
@@ -25,7 +27,7 @@ public:
 
 private slots:
     // UI event handlers for all controls
-    void onPlayRequested(const QVector<ChordChange>& progression);
+    void onPlayRequested(const std::vector<ChordChange>& progression);
     void onBPMChanged(int value);
     void onBeatsChanged(int value);
     void onDenomChanged(const QString &text);
@@ -83,6 +85,6 @@ private:
     EffectsWindow *effectsWindow;
     QTimer* meterUpdateTimer_;
     ColorLegendsWith *legendWidget;
-    std::vector<QString> currentScaleNotes_;
-    QString currentScaleLabel_;
+    std::vector<std::string> currentScaleNotes_;
+    std::string currentScaleLabel_;
 };

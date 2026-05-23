@@ -1,4 +1,5 @@
 #include "ChordProgressionManager.h"
+#include <algorithm>
 
 ChordProgressionManager::ChordProgressionManager() {
     initStandardProgressions();
@@ -10,8 +11,8 @@ ChordProgressionManager::ChordProgressionManager() {
  * @param bars Number of bars for the chord.
  * @param strummingPatternIndex Index of the strumming pattern.
  */
-void ChordProgressionManager::addChord(const QString& chordName, int bars, int strummingPatternIndex) {
-    progression_.append({chordName, bars, strummingPatternIndex});
+void ChordProgressionManager::addChord(const std::string& chordName, int bars, int strummingPatternIndex) {
+    progression_.push_back({chordName, bars, strummingPatternIndex});
 }
 
 /**
@@ -19,8 +20,9 @@ void ChordProgressionManager::addChord(const QString& chordName, int bars, int s
  * @param index Index of the chord to remove.
  */
 void ChordProgressionManager::removeChord(int index) {
-    if (index >= 0 && index < progression_.size())
-        progression_.removeAt(index);
+    if (index >= 0 && static_cast<std::size_t>(index) < progression_.size()) {
+        progression_.erase(progression_.begin() + index);
+    }
 }
 
 /**
@@ -32,9 +34,9 @@ void ChordProgressionManager::clear() {
 
 /**
  * @brief Get the current chord progression.
- * @return QVector of ChordChange.
+ * @return Vector of ChordChange.
  */
-QVector<ChordChange> ChordProgressionManager::getProgression() const {
+std::vector<ChordChange> ChordProgressionManager::getProgression() const {
     return progression_;
 }
 
@@ -42,7 +44,7 @@ QVector<ChordChange> ChordProgressionManager::getProgression() const {
  * @brief Save the current progression under a given name.
  * @param name Name to save the progression as.
  */
-void ChordProgressionManager::saveProgression(const QString& name) {
+void ChordProgressionManager::saveProgression(const std::string& name) {
     savedProgressions_[name] = progression_;
 }
 
@@ -50,17 +52,24 @@ void ChordProgressionManager::saveProgression(const QString& name) {
  * @brief Load a saved progression by name.
  * @param name Name of the saved progression.
  */
-void ChordProgressionManager::loadProgression(const QString& name) {
-    if (savedProgressions_.contains(name))
-        progression_ = savedProgressions_[name];
+void ChordProgressionManager::loadProgression(const std::string& name) {
+    auto it = savedProgressions_.find(name);
+    if (it != savedProgressions_.end()) {
+        progression_ = it->second;
+    }
 }
 
 /**
  * @brief List all saved progression names.
- * @return QStringList of saved progression names.
+ * @return Vector of saved progression names.
  */
-QStringList ChordProgressionManager::listSavedProgressions() const {
-    return savedProgressions_.keys();
+std::vector<std::string> ChordProgressionManager::listSavedProgressions() const {
+    std::vector<std::string> names;
+    names.reserve(savedProgressions_.size());
+    for (const auto& pair : savedProgressions_) {
+        names.push_back(pair.first);
+    }
+    return names;
 }
 
 /**
@@ -68,9 +77,10 @@ QStringList ChordProgressionManager::listSavedProgressions() const {
  * @param standardName Name of the standard progression.
  * @param strummingPatternIndex Index of the strumming pattern.
  */
-void ChordProgressionManager::setStandardProgression(const QString& standardName, int strummingPatternIndex) {
-    if (standardProgressions_.contains(standardName)) {
-        progression_ = standardProgressions_[standardName];
+void ChordProgressionManager::setStandardProgression(const std::string& standardName, int strummingPatternIndex) {
+    auto it = standardProgressions_.find(standardName);
+    if (it != standardProgressions_.end()) {
+        progression_ = it->second;
         for (auto& chord : progression_) {
             chord.strummingPatternIndex = strummingPatternIndex;
         }
@@ -79,10 +89,15 @@ void ChordProgressionManager::setStandardProgression(const QString& standardName
 
 /**
  * @brief Get the names of all standard progressions.
- * @return QStringList of standard progression names.
+ * @return Vector of standard progression names.
  */
-QStringList ChordProgressionManager::standardProgressionNames() const {
-    return standardProgressions_.keys();
+std::vector<std::string> ChordProgressionManager::standardProgressionNames() const {
+    std::vector<std::string> names;
+    names.reserve(standardProgressions_.size());
+    for (const auto& pair : standardProgressions_) {
+        names.push_back(pair.first);
+    }
+    return names;
 }
 
 /**

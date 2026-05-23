@@ -40,10 +40,6 @@ set(AUDIO_CORE_SOURCES
 
 add_library(audio_core STATIC ${AUDIO_CORE_SOURCES})
 
-# Find Qt5 Core for the static library
-find_package(Qt5 COMPONENTS Core REQUIRED)
-target_link_libraries(audio_core PRIVATE Qt5::Core)
-
 # Define source files for the main application
 set(APP_SOURCES
   src/main.cpp

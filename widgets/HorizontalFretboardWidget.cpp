@@ -40,10 +40,12 @@ void HorizontalFretboardWidget::paintEvent(QPaintEvent*) {
     }
     // For degree coloring, parse chord notes from shape.name if possible (e.g. "Cmaj7 (C, E, G, B)")
     for (const auto& shape : chordInversions) {
+        const QString shapeName = QString::fromStdString(shape.name);
+        const std::string shapeNameStd = shape.name;
         // Determine the root note from the shape.name (e.g., "C#m7" -> "C#")
-        QString rootNote = shape.name.left(1);
-        if (shape.name.length() > 1 && (shape.name[1] == '#' || shape.name[1] == 'b')) {
-            rootNote = shape.name.left(2);
+        std::string rootNote = shapeNameStd.substr(0, 1);
+        if (shapeNameStd.length() > 1 && (shapeNameStd[1] == '#' || shapeNameStd[1] == 'b')) {
+            rootNote = shapeNameStd.substr(0, 2);
         }
 
         for (int s = 0; s < numStrings; ++s) {
@@ -57,12 +59,13 @@ void HorizontalFretboardWidget::paintEvent(QPaintEvent*) {
                 int midi = stringMidi[s] + fret;
                 int noteClass = midi % 12;
                 static const char* noteNames[12] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
-                QString noteName = noteNames[noteClass];
+                std::string noteName = noteNames[noteClass];
 
                 // Get interval and color using the new function
                 auto intervalAndColor = getIntervalAndColor(noteName, rootNote);
-                QString intervalText = intervalAndColor.first;
-                QColor color = intervalAndColor.second;
+                QString intervalText = QString::fromStdString(intervalAndColor.first);
+                const NoteColor& colorData = intervalAndColor.second;
+                QColor color(colorData.r, colorData.g, colorData.b);
 
                 p.setBrush(color);
                 p.setPen(Qt::black);
@@ -91,8 +94,8 @@ void HorizontalFretboardWidget::paintEvent(QPaintEvent*) {
     int labelY = marginY - 30;
     int labelX = marginX;
     for (const auto& shape : chordInversions) {
-        if (!shape.name.isEmpty()) {
-            p.drawText(labelX, labelY, shape.name);
+        if (!shape.name.empty()) {
+            p.drawText(labelX, labelY, QString::fromStdString(shape.name));
             labelX += 80; // space between inversion names
         }
     }

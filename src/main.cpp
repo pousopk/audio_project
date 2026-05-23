@@ -9,7 +9,7 @@
 #include <QString>
 #include <QMap>
 // Helper: get note names for a chord (root, 3rd, 5th, 7th)
-std::vector<QString> getChordNotes(const QString& chordName) {
+std::vector<std::string> getChordNotes(const QString& chordName) {
     static const char* noteNames[12] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
     static const QMap<QString, int> noteIndices = {
         {"C",0}, {"C#",1}, {"Db",1}, {"D",2}, {"D#",3}, {"Eb",3}, {"E",4}, {"F",5},
@@ -52,7 +52,7 @@ std::vector<QString> getChordNotes(const QString& chordName) {
     else if (typeStr.contains("6")) { seventh = 9; } // Use 'seventh' slot for 6th
     else if (typeStr.contains("add9")) { seventh = 2; } // Use 'seventh' slot for 9th
 
-    std::vector<QString> notes;
+    std::vector<std::string> notes;
     notes.push_back(noteNames[rootIdx]);
     if (third != -1) {
         notes.push_back(noteNames[(rootIdx + third) % 12]);
@@ -62,7 +62,7 @@ std::vector<QString> getChordNotes(const QString& chordName) {
     }
     if (seventh != -1) {
         // Avoid duplicate notes (e.g. for add9 where 9th might be same as root)
-        QString seventhNote = noteNames[(rootIdx + seventh) % 12];
+        std::string seventhNote = noteNames[(rootIdx + seventh) % 12];
         if (std::find(notes.begin(), notes.end(), seventhNote) == notes.end()) {
             notes.push_back(seventhNote);
         }

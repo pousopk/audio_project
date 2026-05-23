@@ -55,11 +55,11 @@ void GuitarFretboardWidget::paintEvent(QPaintEvent*) {
         }
     }
     // Draw chord name
-    if (!currentShape.name.isEmpty()) {
+    if (!currentShape.name.empty()) {
         QFont font = p.font();
         font.setPointSize(14);
         font.setBold(true);
         p.setFont(font);
-        p.drawText(rect(), Qt::AlignTop | Qt::AlignHCenter, currentShape.name);
+        p.drawText(rect(), Qt::AlignTop | Qt::AlignHCenter, QString::fromStdString(currentShape.name));
     }
 }

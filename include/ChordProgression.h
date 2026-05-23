@@ -1,5 +1,4 @@
 #pragma once
-#include <QVector>
 #include <vector>
 #include <string>
 #include <cstddef>
@@ -24,11 +23,11 @@ public:
     void removeChord(int index);
     /**
      * @brief Get the list of chord changes.
-     * @return QVector of ChordChange.
+     * @return Vector of ChordChange.
      */
-    const QVector<ChordChange>& getChords() const;
+    const std::vector<ChordChange>& getChords() const;
     /** @brief Clear the progression. */
     void clear();
 private:
-    QVector<ChordChange> chords_; ///< List of chord changes
+    std::vector<ChordChange> chords_; ///< List of chord changes
 };

@@ -1,13 +1,14 @@
 #pragma once
-#include <QStringList>
+#include <string>
+#include <vector>
 
 /**
  * @brief Returns a list of all supported chord names.
- * @return QStringList of chord names.
+ * @return Vector of chord names.
  */
-inline QStringList getAllChordNames() {
+inline std::vector<std::string> getAllChordNames() {
     // Basic set, can be expanded
-    return QStringList{
+    return {
         "C", "Cm", "C7", "Cm7", "Cmaj7",
         "D", "Dm", "D7", "Dm7", "Dmaj7",
         "E", "Em", "E7", "Em7", "Emaj7",

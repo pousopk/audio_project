@@ -17,7 +17,7 @@
 #include <QMetaObject>
 
 // Helper from main.cpp, now local to where it's used
-std::vector<QString> getChordNotes(const QString& chordName);
+std::vector<std::string> getChordNotes(const QString& chordName);
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -188,11 +188,11 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     meterUpdateTimer_->start(33); // Update roughly 30 times per second
 }
 
-void MainWindow::onPlayRequested(const QVector<ChordChange>& progression) {
+void MainWindow::onPlayRequested(const std::vector<ChordChange>& progression) {
     audioEngine.stop();
     ChordProgression prog;
     for (const auto& c : progression) {
-        prog.addChord(c.chordName.toStdString(), c.bars, c.strummingPatternIndex);
+        prog.addChord(c.chordName, c.bars, c.strummingPatternIndex);
     }
     audioEngine.setProgression(prog);
     audioEngine.setMetronome(&metronome);
@@ -354,17 +354,19 @@ void MainWindow::onUpdateMeters() {
 
 void MainWindow::onChordSelected(const QString& chordName) {
     // Get the notes for the current chord
-    std::vector<QString> chordNotes = getChordNotes(chordName);
+    std::vector<std::string> chordNotes = getChordNotes(chordName);
 
     // Combine the current scale notes with the chord notes
-    std::vector<QString> allNotesToDisplay = currentScaleNotes_;
+    std::vector<std::string> allNotesToDisplay = currentScaleNotes_;
     for (const auto& chordNote : chordNotes) {
         if (std::find(allNotesToDisplay.begin(), allNotesToDisplay.end(), chordNote) == allNotesToDisplay.end()) {
             allNotesToDisplay.push_back(chordNote);
         }
     }
 
-    QString displayLabel = currentScaleLabel_.isEmpty() ? chordName : chordName + " in " + currentScaleLabel_;
+    std::string displayLabel = currentScaleLabel_.empty()
+        ? chordName.toStdString()
+        : chordName.toStdString() + " in " + currentScaleLabel_;
 
     NoteMap noteMap = makeNoteMap(allNotesToDisplay, displayLabel);
     // Pass the chord tones to the map for highlighting
@@ -375,7 +377,7 @@ void MainWindow::onChordSelected(const QString& chordName) {
 
 void MainWindow::onScaleSelected(const QString& scaleRoot, const QString& scaleName) {
     currentScaleNotes_.clear();
-    currentScaleLabel_ = "";
+    currentScaleLabel_.clear();
     if (scaleRoot.isEmpty() || scaleName.isEmpty()) {
         if (!audioEngine.isRunning()) noteMapFretboard->setNoteMap(NoteMap());
         return;
@@ -388,13 +390,13 @@ void MainWindow::onScaleSelected(const QString& scaleRoot, const QString& scaleN
 
     int rootIdx = noteIndices.value(scaleRoot, 0);
     const auto& scaleDef = kScaleDefinitions.at(scaleName.toStdString());
-    currentScaleLabel_ = scaleRoot + " " + scaleName;
+    currentScaleLabel_ = (scaleRoot + " " + scaleName).toStdString();
 
     int currentNote = rootIdx;
-    currentScaleNotes_.push_back(noteIndices.key(currentNote));
+    currentScaleNotes_.push_back(noteIndices.key(currentNote).toStdString());
     for (int interval : scaleDef.intervals) {
         currentNote = (currentNote + interval) % 12;
-        currentScaleNotes_.push_back(noteIndices.key(currentNote));
+        currentScaleNotes_.push_back(noteIndices.key(currentNote).toStdString());
     }
 
     // Only update the display if the audio is not playing.

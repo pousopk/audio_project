@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <QString>
+#include <string>
 
 /**
  * @brief Represents a guitar chord shape.
@@ -9,5 +9,5 @@
 struct GuitarChordShape {
     std::vector<int> frets;    ///< Fret numbers for each string (size = 6)
     std::vector<int> fingers;  ///< Optional finger numbers (0 = none)
-    QString name;              ///< Name of the chord shape
+    std::string name;          ///< Name of the chord shape
 };

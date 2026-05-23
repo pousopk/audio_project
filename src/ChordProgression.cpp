@@ -3,7 +3,6 @@
  * @brief Implements the ChordProgression class for managing a sequence of chords.
  */
 #include "ChordProgression.h"
-#include <QString>
 
 /**
  * @brief Add a chord to the progression.
@@ -12,7 +11,7 @@
  * @param strummingPatternIndex Index of the strumming pattern.
  */
 void ChordProgression::addChord(const std::string& chord, int measures, int strummingPatternIndex) {
-    chords_.append({QString::fromStdString(chord), measures, strummingPatternIndex});
+    chords_.push_back({chord, measures, strummingPatternIndex});
 }
 
 
@@ -21,16 +20,16 @@ void ChordProgression::addChord(const std::string& chord, int measures, int stru
  * @param index Index of the chord to remove.
  */
 void ChordProgression::removeChord(int index) {
-    if (index >= 0 && index < chords_.size()) {
-        chords_.removeAt(index);
+    if (index >= 0 && static_cast<std::size_t>(index) < chords_.size()) {
+        chords_.erase(chords_.begin() + index);
     }
 }
 
 /**
  * @brief Get the list of chords in the progression.
- * @return Reference to QVector of ChordChange.
+ * @return Reference to vector of ChordChange.
  */
-const QVector<ChordChange>& ChordProgression::getChords() const {
+const std::vector<ChordChange>& ChordProgression::getChords() const {
     return chords_;
 }
 
