@@ -60,3 +60,11 @@ QString FXChainWidget::currentItemText() const {
 int FXChainWidget::currentRow() const {
     return effectsList_->currentRow();
 }
+
+QStringList FXChainWidget::currentOrder() const {
+    QStringList order;
+    for (int i = 0; i < effectsList_->count(); ++i) {
+        order.append(effectsList_->item(i)->text());
+    }
+    return order;
+}

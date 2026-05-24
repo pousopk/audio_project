@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "NoteMapFretboardWidget.h"
 #include "ChordProgressionWidget.h"
+#include "SynthSettingsWindow.h"
 #include "../utils/NoteMapUtils.h"
 #include "EffectsWindow.h"
 #include "ColorLegendsWith.h"
@@ -89,6 +90,31 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     volumeLayout->addWidget(volumeSlider);
     volumeLayout->addWidget(volumeValue);
     metronomeLayout->addLayout(volumeLayout);
+
+    // Synth selection
+    QHBoxLayout* synthLayout = new QHBoxLayout();
+    QLabel* synthLabel = new QLabel("Synth:", this);
+    synthCombo = new QComboBox(this);
+    synthCombo->addItem("Guitar (Karplus-Strong)");
+    synthCombo->addItem("Subtractive");
+    synthCombo->addItem("FM");
+    synthCombo->addItem("Wavetable");
+    synthCombo->addItem("Karplus-Strong (Custom)");
+    connect(synthCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this](int idx) {
+        ChordAudioEngine::SynthType synthType = ChordAudioEngine::SynthType::Guitar;
+        if (idx == 1) synthType = ChordAudioEngine::SynthType::Subtractive;
+        else if (idx == 2) synthType = ChordAudioEngine::SynthType::FM;
+        else if (idx == 3) synthType = ChordAudioEngine::SynthType::Wavetable;
+        else if (idx == 4) synthType = ChordAudioEngine::SynthType::KarplusStrong;
+        audioEngine.setSynthType(synthType);
+        if (synthSettingsWindow) {
+            synthSettingsWindow->setCurrentSynthType(synthType);
+        }
+    });
+    synthLayout->addWidget(synthLabel);
+    synthLayout->addWidget(synthCombo);
+    metronomeLayout->addLayout(synthLayout);
+
     metronomeGroup->setLayout(metronomeLayout);
     layout->addWidget(metronomeGroup);
 
@@ -97,6 +123,35 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     QPushButton* showEffectsButton = new QPushButton("Show Effects Rack", this);
     connect(showEffectsButton, &QPushButton::clicked, effectsWindow, &EffectsWindow::show);
     layout->addWidget(showEffectsButton);
+
+    QPushButton* toggleScaleButton = new QPushButton("Scale Overlay: ON", this);
+    toggleScaleButton->setCheckable(true);
+    toggleScaleButton->setChecked(true);
+    connect(toggleScaleButton, &QPushButton::toggled, this, [this, toggleScaleButton](bool enabled) {
+        showScaleOverlay_ = enabled;
+        toggleScaleButton->setText(enabled ? "Scale Overlay: ON" : "Scale Overlay: OFF");
+        refreshFretboardDisplay();
+    });
+    layout->addWidget(toggleScaleButton);
+
+    QPushButton* toggleFxButton = new QPushButton("FX Chain: ON", this);
+    toggleFxButton->setCheckable(true);
+    toggleFxButton->setChecked(true);
+    connect(toggleFxButton, &QPushButton::toggled, this, [this, toggleFxButton](bool enabled) {
+        audioEngine.setFXEnabled(enabled);
+        toggleFxButton->setText(enabled ? "FX Chain: ON" : "FX Chain: OFF");
+    });
+    layout->addWidget(toggleFxButton);
+
+    synthSettingsWindow = new SynthSettingsWindow(&audioEngine, this);
+    synthSettingsWindow->setCurrentSynthType(ChordAudioEngine::SynthType::Guitar);
+    QPushButton* showSynthSettingsButton = new QPushButton("Show Synth Settings", this);
+    connect(showSynthSettingsButton, &QPushButton::clicked, this, [this]() {
+        synthSettingsWindow->show();
+        synthSettingsWindow->raise();
+        synthSettingsWindow->activateWindow();
+    });
+    layout->addWidget(showSynthSettingsButton);
 
     // Connect signals from the new effects window to the main window's slots
     connect(effectsWindow, &EffectsWindow::reverbMixChanged, this, &MainWindow::onReverbMixChanged);
@@ -109,9 +164,15 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     connect(effectsWindow, &EffectsWindow::compressorRatioChanged, this, &MainWindow::onCompressorRatioChanged);
     connect(effectsWindow, &EffectsWindow::compressorAttackChanged, this, &MainWindow::onCompressorAttackChanged);
     connect(effectsWindow, &EffectsWindow::compressorReleaseChanged, this, &MainWindow::onCompressorReleaseChanged);
+    connect(effectsWindow, &EffectsWindow::compressorKneeChanged, this, &MainWindow::onCompressorKneeChanged);
+    connect(effectsWindow, &EffectsWindow::compressorSaturationChanged, this, &MainWindow::onCompressorSaturationChanged);
+    connect(effectsWindow, &EffectsWindow::compressorDetectorBlendChanged, this, &MainWindow::onCompressorDetectorBlendChanged);
     connect(effectsWindow, &EffectsWindow::eqLowGainChanged, this, &MainWindow::onEQLowGainChanged);
     connect(effectsWindow, &EffectsWindow::eqMidGainChanged, this, &MainWindow::onEQMidGainChanged);
     connect(effectsWindow, &EffectsWindow::eqHighGainChanged, this, &MainWindow::onEQHighGainChanged);
+    connect(effectsWindow, &EffectsWindow::eqSaturationEnabledChanged, this, &MainWindow::onEQSaturationEnabledChanged);
+    connect(effectsWindow, &EffectsWindow::eqSaturationDriveChanged, this, &MainWindow::onEQSaturationDriveChanged);
+    connect(effectsWindow, &EffectsWindow::eqMSAmountChanged, this, &MainWindow::onEQMSAmountChanged);
     connect(effectsWindow, &EffectsWindow::limiterThresholdChanged, this, &MainWindow::onLimiterThresholdChanged);
     connect(effectsWindow, &EffectsWindow::limiterReleaseChanged, this, &MainWindow::onLimiterReleaseChanged);
     connect(effectsWindow, &EffectsWindow::chorusRateChanged, this, &MainWindow::onChorusRateChanged);
@@ -122,18 +183,23 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     connect(effectsWindow, &EffectsWindow::flangerRateChanged, this, &MainWindow::onFlangerRateChanged);
     connect(effectsWindow, &EffectsWindow::flangerDepthChanged, this, &MainWindow::onFlangerDepthChanged);
     connect(effectsWindow, &EffectsWindow::flangerFeedbackChanged, this, &MainWindow::onFlangerFeedbackChanged);
+    connect(effectsWindow, &EffectsWindow::flangerMixChanged, this, &MainWindow::onFlangerMixChanged);
     connect(effectsWindow, &EffectsWindow::phaserRateChanged, this, &MainWindow::onPhaserRateChanged);
     connect(effectsWindow, &EffectsWindow::phaserDepthChanged, this, &MainWindow::onPhaserDepthChanged);
     connect(effectsWindow, &EffectsWindow::phaserFeedbackChanged, this, &MainWindow::onPhaserFeedbackChanged);
+    connect(effectsWindow, &EffectsWindow::phaserMixChanged, this, &MainWindow::onPhaserMixChanged);
     connect(effectsWindow, &EffectsWindow::tremoloRateChanged, this, &MainWindow::onTremoloRateChanged);
     connect(effectsWindow, &EffectsWindow::tremoloDepthChanged, this, &MainWindow::onTremoloDepthChanged);
-    // Note: Flanger/Phaser/Tremolo mix is not connected as it's not implemented in the UI separately
+    // Note: Tremolo mix is not connected as it's not implemented in the UI separately
     connect(effectsWindow, &EffectsWindow::orderChanged, this, [this](const QStringList& newOrder) {
         std::vector<std::string> order;
         for (const QString& s : newOrder) {
             order.push_back(s.toStdString());
         }
         audioEngine.setFXOrder(order);
+    });
+    connect(effectsWindow, &EffectsWindow::fxChainEnabledChanged, this, [this](bool enabled) {
+        audioEngine.setFXEnabled(enabled);
     });
 
     // Chord progression widget
@@ -143,6 +209,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     connect(progressionWidget, &ChordProgressionWidget::stopRequested, this, [this]() {
         audioEngine.stop();
         metronome.reset();
+        currentChordName_.clear();
         onScaleSelected(progressionWidget->scaleRoot(), progressionWidget->scaleType()); // Re-apply scale display on stop
     });
     connect(progressionWidget, &ChordProgressionWidget::chordVolumeChanged, this, [this](double vol){ audioEngine.setVolume(vol); });
@@ -267,6 +334,18 @@ void MainWindow::onCompressorReleaseChanged(int value) {
     audioEngine.setCompressorRelease(static_cast<float>(value));
 }
 
+void MainWindow::onCompressorKneeChanged(int value) {
+    audioEngine.setCompressorKnee(static_cast<float>(value));
+}
+
+void MainWindow::onCompressorSaturationChanged(int value) {
+    audioEngine.setCompressorSaturationDrive(static_cast<float>(value) / 10.0f);
+}
+
+void MainWindow::onCompressorDetectorBlendChanged(int value) {
+    audioEngine.setCompressorDetectorBlend(static_cast<float>(value) / 100.0f);
+}
+
 void MainWindow::onEQLowGainChanged(int value) {
     audioEngine.setEQLowGain(static_cast<float>(value));
 }
@@ -277,6 +356,18 @@ void MainWindow::onEQMidGainChanged(int value) {
 
 void MainWindow::onEQHighGainChanged(int value) {
     audioEngine.setEQHighGain(static_cast<float>(value));
+}
+
+void MainWindow::onEQSaturationEnabledChanged(bool enabled) {
+    audioEngine.setEQSaturationEnabled(enabled);
+}
+
+void MainWindow::onEQSaturationDriveChanged(int value) {
+    audioEngine.setEQSaturationDrive(static_cast<float>(value) / 10.0f);
+}
+
+void MainWindow::onEQMSAmountChanged(int value) {
+    audioEngine.setEQMSAmount(static_cast<float>(value) / 100.0f);
 }
 
 void MainWindow::onLimiterThresholdChanged(int value) {
@@ -352,27 +443,43 @@ void MainWindow::onUpdateMeters() {
     effectsWindow->updateSpectrum(audioEngine.getSpectrumData());
 }
 
-void MainWindow::onChordSelected(const QString& chordName) {
-    // Get the notes for the current chord
-    std::vector<std::string> chordNotes = getChordNotes(chordName);
+void MainWindow::refreshFretboardDisplay() {
+    if (currentChordName_.empty()) {
+        if (!audioEngine.isRunning()) {
+            if (showScaleOverlay_ && !currentScaleNotes_.empty()) {
+                NoteMap noteMap = makeNoteMap(currentScaleNotes_, currentScaleLabel_);
+                noteMapFretboard->setNoteMap(noteMap);
+            } else {
+                noteMapFretboard->setNoteMap(NoteMap());
+            }
+        }
+        return;
+    }
 
-    // Combine the current scale notes with the chord notes
-    std::vector<std::string> allNotesToDisplay = currentScaleNotes_;
-    for (const auto& chordNote : chordNotes) {
-        if (std::find(allNotesToDisplay.begin(), allNotesToDisplay.end(), chordNote) == allNotesToDisplay.end()) {
-            allNotesToDisplay.push_back(chordNote);
+    std::vector<std::string> chordNotes = getChordNotes(QString::fromStdString(currentChordName_));
+    std::vector<std::string> allNotesToDisplay = chordNotes;
+    if (showScaleOverlay_) {
+        allNotesToDisplay = currentScaleNotes_;
+        for (const auto& chordNote : chordNotes) {
+            if (std::find(allNotesToDisplay.begin(), allNotesToDisplay.end(), chordNote) == allNotesToDisplay.end()) {
+                allNotesToDisplay.push_back(chordNote);
+            }
         }
     }
 
-    std::string displayLabel = currentScaleLabel_.empty()
-        ? chordName.toStdString()
-        : chordName.toStdString() + " in " + currentScaleLabel_;
+    std::string displayLabel = currentChordName_;
+    if (showScaleOverlay_ && !currentScaleLabel_.empty()) {
+        displayLabel += " in " + currentScaleLabel_;
+    }
 
     NoteMap noteMap = makeNoteMap(allNotesToDisplay, displayLabel);
-    // Pass the chord tones to the map for highlighting
     noteMap.chordTones = chordNotes;
-
     noteMapFretboard->setNoteMap(noteMap);
+}
+
+void MainWindow::onChordSelected(const QString& chordName) {
+    currentChordName_ = chordName.toStdString();
+    refreshFretboardDisplay();
 }
 
 void MainWindow::onScaleSelected(const QString& scaleRoot, const QString& scaleName) {
@@ -399,11 +506,5 @@ void MainWindow::onScaleSelected(const QString& scaleRoot, const QString& scaleN
         currentScaleNotes_.push_back(noteIndices.key(currentNote).toStdString());
     }
 
-    // Only update the display if the audio is not playing.
-    // If it is playing, the onChordSelected callback will handle the update.
-    if (!audioEngine.isRunning()) {
-        NoteMap noteMap = makeNoteMap(currentScaleNotes_, currentScaleLabel_);
-        // No chord tones to highlight when only showing a scale
-        noteMapFretboard->setNoteMap(noteMap);
-    }
+    refreshFretboardDisplay();
 }

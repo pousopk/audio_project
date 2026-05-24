@@ -1,5 +1,5 @@
-#include "../strumming/StrummingPattern.h"
 #pragma once
+#include "../strumming/StrummingPattern.h"
 #include <RtAudio.h>
 #include "ChordProgression.h"
 #include <vector>
@@ -8,6 +8,10 @@
 #include <mutex>
 #include <array>
 #include "GuitarSynth.h"
+#include "synths/SubtractiveSynth.h"
+#include "synths/FMSynth.h"
+#include "synths/WavetableSynth.h"
+#include "synths/KarplusStrongSynth.h"
 #include "effects/FXChain.h"
 
 
@@ -16,6 +20,9 @@
  */
 class ChordAudioEngine {
 public:
+    enum class SynthType { Guitar, Subtractive, FM, Wavetable, KarplusStrong };
+    enum class KarplusPreset { Balanced = 0, Warm, Bright, Muted, Custom };
+
     /** @brief Construct a ChordAudioEngine. */
     ChordAudioEngine();
     /** @brief Destructor. */
@@ -48,6 +55,29 @@ public:
     /** @brief Get the chord playback volume. */
     double getVolume() const { return chordVolume; }
 
+    /** @brief Select the synth implementation used for chord playback. */
+    void setSynthType(SynthType type);
+
+    // Synth-specific parameter controls
+    void setGuitarFilterCoefficient(double coeff);
+    void setGuitarDecayFactor(double factor);
+    void setSubtractiveWaveformSaw(bool saw);
+    void setSubtractiveCutoff(double cutoffHz);
+    void setSubtractiveEnvelope(double attack, double decay, double sustain, double release);
+    void setFMModRatio(double ratio);
+    void setFMModIndex(double index);
+    void setFMEnvelope(double attack, double decay, double sustain, double release);
+    void setWavetableEnvelope(double attack, double decay, double sustain, double release);
+    void setKarplusCustomDecay(double decay);
+    void setKarplusExciterBrightness(double brightness);
+    void setKarplusPickTransient(double amount);
+    void setKarplusDispersion(double amount);
+    void setKarplusDrive(double drive);
+    void setKarplusBodyResonance(double amount);
+    void setKarplusSympatheticResonance(double amount);
+    void applyKarplusPreset(KarplusPreset preset);
+    KarplusPreset getKarplusPreset() const { return karplusPreset_; }
+
     // Synth parameter controls
     void setReverbMix(float mix);
     void setDelayTime(float time_ms);
@@ -59,9 +89,15 @@ public:
     void setCompressorRatio(float ratio);
     void setCompressorAttack(float attack_ms);
     void setCompressorRelease(float release_ms);
+    void setCompressorKnee(float knee_db);
+    void setCompressorSaturationDrive(float drive);
+    void setCompressorDetectorBlend(float blend);
     void setEQLowGain(float gain_db);
     void setEQMidGain(float gain_db);
     void setEQHighGain(float gain_db);
+    void setEQSaturationEnabled(bool enabled);
+    void setEQSaturationDrive(float drive);
+    void setEQMSAmount(float amount);
     void setLimiterThreshold(float threshold_db);
     void setLimiterRelease(float release_ms);
     void setChorusRate(float rate_hz);
@@ -80,6 +116,8 @@ public:
     void setTremoloRate(float rate_hz);
     void setTremoloDepth(float depth);
     void setFXOrder(const std::vector<std::string>& newOrder);
+    void setFXEnabled(bool enabled);
+    bool isFXEnabled() const;
 
     // Metering
     float getCompressorGainReductionDB() const;
@@ -91,6 +129,7 @@ public:
 
 private:
     void resetChordSyncState();
+    std::vector<int> applyVoiceLeading(const std::vector<int>& baseShape) const;
 
     // Synthesis & Sync State (moved from global/static)
     int measureSampleCounter_ = 0;
@@ -112,8 +151,17 @@ private:
     double chordVolume = 1.0;
     StrummingPattern strummingPattern;
     GuitarSynth synth_;
+    SubtractiveSynth subtractiveSynth_;
+        SynthType synthType_ = SynthType::Guitar;
+        FMSynth fmSynth_;
+        WavetableSynth wavetableSynth_;
+        KarplusStrongSynth karplusStrongSynth_;
+    KarplusPreset karplusPreset_ = KarplusPreset::Balanced;
     FXChain fxChain_;
     int lastChordIndex_ = -1;
+    std::vector<int> previousVoicedShape_;
+    std::vector<int> activeVoicedShape_;
+    int activeVoicedChordIndex_ = -1;
 
     // FFT and Spectrum Analyzer members
     std::vector<float> fft_input_buffer_;

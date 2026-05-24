@@ -16,6 +16,10 @@ public:
     void process(float* buffer, int numSamples);
     /** @brief Set the sample rate for all effects. */
     void setSampleRate(float rate);
+    /** @brief Enable or bypass the entire effect chain. */
+    void setEnabled(bool enabled);
+    /** @brief Check whether the effect chain is enabled. */
+    bool isEnabled() const { return enabled_; }
     /** @brief Set the order of effects by name. */
     void setOrder(const std::vector<std::string>& newOrder);
     /** @brief Set reverb mix. */
@@ -60,6 +64,12 @@ public:
     void setEQMidGain(float gain_db);
     /** @brief Set EQ high gain. */
     void setEQHighGain(float gain_db);
+    /** @brief Enable or disable EQ saturation stage. */
+    void setEQSaturationEnabled(bool enabled);
+    /** @brief Set EQ saturation drive. */
+    void setEQSaturationDrive(float drive);
+    /** @brief Set EQ combined M/S amount (0..1). */
+    void setEQMSAmount(float amount);
     /** @brief Set compressor threshold. */
     void setCompressorThreshold(float threshold_dB);
     /** @brief Set compressor ratio. */
@@ -68,6 +78,12 @@ public:
     void setCompressorAttack(float attack_ms);
     /** @brief Set compressor release time. */
     void setCompressorRelease(float release_ms);
+    /** @brief Set compressor soft knee width in dB. */
+    void setCompressorKnee(float knee_db);
+    /** @brief Set compressor saturation drive. */
+    void setCompressorSaturationDrive(float drive);
+    /** @brief Set compressor detector blend (0 RMS .. 1 Peak). */
+    void setCompressorDetectorBlend(float blend);
     /** @brief Set delay time. */
     void setDelayTime(float time_ms);
     /** @brief Set delay feedback. */
@@ -82,4 +98,6 @@ public:
     float getCompressorGainReductionDB() const;
 private:
     std::vector<std::unique_ptr<AudioEffect>> effects_; ///< List of effect instances
+    float sampleRate_ = 48000.0f;
+    bool enabled_ = true;
 };

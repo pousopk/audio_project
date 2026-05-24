@@ -10,24 +10,6 @@ static const std::array<int, 6> stringMidi = {40, 45, 50, 55, 59, 64};
 static int getMidiForStringFret(int string, int fret) {
     return stringMidi[string] + fret;
 }
-static int nthLowestPitchedString(const std::vector<int>& shapeFrets, int rank) {
-    std::vector<std::pair<int, int>> pitchedStrings;
-    for (int s = 0; s < 6; ++s) {
-        const int fret = static_cast<int>(shapeFrets.size()) > s ? shapeFrets[s] : -1;
-        if (fret == -1) continue;
-        pitchedStrings.emplace_back(getMidiForStringFret(s, fret), s);
-    }
-    if (pitchedStrings.empty()) return -1;
-
-    std::sort(pitchedStrings.begin(), pitchedStrings.end(),
-              [](const auto& a, const auto& b) {
-                  if (a.first != b.first) return a.first < b.first;
-                  return a.second < b.second;
-              });
-
-    rank = std::clamp(rank, 0, static_cast<int>(pitchedStrings.size()) - 1);
-    return pitchedStrings[rank].second;
-}
 static double midiToFreq(int midi) {
     return 440.0 * std::pow(2.0, (midi - 69) / 12.0);
 }
@@ -35,10 +17,6 @@ static double midiToFreq(int midi) {
 GuitarSynth::GuitarSynth() {
     initialize();
 }
-#/**
-# * @file GuitarSynth.cpp
-# * @brief Implements the GuitarSynth class for physical modeling synthesis of guitar sounds.
-# */
 
 void GuitarSynth::setSampleRate(unsigned int rate) {
     sampleRate_ = rate;
@@ -96,23 +74,13 @@ void GuitarSynth::process(float* out,
         } else if (type == StrumType::Up || type == StrumType::ArpeggioDesc) {
             for (int s = 5; s >= 0; --s) if ((int)shapeFrets.size() > s && shapeFrets[s] != -1) stringOrder.push_back(s);
         }
-        if (numNotes == 1 && (type == StrumType::Down || type == StrumType::DownAltBass)) {
-            const int bassRank = (type == StrumType::DownAltBass) ? 1 : 0;
-            const int bassString = nthLowestPitchedString(shapeFrets, bassRank);
-            stringOrder.clear();
-            if (bassString >= 0) stringOrder.push_back(bassString);
-        } else if (numNotes > 0 && numNotes < (int)stringOrder.size()) {
-            if (type == StrumType::Down || type == StrumType::DownAltBass) {
-                std::vector<int> selected;
-                selected.push_back(stringOrder.front());
-                if (numNotes >= 2) {
-                    selected.push_back(stringOrder.back());
-                }
-                for (int i = 1; (int)selected.size() < numNotes && i < (int)stringOrder.size() - 1; ++i) {
-                    selected.push_back(stringOrder[i]);
-                }
-                stringOrder = selected;
-            } else if (type == StrumType::Up || type == StrumType::ArpeggioDesc) {
+        // For alternating bass, find the second bass note
+        if (type == StrumType::DownAltBass && stringOrder.size() > 1) {
+            int altBassString = stringOrder[1];
+            stringOrder = {altBassString};
+        }
+        if (numNotes > 0 && numNotes < (int)stringOrder.size()) {
+            if (type == StrumType::Up || type == StrumType::ArpeggioDesc) {
                 stringOrder.erase(stringOrder.begin(), stringOrder.end() - numNotes);
             } else {
                 stringOrder.resize(numNotes);

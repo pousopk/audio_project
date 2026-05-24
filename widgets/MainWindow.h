@@ -15,6 +15,7 @@ class NoteMapFretboardWidget;
 class ColorLegendsWith;
 class FXChainWidget;
 class EffectsWindow;
+class SynthSettingsWindow;
 
 /**
  * @brief Main application window for the audio project UI.
@@ -44,9 +45,15 @@ private slots:
     void onCompressorRatioChanged(int value);
     void onCompressorAttackChanged(int value);
     void onCompressorReleaseChanged(int value);
+    void onCompressorKneeChanged(int value);
+    void onCompressorSaturationChanged(int value);
+    void onCompressorDetectorBlendChanged(int value);
     void onEQLowGainChanged(int value);
     void onEQMidGainChanged(int value);
     void onEQHighGainChanged(int value);
+    void onEQSaturationEnabledChanged(bool enabled);
+    void onEQSaturationDriveChanged(int value);
+    void onEQMSAmountChanged(int value);
     void onLimiterThresholdChanged(int value);
     void onLimiterReleaseChanged(int value);
     void onChorusRateChanged(int value);
@@ -68,6 +75,8 @@ private slots:
     void onUpdateMeters();
 
 private:
+    void refreshFretboardDisplay();
+
     ChordAudioEngine audioEngine; ///< Audio engine instance
     Metronome metronome; ///< Metronome instance
     QSlider *slider;
@@ -80,11 +89,15 @@ private:
     QLabel *subdivValue;
     QSlider *volumeSlider;
     QLabel *volumeValue;
+    QComboBox *synthCombo;
     ChordProgressionWidget *progressionWidget;
     NoteMapFretboardWidget *noteMapFretboard;
     EffectsWindow *effectsWindow;
+    SynthSettingsWindow* synthSettingsWindow = nullptr;
     QTimer* meterUpdateTimer_;
     ColorLegendsWith *legendWidget;
+    bool showScaleOverlay_ = true;
+    std::string currentChordName_;
     std::vector<std::string> currentScaleNotes_;
     std::string currentScaleLabel_;
 };

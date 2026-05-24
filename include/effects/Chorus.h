@@ -25,14 +25,30 @@ public:
     void setMix(float mix);
 
 private:
+    struct VoiceState {
+        float phaseOffset = 0.0f;
+        float delayBiasMs = 0.0f;
+        float filterState = 0.0f;
+    };
+
     float sample_rate_ = 48000.0f; ///< Current sample rate
     float rate_hz_ = 0.5f; ///< LFO rate
     float depth_ms_ = 2.5f; ///< Modulation depth
     float mix_ = 0.5f; ///< Wet/dry mix
+    float base_delay_ms_ = 12.0f;
+    float feedback_ = 0.12f;
+    float saturation_drive_ = 1.2f;
+
+    static constexpr int kNumVoices = 6;
 
     std::vector<float> delay_buffer_;
+    std::vector<VoiceState> voices_;
     int write_pos_ = 0;
     float lfo_phase_ = 0.0f;
+    float pre_filter_state_ = 0.0f;
+    float feedback_state_ = 0.0f;
 
     void updateLFO();
+    float readDelayLinear(float delaySamples) const;
+    float onePoleAlpha(float cutoffHz) const;
 };

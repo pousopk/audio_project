@@ -24,10 +24,34 @@ public:
     std::string name() const override { return "Delay"; }
 
 private:
-    std::vector<float> buffer_; ///< Delay buffer
-    int write_pos_ = 0; ///< Write position in buffer
-    int delay_samples_ = 0; ///< Delay length in samples
-    float sample_rate_ = 48000.0f; ///< Current sample rate
-    float feedback_ = 0.5f; ///< Feedback amount
-    float mix_ = 0.3f; ///< Wet/dry mix
+    float readDelayLinear(float delaySamples) const;
+    float randomSigned();
+
+    std::vector<float> buffer_;
+    int write_pos_ = 0;
+    float delay_time_ms_ = 500.0f;
+    float delay_samples_ = 0.0f;
+    float sample_rate_ = 48000.0f;
+    float feedback_ = 0.5f;
+    float mix_ = 0.3f;
+
+    // Slow random modulation for wow/flutter style movement.
+    float mod_depth_ms_ = 4.0f;
+    float mod_current_ms_ = 0.0f;
+    float mod_target_ms_ = 0.0f;
+    int mod_counter_samples_ = 0;
+    unsigned int rand_state_ = 0x9e3779b9u;
+
+    // Feedback loop tone/saturation.
+    float feedback_lpf_state_ = 0.0f;
+    float feedback_lpf_alpha_ = 0.0f;
+    float loop_saturation_drive_ = 1.15f;
+
+    // Gentle diffusion all-pass stage on the wet path.
+    std::vector<float> diffusion_buffer_;
+    int diffusion_write_pos_ = 0;
+    float diffusion_g_ = 0.35f;
+
+    // Mono-safe stereo decorrelation approximation (dual taps).
+    float decorrelation_offset_ms_ = 3.1f;
 };

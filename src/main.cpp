@@ -3,7 +3,12 @@
 #include "../utils/ScaleDefinitions.h"
 #include "../widgets/MainWindow.h"
 #include <QApplication>
+#include <QByteArray>
+#include <QCoreApplication>
+#include <QDir>
 #include <QFile>
+#include <QFileInfo>
+#include <QProcessEnvironment>
 #include <QStyleFactory>
 #include <vector>
 #include <QString>
@@ -77,16 +82,61 @@ std::vector<std::string> getChordNotes(const QString& chordName) {
  * @return Application exit code.
  */
 int main(int argc, char *argv[]) {
+#ifdef Q_OS_LINUX
+    // Prefer XCB/offscreen when Wayland is unavailable to avoid plugin init failures.
+    if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
+        bool hasWayland = false;
+        const QByteArray waylandDisplay = qgetenv("WAYLAND_DISPLAY");
+        if (!waylandDisplay.isEmpty()) {
+            const QByteArray runtimeDir = qgetenv("XDG_RUNTIME_DIR");
+            if (!runtimeDir.isEmpty()) {
+                const QString waylandSocketPath = QString::fromLocal8Bit(runtimeDir) + "/" + QString::fromLocal8Bit(waylandDisplay);
+                hasWayland = QFileInfo::exists(waylandSocketPath);
+            }
+        }
+        const bool hasX11 = !qEnvironmentVariableIsEmpty("DISPLAY");
+        if (!hasWayland) {
+            qputenv("QT_QPA_PLATFORM", hasX11 ? QByteArray("xcb") : QByteArray("offscreen"));
+        }
+    }
+#endif
+
     QApplication app(argc, argv);
 
     // Apply a modern style and load the custom stylesheet
     QApplication::setStyle(QStyleFactory::create("Fusion"));
-    QFile styleFile(":/style.qss"); // Assuming style.qss is added to resources
-    if (!styleFile.exists()) {
-        styleFile.setFileName("style.qss"); // Fallback for running from build dir
+
+    // Try resource first, then common filesystem locations.
+    QByteArray styleData;
+    {
+        QFile qrcStyle(":/style.qss");
+        if (qrcStyle.open(QFile::ReadOnly | QFile::Text)) {
+            styleData = qrcStyle.readAll();
+        }
     }
-    styleFile.open(QFile::ReadOnly | QFile::Text);
-    app.setStyleSheet(QLatin1String(styleFile.readAll()));
+    if (styleData.isEmpty()) {
+        const QString appDir = QCoreApplication::applicationDirPath();
+        const QStringList candidates = {
+            QStringLiteral("style.qss"),
+            appDir + QStringLiteral("/style.qss"),
+            appDir + QStringLiteral("/../style.qss"),
+            appDir + QStringLiteral("/../../style.qss")
+        };
+        for (const QString& candidate : candidates) {
+            QFileInfo info(candidate);
+            if (!info.exists() || !info.isFile()) {
+                continue;
+            }
+            QFile styleFile(info.absoluteFilePath());
+            if (styleFile.open(QFile::ReadOnly | QFile::Text)) {
+                styleData = styleFile.readAll();
+                break;
+            }
+        }
+    }
+    if (!styleData.isEmpty()) {
+        app.setStyleSheet(QLatin1String(styleData));
+    }
 
     MainWindow window;
     window.show();

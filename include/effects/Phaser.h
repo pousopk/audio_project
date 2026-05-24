@@ -41,12 +41,35 @@ public:
     void setMix(float mix);
 
 private:
+    float frequencyToCoefficient(float frequencyHz) const;
+    void updateStageCount();
+
     float sample_rate_ = 48000.0f; ///< Current sample rate
-    float rate_hz_ = 0.5f; ///< LFO rate
+    float rate_hz_ = 0.25f; ///< LFO rate
     float depth_ = 0.8f; ///< Modulation depth
-    float feedback_ = 0.7f; ///< Feedback amount
-    float mix_ = 0.5f; ///< Wet/dry mix
+    float feedback_ = 0.35f; ///< Feedback amount
+    float mix_ = 0.45f; ///< Wet/dry mix
     float lfo_phase_ = 0.0f;
-    float last_out_ = 0.0f;
-    std::vector<AllPassFilter> filters_;
+
+    // Requested sweep range.
+    float sweep_min_hz_ = 300.0f;
+    float sweep_max_hz_ = 4000.0f;
+    int stage_count_ = 6;
+
+    // Input pre-filter.
+    float pre_hp_state_ = 0.0f;
+    float pre_lp_state_ = 0.0f;
+    float pre_hp_alpha_ = 0.0f;
+    float pre_lp_alpha_ = 0.0f;
+
+    // Feedback loop conditioning.
+    float feedback_state_ = 0.0f;
+    float feedback_lp_state_ = 0.0f;
+    float feedback_lp_alpha_ = 0.0f;
+    float feedback_sat_drive_ = 1.15f;
+
+    // Stereo decorrelation approximation (dual mono-safe branches).
+    float lfo_phase_offset_ = 1.5707963f;
+    std::vector<AllPassFilter> filters_a_;
+    std::vector<AllPassFilter> filters_b_;
 };

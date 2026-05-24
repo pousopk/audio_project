@@ -22,6 +22,10 @@ set(AUDIO_CORE_SOURCES
   src/ChordAudioEngine.cpp
   src/ChordProgressionManager.cpp
   src/GuitarSynth.cpp
+  src/synths/SubtractiveSynth.cpp
+  src/synths/FMSynth.cpp
+  src/synths/WavetableSynth.cpp
+  src/synths/KarplusStrongSynth.cpp
   strumming/StrummingPattern.cpp
   src/effects/Reverb.cpp
   src/effects/Delay.cpp
@@ -47,6 +51,7 @@ set(APP_SOURCES
   widgets/ColorLegendsWith.cpp
   widgets/EffectsWindow.cpp
   widgets/FXChainWidget.cpp
+  widgets/SynthSettingsWindow.cpp
   widgets/ChordTrackWidget.cpp
   widgets/GuitarFretboardWidget.cpp
   widgets/HorizontalFretboardWidget.cpp

@@ -176,5 +176,63 @@ void ChordProgressionManager::initStandardProgressions() {
     standardProgressions_["Bluegrass: Salt Creek (A)"] = {
         {"A", 2}, {"G", 2}, {"A", 2}, {"G", 1}, {"E", 1}
     };
+    // Bluegrass: "Foggy Mountain Breakdown" style in G
+    standardProgressions_["Bluegrass: Foggy Breakdown (G)"] = {
+        {"G", 2}, {"C", 2}, {"G", 2}, {"D", 2}
+    };
+    // Bluegrass: "Roll in My Sweet Baby's Arms" style in G
+    standardProgressions_["Bluegrass: Roll in My Sweet Baby's Arms (G)"] = {
+        {"G", 2}, {"C", 2}, {"G", 2}, {"D7", 1}, {"G", 1}
+    };
+    // Bluegrass: "Old Home Place" style in A
+    standardProgressions_["Bluegrass: Old Home Place (A)"] = {
+        {"A", 2}, {"D", 2}, {"A", 2}, {"E", 2}
+    };
+    // Bluegrass: modal mountain flavor in A
+    standardProgressions_["Bluegrass: Mountain Modal (A)"] = {
+        {"A", 2}, {"G", 2}, {"A", 2}, {"E", 2}
+    };
+    // Bluegrass: simple gospel cadence in C
+    standardProgressions_["Bluegrass: Gospel Walk (C)"] = {
+        {"C", 2}, {"F", 2}, {"C", 2}, {"G", 2}
+    };
+    // Bluegrass: breakdown turnaround in G
+    standardProgressions_["Bluegrass: Breakdown Turnaround (G)"] = {
+        {"G", 2}, {"Em", 2}, {"C", 2}, {"D", 2}
+    };
+
+    // Math Rock style templates (works well with arpeggio and odd-meter settings)
+    standardProgressions_["Math Rock: Clean Tapping Loop (Em)"] = {
+        {"Em7", 2}, {"Cmaj7", 2}, {"Gadd9", 2}, {"Dsus2", 2}
+    };
+
+    standardProgressions_["Math Rock: Midwest Ladder (C)"] = {
+        {"Cadd9", 2}, {"Gadd9", 2}, {"Dsus2", 2}, {"Em7", 2}
+    };
+
+    standardProgressions_["Math Rock: Angular Cycle (D)"] = {
+        {"Dmaj7", 2}, {"Asus2", 2}, {"Bm7", 2}, {"Gmaj7", 2}
+    };
+
+    standardProgressions_["Math Rock: Open-String Pulse (A)"] = {
+        {"Aadd9", 2}, {"Esus2", 2}, {"F#m7", 2}, {"Dadd9", 2}
+    };
+
+    standardProgressions_["Math Rock: Odd Meter 7/8 Sketch (Em)"] = {
+        {"Em7", 1}, {"Dadd9", 1}, {"Cmaj7", 1}, {"Bm7", 1},
+        {"Em7", 1}, {"Gadd9", 1}, {"Dsus2", 1}
+    };
+
+    standardProgressions_["Math Rock: Odd Meter 5/4 Sketch (G)"] = {
+        {"Gadd9", 1}, {"Em7", 1}, {"Cadd9", 1}, {"Dsus2", 1}, {"Gadd9", 1}
+    };
+
+    standardProgressions_["Math Rock: High Register Colors (E)"] = {
+        {"Emaj7", 2}, {"Cadd9", 2}, {"Gadd9", 2}, {"Dadd9", 2}
+    };
+
+    standardProgressions_["Math Rock: Circular Fragments (Bm)"] = {
+        {"Bm7", 2}, {"Gmaj7", 2}, {"Dadd9", 2}, {"Aadd9", 2}
+    };
 
 }

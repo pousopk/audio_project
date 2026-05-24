@@ -17,17 +17,58 @@
 #include "effects/Phaser.h"
 #include "effects/Tremolo.h"
 
+namespace {
+std::string effectName(const AudioEffect* effect) {
+    if (dynamic_cast<const Delay*>(effect)) return "Delay";
+    if (dynamic_cast<const Reverb*>(effect)) return "Reverb";
+    if (dynamic_cast<const Distortion*>(effect)) return "Distortion";
+    if (dynamic_cast<const Compressor*>(effect)) return "Compressor";
+    if (dynamic_cast<const EQ*>(effect)) return "EQ";
+    if (dynamic_cast<const Limiter*>(effect)) return "Limiter";
+    if (dynamic_cast<const Chorus*>(effect)) return "Chorus";
+    if (dynamic_cast<const Gate*>(effect)) return "Gate";
+    if (dynamic_cast<const Flanger*>(effect)) return "Flanger";
+    if (dynamic_cast<const Phaser*>(effect)) return "Phaser";
+    if (dynamic_cast<const Tremolo*>(effect)) return "Tremolo";
+    return "";
+}
+
+std::unique_ptr<AudioEffect> createEffectByName(const std::string& name) {
+    if (name == "Delay") return std::make_unique<Delay>();
+    if (name == "Reverb") return std::make_unique<Reverb>();
+    if (name == "Distortion") return std::make_unique<Distortion>();
+    if (name == "Compressor") return std::make_unique<Compressor>();
+    if (name == "EQ") return std::make_unique<EQ>();
+    if (name == "Limiter") return std::make_unique<Limiter>();
+    if (name == "Chorus") return std::make_unique<Chorus>();
+    if (name == "Gate") return std::make_unique<Gate>();
+    if (name == "Flanger") return std::make_unique<Flanger>();
+    if (name == "Phaser") return std::make_unique<Phaser>();
+    if (name == "Tremolo") return std::make_unique<Tremolo>();
+    return nullptr;
+}
+} // namespace
+
 FXChain::FXChain() {
     // Now starts empty. Effects are created in setOrder.
 }
 
+void FXChain::setEnabled(bool enabled) {
+    enabled_ = enabled;
+}
+
 void FXChain::setSampleRate(float rate) {
+    sampleRate_ = rate;
     for (auto& effect : effects_) {
         effect->setSampleRate(rate);
     }
 }
 
 void FXChain::process(float* buffer, int nFrames) {
+    if (!enabled_) {
+        return;
+    }
+
     for (int i = 0; i < nFrames; ++i) {
         if (effects_.empty()) {
             continue;
@@ -41,30 +82,28 @@ void FXChain::process(float* buffer, int nFrames) {
 }
 
 void FXChain::setOrder(const std::vector<std::string>& newOrder) {
-    effects_.clear();
+    std::vector<std::unique_ptr<AudioEffect>> oldEffects;
+    oldEffects.swap(effects_);
+
     for (const auto& name : newOrder) {
-        if (name == "Delay") {
-            effects_.push_back(std::make_unique<Delay>());
-        } else if (name == "Reverb") {
-            effects_.push_back(std::make_unique<Reverb>());
-        } else if (name == "Distortion") {
-            effects_.push_back(std::make_unique<Distortion>());
-        } else if (name == "Compressor") {
-            effects_.push_back(std::make_unique<Compressor>());
-        } else if (name == "EQ") {
-            effects_.push_back(std::make_unique<EQ>());
-        } else if (name == "Limiter") {
-            effects_.push_back(std::make_unique<Limiter>());
-        } else if (name == "Chorus") {
-            effects_.push_back(std::make_unique<Chorus>());
-        } else if (name == "Gate") {
-            effects_.push_back(std::make_unique<Gate>());
-        } else if (name == "Flanger") {
-            effects_.push_back(std::make_unique<Flanger>());
-        } else if (name == "Phaser") {
-            effects_.push_back(std::make_unique<Phaser>());
-        } else if (name == "Tremolo") {
-            effects_.push_back(std::make_unique<Tremolo>());
+        bool reused = false;
+        for (auto& existing : oldEffects) {
+            if (existing && effectName(existing.get()) == name) {
+                effects_.push_back(std::move(existing));
+                reused = true;
+                break;
+            }
+        }
+
+        if (!reused) {
+            auto created = createEffectByName(name);
+            if (created) {
+                effects_.push_back(std::move(created));
+            }
+        }
+
+        if (!effects_.empty()) {
+            effects_.back()->setSampleRate(sampleRate_);
         }
     }
 }
@@ -259,6 +298,33 @@ void FXChain::setEQHighGain(float gain_db) {
     }
 }
 
+void FXChain::setEQSaturationEnabled(bool enabled) {
+    for (auto& effect : effects_) {
+        if (auto* eq = dynamic_cast<EQ*>(effect.get())) {
+            eq->setSaturationEnabled(enabled);
+            return;
+        }
+    }
+}
+
+void FXChain::setEQSaturationDrive(float drive) {
+    for (auto& effect : effects_) {
+        if (auto* eq = dynamic_cast<EQ*>(effect.get())) {
+            eq->setSaturationDrive(drive);
+            return;
+        }
+    }
+}
+
+void FXChain::setEQMSAmount(float amount) {
+    for (auto& effect : effects_) {
+        if (auto* eq = dynamic_cast<EQ*>(effect.get())) {
+            eq->setMSAmount(amount);
+            return;
+        }
+    }
+}
+
 void FXChain::setCompressorThreshold(float threshold_dB) {
     for (auto& effect : effects_) {
         if (auto* comp = dynamic_cast<Compressor*>(effect.get())) {
@@ -290,6 +356,33 @@ void FXChain::setCompressorRelease(float release_ms) {
     for (auto& effect : effects_) {
         if (auto* comp = dynamic_cast<Compressor*>(effect.get())) {
             comp->setRelease(release_ms);
+            return;
+        }
+    }
+}
+
+void FXChain::setCompressorKnee(float knee_db) {
+    for (auto& effect : effects_) {
+        if (auto* comp = dynamic_cast<Compressor*>(effect.get())) {
+            comp->setKnee(knee_db);
+            return;
+        }
+    }
+}
+
+void FXChain::setCompressorSaturationDrive(float drive) {
+    for (auto& effect : effects_) {
+        if (auto* comp = dynamic_cast<Compressor*>(effect.get())) {
+            comp->setSaturationDrive(drive);
+            return;
+        }
+    }
+}
+
+void FXChain::setCompressorDetectorBlend(float blend) {
+    for (auto& effect : effects_) {
+        if (auto* comp = dynamic_cast<Compressor*>(effect.get())) {
+            comp->setDetectorBlend(blend);
             return;
         }
     }

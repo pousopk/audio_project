@@ -27,11 +27,31 @@ public:
     void setMix(float mix);
 
 private:
+    float readDelayLinear(float delaySamples) const;
+    void updateCoefficients();
+
     float sample_rate_ = 48000.0f; ///< Current sample rate
     float rate_hz_ = 0.2f; ///< LFO rate
     float depth_ms_ = 1.5f; ///< Modulation depth
-    float feedback_ = 0.5f; ///< Feedback amount
-    float mix_ = 0.5f; ///< Wet/dry mix
+    float feedback_ = 0.7f; ///< Feedback amount
+    float mix_ = 0.28f; ///< Wet/dry mix
+
+    // Requested core voicing defaults.
+    float base_delay_ms_ = 2.0f;
+    float lfo_phase_offset_rad_ = 1.5707963f; // 90 deg stereo phase offset
+
+    // Input tone shaping (pre-filter).
+    float pre_hp_state_ = 0.0f;
+    float pre_lp_state_ = 0.0f;
+    float pre_hp_alpha_ = 0.0f;
+    float pre_lp_alpha_ = 0.0f;
+
+    // Feedback loop conditioning.
+    float fb_lp_state_ = 0.0f;
+    float fb_lp_alpha_ = 0.0f;
+    float loop_sat_drive_ = 1.2f;
+    float loop_comp_threshold_ = 0.55f;
+    float loop_comp_ratio_ = 0.35f;
 
     std::vector<float> delay_buffer_;
     int write_pos_ = 0;
